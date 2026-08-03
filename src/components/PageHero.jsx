@@ -3,7 +3,6 @@ export default function PageHero({ eyebrow, title, subtitle, max = 720 }) {
     <div className="container" style={{ maxWidth: max, padding: '76px 32px 8px', textAlign: 'center' }}>
       {eyebrow && (
         <div className="eyebrow" style={{ marginBottom: 20 }}>
-          <span className="eyebrow-dot" />
           {eyebrow}
         </div>
       )}

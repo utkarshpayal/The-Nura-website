@@ -19,7 +19,7 @@ const values = [
   },
   {
     title: 'Built for every body',
-    body: 'Irregular cycles, PCOS, menopause, or just curiosity — Nura adapts to your reality instead of assuming a textbook cycle.',
+    body: 'Irregular cycles, PCOS, menopause, or just curiosity, Nura adapts to your reality instead of assuming a textbook cycle.',
     bg: 'var(--accent-tint)',
     icon: <path d="M12 21s-7-4.35-9.5-8.5C.7 8.8 2.6 5 6.3 5c1.9 0 3.3 1 3.7 2.3C10.4 6 11.8 5 13.7 5c3.7 0 5.6 3.8 3.8 7.5C15 16.65 12 21 12 21Z" stroke="var(--accent)" strokeWidth="1.7" strokeLinejoin="round" />,
   },
@@ -51,11 +51,11 @@ export default function About() {
           <h2 style={{ font: "800 22px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 14px' }}>Why we built Nura</h2>
           <p style={{ font: "500 15px/1.75 'Inter',sans-serif", color: 'var(--ink-2)', margin: '0 0 16px' }}>
             Most period trackers stop at logging. Meanwhile, questions about hormonal symptoms, lab results, or when to
-            actually see a doctor go unanswered — or worse, get answered by an anonymous forum thread at 2am.
+            actually see a doctor go unanswered, or worse, get answered by an anonymous forum thread at 2am.
           </p>
           <p style={{ font: "500 15px/1.75 'Inter',sans-serif", color: 'var(--ink-2)', margin: 0 }}>
             Nura combines cycle tracking with an AI health assistant, real gynaecologist consultations, and a private
-            community — so tracking a symptom is the start of getting an answer, not the end of the conversation.
+            community, so tracking a symptom is the start of getting an answer, not the end of the conversation.
           </p>
         </div>
       </div>

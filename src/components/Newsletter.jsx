@@ -21,7 +21,7 @@ export default function Newsletter({ title, subtitle, padding = '96px 32px' }) {
       setSubscribed(true);
       setEmail('');
     } catch (err) {
-      setError(err.message || 'Something went wrong — please try again.');
+      setError(err.message || 'Something went wrong.');
     } finally {
       setSubmitting(false);
     }
@@ -50,7 +50,7 @@ export default function Newsletter({ title, subtitle, padding = '96px 32px' }) {
               font: "700 14px 'Inter',sans-serif",
             }}
           >
-            You're on the list — thanks for subscribing.
+            You're on the list - thanks for subscribing.
           </div>
         ) : (
           <>
@@ -58,6 +58,7 @@ export default function Newsletter({ title, subtitle, padding = '96px 32px' }) {
               <input
                 type="email"
                 required
+                aria-label="Email address"
                 placeholder="you@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -69,7 +70,6 @@ export default function Newsletter({ title, subtitle, padding = '96px 32px' }) {
                   border: '1px solid var(--line)',
                   font: "500 14px 'Inter',sans-serif",
                   color: 'var(--ink)',
-                  outline: 'none',
                 }}
               />
               <button type="submit" className="btn btn-primary" disabled={submitting}>

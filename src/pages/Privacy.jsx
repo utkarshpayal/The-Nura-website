@@ -7,7 +7,7 @@ import useReveal from '../hooks/useReveal';
 const faqData = [
   { question: 'Do you ever sell my health data?', answer: 'Never. Your cycle and symptom data is never sold or shared with advertisers, data brokers, or third parties, under any circumstance.' },
   { question: 'What happens if I lose my phone?', answer: 'Your data stays encrypted on-device and behind App Lock. Signing in on a new device restores your history from your encrypted, password-protected account.' },
-  { question: 'Can my partner see everything I log?', answer: 'No. Partner Sync only shares what you explicitly enable — gentle context like cycle phase, never raw symptom logs unless you choose to share them.' },
+  { question: 'Can my partner see everything I log?', answer: 'No. Partner Sync only shares what you explicitly enable, gentle context like cycle phase, never raw symptom logs unless you choose to share them.' },
   { question: 'How do I delete my account?', answer: 'Settings → Account → Delete Account permanently erases your data from our servers within 30 days, no follow-up required.' },
 ];
 
@@ -51,8 +51,7 @@ export default function Privacy() {
       <Nav />
 
       <div className="container" style={{ maxWidth: 720, padding: '76px 32px 8px', textAlign: 'center' }}>
-        <div className="eyebrow" style={{ marginBottom: 20, background: 'var(--teal-tint)', color: 'var(--teal)' }}>
-          <span className="eyebrow-dot" style={{ background: 'var(--teal)' }} />
+        <div className="eyebrow" style={{ marginBottom: 20, color: 'var(--teal)' }}>
           Private by design
         </div>
         <h1 style={{ font: "800 40px/1.2 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 16px', letterSpacing: '-0.02em' }}>
@@ -121,7 +120,7 @@ export default function Privacy() {
       <div style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
         <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 20px', letterSpacing: '-0.01em' }}>Track with confidence</h2>
         <Link to="/download" className="btn" style={{ background: 'var(--brand)', color: '#fff', padding: '15px 28px', boxShadow: '0 8px 20px rgba(108,86,214,0.35)' }}>
-          Download Nura, free
+          Download Nura
         </Link>
       </div>
 

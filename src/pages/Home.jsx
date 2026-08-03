@@ -25,10 +25,10 @@ const screenshots = [
 
 const testimonials = [
   {
-    quote: 'The AI report chat helped me understand my hormone panel before my appointment — I finally knew what to ask my doctor.',
-    name: 'Maya F.',
-    tag: 'Using Nura for 8 months',
-    initial: 'M',
+    quote: 'The AI report chat helped me understand my hormone panel before my appointment. I finally knew what to ask my doctor.',
+    name: 'Jinal.',
+    tag: 'Using Nura for 2 months',
+    initial: 'J',
   },
   {
     quote: 'Partner Sync means my husband gets gentle context without me having to explain everything every month.',
@@ -38,9 +38,9 @@ const testimonials = [
   },
   {
     quote: 'Booking a video consultation in-app, then getting a plain-language summary of my report, saved me so much anxiety.',
-    name: 'Jordan K.',
+    name: 'Anshika ',
     tag: 'Nura Professional consultation',
-    initial: 'J',
+    initial: 'A',
   },
 ];
 
@@ -71,7 +71,7 @@ const featureCards = [
       </svg>
     ),
     title: 'AI health assistant',
-    body: 'Ask anything, anonymously — by voice or text, in your language. Nura explains symptoms and reports in plain terms.',
+    body: 'Ask anything, anonymously, by voice or text, in your language. Nura explains symptoms and reports in plain terms.',
   },
   {
     bg: 'var(--teal-tint)',
@@ -104,7 +104,7 @@ const featureCards = [
       </svg>
     ),
     title: 'Nura Forest',
-    body: 'Daily logging and healthy habits grow your tree — join a gamified wellness system with streaks and rewards.',
+    body: 'Daily logging and healthy habits grow your tree. Join a gamified wellness system with streaks and rewards.',
   },
   {
     bg: 'var(--brand-tint)',
@@ -134,7 +134,6 @@ export default function Home() {
       <div className="container" style={{ padding: '76px 32px 48px', display: 'flex', alignItems: 'center', gap: 56, flexWrap: 'wrap' }}>
         <div style={{ flex: '1 1 460px', minWidth: 300 }}>
           <div className="eyebrow" style={{ marginBottom: 22 }}>
-            <span className="eyebrow-dot" />
             AI Women's Health Platform
           </div>
           <h1 style={{ font: "800 48px/1.15 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 20px', letterSpacing: '-0.02em' }}>
@@ -142,7 +141,7 @@ export default function Home() {
           </h1>
           <p style={{ font: "500 17px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 32px', maxWidth: 500 }}>
             Nura combines cycle tracking, AI health insights, and real gynaecologist consultations in one private,
-            secure app — so you always know what's going on and what to do about it.
+            secure app so you always know what's going on and what to do about it.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 36 }}>
             <Link to="/download" className="btn btn-brand" style={{ padding: '15px 26px' }}>
@@ -204,7 +203,7 @@ export default function Home() {
             One app for your whole cycle
           </h2>
           <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 20px' }}>
-            From daily logging to doctor consultations — everything is designed around how your body actually feels.
+            From daily logging to doctor consultations, everything is designed around how your body actually feels.
           </p>
           <Link to="/features" style={{ font: "700 14px 'Inter',sans-serif" }}>See all features →</Link>
         </div>
@@ -285,7 +284,7 @@ export default function Home() {
             </a>
             <span className="btn" style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.55)', border: '1px solid rgba(255,255,255,0.16)', padding: '14px 22px', cursor: 'default' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.55)"><path d="M17.05 12.5c-.03-2.4 1.96-3.55 2.05-3.6-1.12-1.63-2.86-1.85-3.48-1.88-1.48-.15-2.9.87-3.65.87-.75 0-1.9-.85-3.13-.83-1.6.02-3.1.94-3.92 2.37-1.68 2.9-.43 7.2 1.2 9.55.8 1.15 1.76 2.43 3 2.38 1.2-.05 1.66-.77 3.11-.77 1.45 0 1.86.77 3.13.75 1.3-.02 2.12-1.16 2.9-2.32.92-1.33 1.3-2.62 1.32-2.68-.03-.01-2.53-.97-2.56-3.84Z" /><path d="M14.7 5.3c.66-.8 1.1-1.9 1-3-.94.04-2.1.63-2.78 1.42-.6.7-1.14 1.83-1 2.9 1.06.08 2.13-.53 2.78-1.32Z" /></svg>
-              iOS — Coming soon
+              iOS (Coming soon)
             </span>
           </div>
         </div>

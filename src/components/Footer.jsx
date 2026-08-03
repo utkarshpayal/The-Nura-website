@@ -14,7 +14,7 @@ export default function Footer() {
             <span style={{ font: "800 16px 'Manrope',sans-serif", color: 'var(--ink)' }}>Nura</span>
           </div>
           <p style={{ font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', maxWidth: 300, margin: 0 }}>
-            An AI-powered women's health platform for cycle tracking, medical guidance, and everyday wellbeing — private by design.
+            An AI-powered women's health platform for cycle tracking, medical guidance, and everyday wellbeing.
           </p>
         </div>
         <div style={{ display: 'flex', gap: 56, flexWrap: 'wrap' }}>

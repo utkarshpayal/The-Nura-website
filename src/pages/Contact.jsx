@@ -30,7 +30,6 @@ const inputStyle = {
   border: '1px solid var(--line)',
   font: "500 14px 'Inter',sans-serif",
   color: 'var(--ink)',
-  outline: 'none',
   fontFamily: 'inherit',
 };
 
@@ -57,7 +56,7 @@ export default function Contact() {
       await submitContactMessage(form);
       setSent(true);
     } catch (err) {
-      setError(err.message || 'Something went wrong — please try again.');
+      setError(err.message || 'Something went wrong, please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -70,7 +69,7 @@ export default function Contact() {
       <PageHero
         eyebrow="Contact"
         title="We'd like to hear from you"
-        subtitle="Whether it's a bug report, a partnership idea, or just feedback — reach out below or email us directly."
+        subtitle="Whether it's a bug report, a partnership idea, or just feedback, reach out below or email us directly."
       />
 
       <div ref={refForm} className={`reveal ${inForm ? 'in' : ''} container`} style={{ maxWidth: 640, padding: '48px 32px' }}>
@@ -86,30 +85,31 @@ export default function Contact() {
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
                 <div style={{ flex: '1 1 200px' }}>
-                  <label style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>Name</label>
-                  <input required value={form.name} onChange={update('name')} placeholder="Jane Doe" style={inputStyle} />
+                  <label htmlFor="contact-name" style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>Name</label>
+                  <input id="contact-name" required value={form.name} onChange={update('name')} placeholder="Jane Doe" style={inputStyle} />
                 </div>
                 <div style={{ flex: '1 1 200px' }}>
-                  <label style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>Email</label>
-                  <input required type="email" value={form.email} onChange={update('email')} placeholder="you@email.com" style={inputStyle} />
+                  <label htmlFor="contact-email" style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>Email</label>
+                  <input id="contact-email" required type="email" value={form.email} onChange={update('email')} placeholder="you@email.com" style={inputStyle} />
                 </div>
               </div>
               <div>
-                <label style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>What's this about?</label>
-                <select value={form.topic} onChange={update('topic')} style={{ ...inputStyle, appearance: 'auto' }}>
+                <label htmlFor="contact-topic" style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>What's this about?</label>
+                <select id="contact-topic" value={form.topic} onChange={update('topic')} style={{ ...inputStyle, appearance: 'auto' }}>
                   {topics.map((t) => (
                     <option key={t} value={t}>{t}</option>
                   ))}
                 </select>
               </div>
               <div>
-                <label style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                <label htmlFor="contact-message" style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                   <span>Message</span>
                   <span style={{ fontWeight: 600, color: messageValid ? 'var(--teal)' : 'var(--ink-4)' }}>
                     {form.message.trim().length}/{MESSAGE_MIN_LENGTH} min
                   </span>
                 </label>
                 <textarea
+                  id="contact-message"
                   required
                   rows={5}
                   value={form.message}

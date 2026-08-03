@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 
@@ -13,6 +13,17 @@ const LINKS = [
 export default function Nav() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
   return (
     <div
@@ -35,8 +46,8 @@ export default function Nav() {
         }}
       >
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Logo size={30} />
-          <span style={{ font: "800 18px 'Manrope',sans-serif", color: 'var(--ink)' }}>Nura</span>
+          <Logo size={40} />
+          <span style={{ font: "800 24px 'Manrope',sans-serif", color: 'var(--ink)' }}>Nura</span>
         </Link>
 
         <div className="nav-desktop-links" style={{ alignItems: 'center', gap: 30 }}>
@@ -57,7 +68,8 @@ export default function Nav() {
         <button
           className="nav-toggle"
           onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
           style={{
             display: 'none',
             alignItems: 'center',
@@ -71,7 +83,11 @@ export default function Nav() {
           }}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M4 6H20M4 12H20M4 18H20" stroke="var(--ink)" strokeWidth="2" strokeLinecap="round" />
+            {open ? (
+              <path d="M6 6L18 18M18 6L6 18" stroke="var(--ink)" strokeWidth="2" strokeLinecap="round" />
+            ) : (
+              <path d="M4 6H20M4 12H20M4 18H20" stroke="var(--ink)" strokeWidth="2" strokeLinecap="round" />
+            )}
           </svg>
         </button>
       </div>

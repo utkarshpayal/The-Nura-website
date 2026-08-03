@@ -6,7 +6,7 @@ import PageHero from '../components/PageHero';
 const sections = [
   {
     title: 'Our commitment',
-    body: 'Nura treats every piece of health information you share — cycle logs, symptoms, lab results, and consultation notes — as protected health information (PHI), whether or not a given feature falls under HIPAA. We apply HIPAA-aligned safeguards across the platform as a baseline, not a ceiling.',
+    body: 'Nura treats every piece of health information you share (cycle logs, symptoms, lab results, and consultation notes) as protected health information (PHI), whether or not a given feature falls under HIPAA. We apply HIPAA-aligned safeguards across the platform as a baseline, not a ceiling.',
   },
   {
     title: 'How your data is protected',

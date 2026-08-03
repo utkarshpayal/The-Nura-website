@@ -26,7 +26,6 @@ export default function Download() {
       {/* HERO */}
       <div id="get" className="container" style={{ maxWidth: 760, padding: '76px 32px 40px', textAlign: 'center' }}>
         <div className="eyebrow" style={{ marginBottom: 20 }}>
-          <span className="eyebrow-dot" />
           Free · No ads · Private
         </div>
         <h1 style={{ font: "800 40px/1.2 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 16px', letterSpacing: '-0.02em' }}>
@@ -54,7 +53,7 @@ export default function Download() {
           </span>
         </div>
         <p style={{ font: "500 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', margin: '0 0 28px' }}>
-          Direct APK download — Android may ask you to allow installs from this source.
+          Direct APK download. Android may ask you to allow installs from this source.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div className="card" style={{ padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>

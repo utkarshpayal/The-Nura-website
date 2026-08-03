@@ -15,16 +15,16 @@ const shared = [
 ];
 
 const proOnly = [
-  'Creator Profile — public professional profile', 'Gynac Onboarding — verified clinician listing',
+  'Creator Profile: public professional profile', 'Gynac Onboarding: verified clinician listing',
   'Post articles & educational content', 'Publish short-form videos on any topic', 'Upload long-form videos on any topic',
-  'In-platform consultations — chat', 'In-platform consultations — video call',
+  'In-platform consultations: chat', 'In-platform consultations: video call',
 ];
 
 const faqDefs = [
   { id: 'verify', question: 'How does Professional verification work?', answer: 'You submit your license or credentials during Gynac Onboarding or Creator Profile setup. Our team reviews within 2–3 business days before your account goes live.' },
-  { id: 'cancel', question: 'Can I cancel my Professional plan anytime?', answer: 'Yes. Cancel anytime from your account settings — you keep access until the end of the current billing period.' },
+  { id: 'cancel', question: 'Can I cancel my Professional plan anytime?', answer: 'Yes. Cancel anytime from your account settings. You keep access until the end of the current billing period.' },
   { id: 'switch', question: 'Can I switch between monthly and annual billing?', answer: 'Yes, you can switch at your next renewal date. Annual billing saves 35% compared to paying monthly.' },
-  { id: 'data', question: 'Is my data ever sold or shared?', answer: 'Never. All plans include end-to-end encryption, and we do not sell user data — on the free app or on Professional.' },
+  { id: 'data', question: 'Is my data ever sold or shared?', answer: 'Never. All plans include end-to-end encryption, and we do not sell user data, whether on the free app or on Professional.' },
 ];
 
 function toggleBtnStyle(active) {
@@ -60,7 +60,6 @@ export default function Pricing() {
       {/* HERO */}
       <div className="container" style={{ maxWidth: 720, padding: '76px 32px 8px', textAlign: 'center' }}>
         <div className="eyebrow" style={{ marginBottom: 20 }}>
-          <span className="eyebrow-dot" />
           Pricing
         </div>
         <h1 style={{ font: "800 40px/1.2 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 16px', letterSpacing: '-0.02em' }}>
@@ -87,7 +86,7 @@ export default function Pricing() {
         <div className="card" style={{ flex: '1 1 380px', maxWidth: 420, padding: 32 }}>
           <h2 style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px' }}>Nura App</h2>
           <p style={{ font: "500 14px/1.5 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 22px' }}>
-            Everything, for everyone, free forever — no locked features.
+            Everything, for everyone, free forever, no locked features.
           </p>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 22 }}>
             <span style={{ font: "800 38px 'Manrope',sans-serif", color: 'var(--ink)' }}>$0</span>
@@ -116,7 +115,7 @@ export default function Pricing() {
           </div>
           <h2 style={{ font: "800 20px 'Manrope',sans-serif", color: '#fff', margin: '0 0 8px' }}>Nura Professional</h2>
           <p style={{ font: "500 14px/1.5 'Inter',sans-serif", color: 'rgba(255,255,255,0.6)', margin: '0 0 22px' }}>
-            Post content, run consultations, and manage sessions — under a verified Creator Profile or Gynac Onboarding listing.
+            Post content, run consultations, and manage sessions under a verified Creator Profile or Gynac Onboarding listing.
           </p>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 18 }}>
             <span style={{ font: "800 38px 'Manrope',sans-serif", color: '#fff' }}>{proPrice}</span>
@@ -127,7 +126,7 @@ export default function Pricing() {
               <path d="M6 11V8a6 6 0 0 1 12 0v3M5 11h14v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9Z" stroke="#EFC97A" strokeWidth="1.6" strokeLinejoin="round" />
             </svg>
             <p style={{ font: "500 12.5px/1.6 'Inter',sans-serif", color: '#E9D6A6', margin: 0 }}>
-              <b style={{ color: '#F5E4B8' }}>Verification required.</b> Only for licensed gynaecologists/OB-GYNs or credentialed reproductive-health &amp; wellness creators. We review credentials before approval, and every consultation stays inside the platform — no external contact info is exchanged.
+              <b style={{ color: '#F5E4B8' }}>Verification required.</b> Only for licensed gynaecologists/OB-GYNs or credentialed reproductive-health &amp; wellness creators. We review credentials before approval, and every consultation stays inside the platform, no external contact info is exchanged.
             </p>
           </div>
           <a href="#" className="btn btn-brand" style={{ width: '100%', marginBottom: 22 }}>

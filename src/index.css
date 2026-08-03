@@ -100,20 +100,43 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: var(--brand-tint);
   color: var(--brand-dark);
   font: 700 12px/1 'Inter', sans-serif;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.eyebrow-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--brand);
+@media (min-width: 768px) {
+  .eyebrow {
+    font-size: 16px;
+  }
+}
+
+/* Accessibility: visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-tint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Buttons */
@@ -262,5 +285,11 @@ button {
   .phone-shell {
     width: 230px !important;
     height: 469px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-shell .card {
+    left: 0 !important;
   }
 }

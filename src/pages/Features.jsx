@@ -52,7 +52,7 @@ function FeatureRow({ eyebrow, title, body, tags, img, alt, reversed }) {
 const moreFeatures = [
   {
     title: 'Health documents & AI intelligence',
-    body: 'Store lab results, prescriptions, and scans securely — Nura summarizes them and flags abnormal values automatically.',
+    body: 'Store lab results, prescriptions, and scans securely. Nura summarizes them and flags abnormal values automatically.',
     bg: 'var(--amber-tint)',
     icon: <path d="M4 19V6a2 2 0 0 1 2-2h11l3 3v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke="var(--amber)" strokeWidth="1.7" strokeLinejoin="round" />,
   },
@@ -70,7 +70,7 @@ const moreFeatures = [
   },
   {
     title: 'Anonymous community',
-    body: 'Ask questions and share experiences in a moderated, judgment-free space — your identity stays private.',
+    body: 'Ask questions and share experiences in a moderated, judgment-free space. Your identity stays private.',
     bg: 'var(--accent-tint)',
     icon: <path d="M8 10h8M8 14h5M5 20l1.5-3.2A6 6 0 1 1 12 19a6 6 0 0 1-3.2-.9L5 20Z" stroke="var(--accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />,
   },
@@ -94,7 +94,7 @@ const moreFeatures = [
   },
   {
     title: 'Personalised habits & Forest',
-    body: 'AI-generated daily habits based on your cycle and goals — complete them to grow your tree and earn rewards.',
+    body: 'AI-generated daily habits based on your cycle and goals. Complete them to grow your tree and earn rewards.',
     bg: 'var(--teal-tint)',
     icon: <path d="M12 3c-3 3-5 5.8-5 9a5 5 0 0 0 10 0c0-3.2-2-6-5-9Z" stroke="var(--teal)" strokeWidth="1.7" strokeLinejoin="round" />,
   },
@@ -116,21 +116,20 @@ export default function Features() {
 
       <div className="container" style={{ padding: '76px 32px 8px', textAlign: 'center' }}>
         <div className="eyebrow" style={{ marginBottom: 20 }}>
-          <span className="eyebrow-dot" />
           Features
         </div>
         <h1 style={{ font: "800 42px/1.2 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 auto 16px', maxWidth: 720, letterSpacing: '-0.02em' }}>
           Everything you need to understand and manage your health
         </h1>
         <p style={{ font: "500 16.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 auto', maxWidth: 560 }}>
-          From daily tracking to real medical consultations — built around how your cycle actually feels, not a spreadsheet pretending to be one.
+          From daily tracking to real medical consultations, built around how your cycle actually feels, not a spreadsheet pretending to be one.
         </p>
       </div>
 
       <FeatureRow
         eyebrow="Cycle tracking"
         title="Cycle & symptom tracking that takes seconds"
-        body="Log flow, mood, symptoms, sleep, and more with one tap. Nura learns your rhythm and predicts your next period, fertile window, and ovulation — with growing accuracy over time."
+        body="Log flow, mood, symptoms, sleep, and more with one tap. Nura learns your rhythm and predicts your next period, fertile window, and ovulation, with growing accuracy over time."
         tags={['Interactive calendar', 'Smart predictions', 'Irregular cycle detection']}
         img={screenHome}
         alt="Cycle dashboard"
@@ -139,7 +138,7 @@ export default function Features() {
       <FeatureRow
         eyebrow="AI health assistant"
         title="A private health assistant, available 24×7"
-        body="Ask anything about your body, by voice or text, in your own language. Nura explains symptoms, lab values, and medical terms in plain language — and can log data, update your cycle, or read articles aloud on request."
+        body="Ask anything about your body, by voice or text, in your own language. Nura explains symptoms, lab values, and medical terms in plain language, and can log data, update your cycle, or read articles aloud on request."
         tags={['Voice & text', 'Multilingual', 'Anonymous by default']}
         img={screenBuddy}
         alt="AI health assistant"
@@ -149,7 +148,7 @@ export default function Features() {
       <FeatureRow
         eyebrow="Consultations & health library"
         title="Real answers from real clinicians, when you need them"
-        body="Book chat, audio, or video consultations with verified gynaecologists directly in the app. Pair that with a health library covering PCOS, endometriosis, pregnancy, and more — available in multiple languages with text-to-speech."
+        body="Book chat, audio, or video consultations with verified gynaecologists directly in the app. Pair that with a health library covering PCOS, endometriosis, pregnancy, and more, available in multiple languages with text-to-speech."
         tags={['Verified clinicians', 'Secure payments', 'Consultation history']}
         img={screenInsights}
         alt="Health insights"
@@ -157,7 +156,7 @@ export default function Features() {
 
       <FeatureRow
         eyebrow="Forest & partner sync"
-        title="Wellness that grows with you — and the people you choose"
+        title="Wellness that grows with you and the people you choose"
         body="Daily logging and healthy habits grow a tree in your personal Forest. Invite a partner into a permission-based space where they get gentle context and care reminders, never your raw data, unless you choose to share it."
         tags={['Gamified wellness', 'Streaks & rewards', 'Permission-based sharing']}
         img={screenWellbeing}
@@ -170,7 +169,7 @@ export default function Features() {
         <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 44px' }}>
           <h2 style={{ font: "800 30px/1.25 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>And a lot more, built in</h2>
           <p style={{ font: "500 15.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
-            Nura is a full platform, not a single feature — here's what else comes with it.
+            Nura is a full platform, not a single feature. Here's what else comes with it.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 18 }}>
@@ -190,7 +189,7 @@ export default function Features() {
       <div ref={refCta} className={`reveal ${inCta ? 'in' : ''}`} style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
         <h2 style={{ font: "800 30px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 20px', letterSpacing: '-0.01em' }}>Ready to feel supported?</h2>
         <Link to="/download" className="btn" style={{ background: 'var(--brand)', color: '#fff', padding: '15px 28px', boxShadow: '0 8px 20px rgba(108,86,214,0.35)' }}>
-          Download Nura, free
+          Download Nura
         </Link>
       </div>
 
