@@ -4,6 +4,8 @@ import Footer from '../components/Footer';
 import Newsletter from '../components/Newsletter';
 import useReveal from '../hooks/useReveal';
 import { ANDROID_APK_URL } from '../constants';
+import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
+import PhoneFrame from '../components/PhoneFrame';
 import screenHome from '../assets/images/screen-home.png';
 import screenInsights from '../assets/images/screen-insights.png';
 import screenWellbeing from '../assets/images/screen-wellbeing.png';
@@ -165,9 +167,7 @@ export default function Home() {
 
         <div style={{ flex: '1 1 280px', minWidth: 240, display: 'flex', justifyContent: 'center' }}>
           <div className="phone-shell" style={{ position: 'relative', width: 290, maxWidth: '100%' }}>
-            <div style={{ borderRadius: 36, background: '#17151F', padding: 10, boxShadow: 'var(--shadow-lg)' }}>
-              <img src={screenHome} alt="Nura cycle dashboard" style={{ width: '100%', display: 'block', borderRadius: 28 }} />
-            </div>
+            <PhoneFrame src={screenHome} alt="Nura cycle dashboard" width={290} />
             <div
               className="card"
               style={{
@@ -230,9 +230,7 @@ export default function Home() {
           <div style={{ display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap' }}>
             {screenshots.map((s) => (
               <div key={s.id} style={{ width: 200 }}>
-                <div style={{ borderRadius: 26, background: '#17151F', padding: 8, boxShadow: 'var(--shadow-md)' }}>
-                  <img src={s.src} alt={s.label} style={{ width: '100%', display: 'block', borderRadius: 19 }} />
-                </div>
+                <PhoneFrame src={s.src} alt={s.label} width={200} />
                 <p style={{ textAlign: 'center', font: "700 13.5px 'Inter',sans-serif", color: 'var(--ink)', margin: '14px 0 0' }}>{s.label}</p>
               </div>
             ))}
@@ -272,20 +270,23 @@ export default function Home() {
           <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.65)', margin: '0 0 32px' }}>
             Free to download. Core tracking and AI insights, always free.
           </p>
-          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href={ANDROID_APK_URL} className="btn" style={{ background: '#fff', color: 'var(--ink)', padding: '14px 22px' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24">
-                <path d="M4 3.5C3.6 3.9 3.4 4.5 3.4 5.2V18.8C3.4 19.5 3.6 20.1 4 20.5L4.1 20.6L12.2 12.5V12.3L4.1 4.2L4 3.5Z" fill="#4CB5F5" />
-                <path d="M15 15.3L12.2 12.5V12.3L15 9.5L15.1 9.6L18.4 11.5C19.4 12.1 19.4 13 18.4 13.6L15.1 15.5L15 15.3Z" fill="#F5CB40" />
-                <path d="M15.1 15.4L12.2 12.5L4 20.7C4.4 21.1 4.9 21.1 5.6 20.8L15.1 15.4Z" fill="#EA4C3C" />
-                <path d="M15.1 9.6L5.6 4.2C4.9 3.8 4.4 3.9 4 4.3L12.2 12.5L15.1 9.6Z" fill="#3CBA65" />
-              </svg>
-              Download APK
-            </a>
-            <span className="btn" style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.55)', border: '1px solid rgba(255,255,255,0.16)', padding: '14px 22px', cursor: 'default' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.55)"><path d="M17.05 12.5c-.03-2.4 1.96-3.55 2.05-3.6-1.12-1.63-2.86-1.85-3.48-1.88-1.48-.15-2.9.87-3.65.87-.75 0-1.9-.85-3.13-.83-1.6.02-3.1.94-3.92 2.37-1.68 2.9-.43 7.2 1.2 9.55.8 1.15 1.76 2.43 3 2.38 1.2-.05 1.66-.77 3.11-.77 1.45 0 1.86.77 3.13.75 1.3-.02 2.12-1.16 2.9-2.32.92-1.33 1.3-2.62 1.32-2.68-.03-.01-2.53-.97-2.56-3.84Z" /><path d="M14.7 5.3c.66-.8 1.1-1.9 1-3-.94.04-2.1.63-2.78 1.42-.6.7-1.14 1.83-1 2.9 1.06.08 2.13-.53 2.78-1.32Z" /></svg>
-              iOS (Coming soon)
-            </span>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
+            <GooglePlayButton
+              url={ANDROID_APK_URL}
+              theme="light"
+              title="Download for"
+              width={210}
+              height={58}
+              className="store-badge store-badge--light"
+            />
+            <AppStoreButton
+              url="#"
+              theme="dark"
+              title="Coming soon on"
+              width={210}
+              height={58}
+              className="store-badge store-badge--outline store-badge--disabled"
+            />
           </div>
         </div>
       </div>

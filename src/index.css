@@ -293,3 +293,106 @@ textarea:focus {
     left: 0 !important;
   }
 }
+
+/* Phone device frame — screenshots already include their own device bezel,
+   so this just sizes/clips the image and adds depth; no extra chrome on top. */
+.phone-frame {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #0b0b0d;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.06),
+    var(--shadow-lg);
+}
+.phone-frame__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Store download badges (react-mobile-app-button overrides) */
+.store-badge {
+  border-radius: 12px !important;
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+.store-badge:hover {
+  transform: translateY(-2px);
+}
+.store-badge--dark {
+  background: #17151f !important;
+  border-color: #17151f !important;
+  color: #fff !important;
+  box-shadow: var(--shadow-md);
+}
+.store-badge--dark:hover {
+  box-shadow: var(--shadow-lg);
+}
+.store-badge--light {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: var(--ink) !important;
+  box-shadow: var(--shadow-md);
+}
+.store-badge--light:hover {
+  box-shadow: var(--shadow-lg);
+}
+.store-badge--outline {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.22) !important;
+  color: rgba(255,255,255,0.85) !important;
+}
+.store-badge--disabled {
+  pointer-events: none;
+  opacity: 0.55;
+}
+.store-badge, .store-badge div, .store-badge span {
+  font-family: 'Inter', sans-serif !important;
+}
+
+@media (max-width: 380px) {
+  .store-badge {
+    width: 165px !important;
+    height: 54px !important;
+  }
+}
+
+/* Pricing plan cards */
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+}
+.pricing-features {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+}
+.pricing-features::-webkit-scrollbar {
+  width: 6px;
+}
+.pricing-features::-webkit-scrollbar-track {
+  background: transparent;
+}
+.pricing-features::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: 999px;
+}
+.pricing-card--dark .pricing-features::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.16);
+}
+
+/* Privacy pillars grid: forced even rows (2 cols desktop, 1 col mobile) instead of auto-fit wrapping oddly */
+.pillars-grid {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: '3. Your account',
-    body: 'You are responsible for maintaining the confidentiality of your login credentials and for all activity under your account. Notify us immediately at support@nura.health if you suspect unauthorized access.',
+    body: 'You are responsible for maintaining the confidentiality of your login credentials and for all activity under your account. Notify us immediately at support@thenura.care if you suspect unauthorized access.',
   },
   {
     title: '4. Not a substitute for medical care',
@@ -33,11 +33,11 @@ const sections = [
   },
   {
     title: '8. Intellectual property',
-    body: 'All content, trademarks, and software associated with Nura are owned by Nura Health, Inc. or its licensors. You retain ownership of the health data and content you submit.',
+    body: 'All content, trademarks, and software associated with Nura are owned by The Nura Care or its licensors. You retain ownership of the health data and content you submit.',
   },
   {
     title: '9. Limitation of liability',
-    body: 'Nura is provided "as is." To the extent permitted by law, Nura Health, Inc. is not liable for indirect or consequential damages arising from use of the app, including reliance on AI-generated insights.',
+    body: 'Nura is provided "as is." To the extent permitted by law, The Nura Care is not liable for indirect or consequential damages arising from use of the app, including reliance on AI-generated insights.',
   },
   {
     title: '10. Changes to these terms',
@@ -50,7 +50,7 @@ export default function Terms() {
     <div className="page">
       <Nav />
 
-      <PageHero eyebrow="Legal" title="Terms of Service" subtitle="Last updated January 1, 2026" max={720} />
+      <PageHero eyebrow="Legal" title="Terms of Service" subtitle="Last updated August 1, 2026" max={720} />
 
       <div className="container" style={{ maxWidth: 760, padding: '48px 32px 96px' }}>
         <div className="card" style={{ padding: '8px 36px' }}>
@@ -63,7 +63,7 @@ export default function Terms() {
         </div>
         <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 24, textAlign: 'center' }}>
           Questions about these terms? Contact us at{' '}
-          <a href="mailto:legal@nura.health" style={{ fontWeight: 700 }}>legal@nura.health</a>.
+          <a href="mailto:legal@thenura.care" style={{ fontWeight: 700 }}>legal@nura.health</a>.
         </p>
       </div>
 

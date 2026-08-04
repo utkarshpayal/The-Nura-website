@@ -30,7 +30,7 @@ const sections = [
   },
   {
     title: 'Contact our privacy team',
-    body: 'For questions about this notice or to exercise your data rights, contact privacy@nura.health. We aim to respond within 5 business days.',
+    body: 'For questions about this notice or to exercise your data rights, contact privacy@thenura.care. We aim to respond within 5 business days.',
   },
 ];
 
@@ -39,7 +39,7 @@ export default function Hipaa() {
     <div className="page">
       <Nav />
 
-      <PageHero eyebrow="Legal" title="HIPAA & Health Data Notice" subtitle="Last updated January 1, 2026" max={720} />
+      <PageHero eyebrow="Legal" title="HIPAA & Health Data Notice" subtitle="Last updated August 1, 2026" max={720} />
 
       <div className="container" style={{ maxWidth: 760, padding: '48px 32px 96px' }}>
         <div className="card" style={{ padding: '8px 36px' }}>

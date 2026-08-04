@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="container" style={{ padding: '20px 32px 32px', borderTop: '1px solid var(--line-2)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-        <span style={{ font: "500 13px 'Inter',sans-serif", color: 'var(--ink-4)' }}>© 2026 Nura Health, Inc.</span>
+        <span style={{ font: "500 13px 'Inter',sans-serif", color: 'var(--ink-4)' }}>© 2026 The Nura Care</span>
         <span style={{ font: "500 13px 'Inter',sans-serif", color: 'var(--ink-4)' }}>Not a substitute for professional medical advice.</span>
       </div>
     </div>

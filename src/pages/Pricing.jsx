@@ -81,9 +81,9 @@ export default function Pricing() {
       </div>
 
       {/* PLANS */}
-      <div ref={refPlans} className={`reveal ${inPlans ? 'in' : ''} container`} style={{ maxWidth: 980, padding: '36px 32px 96px', display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+      <div ref={refPlans} className={`reveal ${inPlans ? 'in' : ''} container`} style={{ maxWidth: 980, padding: '36px 32px 96px', display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch' }}>
         {/* FREE PLAN */}
-        <div className="card" style={{ flex: '1 1 380px', maxWidth: 420, padding: 32 }}>
+        <div className="card pricing-card" style={{ flex: '1 1 380px', maxWidth: 420, padding: 32 }}>
           <h2 style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px' }}>Nura App</h2>
           <p style={{ font: "500 14px/1.5 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 22px' }}>
             Everything, for everyone, free forever, no locked features.
@@ -96,7 +96,7 @@ export default function Pricing() {
             Get started free
           </Link>
           <div style={{ borderTop: '1px solid var(--line)', marginBottom: 18 }}></div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
+          <div className="pricing-features" style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
             {shared.map((f) => (
               <div key={f} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 2 }}>
@@ -109,7 +109,7 @@ export default function Pricing() {
         </div>
 
         {/* PROFESSIONAL PLAN */}
-        <div style={{ position: 'relative', flex: '1 1 380px', maxWidth: 420, background: 'var(--surface-dark)', borderRadius: 'var(--radius-lg)', padding: 32 }}>
+        <div className="pricing-card pricing-card--dark" style={{ position: 'relative', flex: '1 1 380px', maxWidth: 420, background: 'var(--surface-dark)', borderRadius: 'var(--radius-lg)', padding: 32 }}>
           <div style={{ position: 'absolute', top: -14, right: 22, background: 'var(--brand)', color: '#fff', font: "700 11.5px 'Inter',sans-serif", padding: '5px 12px', borderRadius: 999 }}>
             {saveBadge}
           </div>
@@ -133,7 +133,7 @@ export default function Pricing() {
             Apply for a Professional account
           </a>
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', marginBottom: 18 }}></div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
+          <div className="pricing-features" style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
             {[...shared, ...proOnly].map((f) => (
               <div key={f} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 2 }}>

@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
+import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
+import { ANDROID_APK_URL } from '../constants';
 
 const faqData = [
   { question: 'Do you ever sell my health data?', answer: 'Never. Your cycle and symptom data is never sold or shared with advertisers, data brokers, or third parties, under any circumstance.' },
@@ -80,7 +81,7 @@ export default function Privacy() {
 
       {/* PILLARS */}
       <div ref={refPillars} className={`reveal ${inPillars ? 'in' : ''} container`} style={{ padding: '20px 32px 88px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 18 }}>
+        <div className="pillars-grid" style={{ display: 'grid', gap: 18 }}>
           {pillars.map((p) => (
             <div key={p.title} className="card card-hover" style={{ padding: 28 }}>
               <div className="icon-tile" style={{ background: p.bg, marginBottom: 16 }}>
@@ -118,10 +119,25 @@ export default function Privacy() {
 
       {/* CTA */}
       <div style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
-        <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 20px', letterSpacing: '-0.01em' }}>Track with confidence</h2>
-        <Link to="/download" className="btn" style={{ background: 'var(--brand)', color: '#fff', padding: '15px 28px', boxShadow: '0 8px 20px rgba(108,86,214,0.35)' }}>
-          Download Nura
-        </Link>
+        <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 28px', letterSpacing: '-0.01em' }}>Track with confidence</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
+          <GooglePlayButton
+            url={ANDROID_APK_URL}
+            theme="light"
+            title="Download for"
+            width={210}
+            height={58}
+            className="store-badge store-badge--light"
+          />
+          <AppStoreButton
+            url="#"
+            theme="dark"
+            title="Coming soon on"
+            width={210}
+            height={58}
+            className="store-badge store-badge--outline store-badge--disabled"
+          />
+        </div>
       </div>
 
       <Footer />

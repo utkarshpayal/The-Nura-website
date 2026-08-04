@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
+import PhoneFrame from '../components/PhoneFrame';
+import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
+import { ANDROID_APK_URL } from '../constants';
 import screenHome from '../assets/images/screen-home.png';
 import screenInsights from '../assets/images/screen-insights.png';
 import screenWellbeing from '../assets/images/screen-wellbeing.png';
@@ -25,9 +27,7 @@ function FeatureRow({ eyebrow, title, body, tags, img, alt, reversed }) {
   );
   const imgBlock = (
     <div style={{ flex: '1 1 260px', minWidth: 220, display: 'flex', justifyContent: 'center' }}>
-      <div style={{ width: 220, borderRadius: 30, background: '#17151F', padding: 8, boxShadow: 'var(--shadow-lg)' }}>
-        <img src={img} alt={alt} style={{ width: '100%', display: 'block', borderRadius: 22 }} />
-      </div>
+      <PhoneFrame src={img} alt={alt} width={220} />
     </div>
   );
 
@@ -187,10 +187,25 @@ export default function Features() {
 
       {/* CTA */}
       <div ref={refCta} className={`reveal ${inCta ? 'in' : ''}`} style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
-        <h2 style={{ font: "800 30px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 20px', letterSpacing: '-0.01em' }}>Ready to feel supported?</h2>
-        <Link to="/download" className="btn" style={{ background: 'var(--brand)', color: '#fff', padding: '15px 28px', boxShadow: '0 8px 20px rgba(108,86,214,0.35)' }}>
-          Download Nura
-        </Link>
+        <h2 style={{ font: "800 30px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 28px', letterSpacing: '-0.01em' }}>Ready to feel supported?</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
+          <GooglePlayButton
+            url={ANDROID_APK_URL}
+            theme="light"
+            title="Download for"
+            width={210}
+            height={58}
+            className="store-badge store-badge--light"
+          />
+          <AppStoreButton
+            url="#"
+            theme="dark"
+            title="Coming soon on"
+            width={210}
+            height={58}
+            className="store-badge store-badge--outline store-badge--disabled"
+          />
+        </div>
       </div>
 
       <Footer />
