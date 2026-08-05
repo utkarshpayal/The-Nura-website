@@ -10,6 +10,7 @@ import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Hipaa from './pages/Hipaa';
+import DeleteAccount from './pages/DeleteAccount';
 import PageLoader from './components/PageLoader';
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/hipaa" element={<Hipaa />} />
+        {/* Intentionally not linked from Nav/Footer — reachable only by direct URL. */}
+        <Route path="/account/delete" element={<DeleteAccount />} />
       </Routes>
     </BrowserRouter>
   );

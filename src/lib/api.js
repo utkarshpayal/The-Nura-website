@@ -35,3 +35,19 @@ export const submitContactMessage = ({ name, email, topic, message }) =>
     method: 'POST',
     body: JSON.stringify({ name, email, topic, message }),
   });
+
+// Account deletion is a two-step flow: requesting it only emails a one-time
+// code to the address given, and nothing is deleted until that code is
+// confirmed. This prevents someone from wiping out another person's account
+// just by knowing (or guessing) this URL and typing in their email.
+export const requestAccountDeletion = (email) =>
+  request('/account/delete/request', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+
+export const confirmAccountDeletion = (email, code) =>
+  request('/account/delete/confirm', {
+    method: 'POST',
+    body: JSON.stringify({ email, code }),
+  });
