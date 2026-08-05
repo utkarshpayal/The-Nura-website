@@ -41,13 +41,13 @@ export const submitContactMessage = ({ name, email, topic, message }) =>
 // confirmed. This prevents someone from wiping out another person's account
 // just by knowing (or guessing) this URL and typing in their email.
 export const requestAccountDeletion = (email) =>
-  request('/account/delete/request', {
+  request('/auth/account/delete/request', {
     method: 'POST',
     body: JSON.stringify({ email }),
   });
 
 export const confirmAccountDeletion = (email, code) =>
-  request('/account/delete/confirm', {
+  request('/auth/account/delete/confirm', {
     method: 'POST',
     body: JSON.stringify({ email, code }),
   });
