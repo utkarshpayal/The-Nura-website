@@ -63,7 +63,7 @@ export default function Terms() {
         </div>
         <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 24, textAlign: 'center' }}>
           Questions about these terms? Contact us at{' '}
-          <a href="mailto:legal@thenura.care" style={{ fontWeight: 700 }}>legal@nura.health</a>.
+          <a href="mailto:legal@thenura.care" style={{ fontWeight: 700 }}>legal@thenura.care</a>.
         </p>
       </div>
 

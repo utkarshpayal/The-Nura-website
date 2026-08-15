@@ -93,12 +93,12 @@ export default function Download() {
       <div ref={refReqs} className={`reveal ${inReqs ? 'in' : ''} container`} style={{ maxWidth: 860, padding: '64px 32px', textAlign: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap' }}>
           <div>
-            <div style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)' }}>iOS 16+</div>
-            <div style={{ font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 4 }}>iPhone &amp; iPad</div>
+            <div style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)' }}>Android 10+</div>
+            <div style={{ font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 4 }}>Phone &amp; tablet · available now</div>
           </div>
           <div>
-            <div style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)' }}>Android 10+</div>
-            <div style={{ font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 4 }}>Phone &amp; tablet</div>
+            <div style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)' }}>iOS 16+</div>
+            <div style={{ font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 4 }}>iPhone &amp; iPad · coming soon</div>
           </div>
           <div>
             <div style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)' }}>Free</div>

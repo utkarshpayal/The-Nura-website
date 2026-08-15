@@ -10,7 +10,7 @@ const shared = [
   'Customizable reminders & notifications', 'Partner Sync sharing', 'Nominate Buddy anonymous matching',
   'Nura Forest habit tracking', 'Anonymous community Q&A', 'AI health assistant, voice & text',
   'Deep physiological trend reports', 'Guided wellbeing audio library', 'Early access to new features',
-  'Voice logging & text-to-speech', 'App, chat & reports in 11 languages', 'Upload lab results, scans & prescriptions',
+  'Voice logging & text-to-speech', 'App, chat & reports in 11+ languages', 'Upload lab results, scans & prescriptions',
   'AI chat with your medical reports', 'Unified health report generator',
 ];
 
@@ -86,7 +86,7 @@ export default function Pricing() {
         <div className="card pricing-card" style={{ flex: '1 1 380px', maxWidth: 420, padding: 32 }}>
           <h2 style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px' }}>Nura App</h2>
           <p style={{ font: "500 14px/1.5 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 22px' }}>
-            Everything, for everyone, free forever, no locked features.
+            The complete Nura experience — every core feature, free for everyone, forever.
           </p>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 22 }}>
             <span style={{ font: "800 38px 'Manrope',sans-serif", color: 'var(--ink)' }}>$0</span>
@@ -129,9 +129,9 @@ export default function Pricing() {
               <b style={{ color: '#F5E4B8' }}>Verification required.</b> Only for licensed gynaecologists/OB-GYNs or credentialed reproductive-health &amp; wellness creators. We review credentials before approval, and every consultation stays inside the platform, no external contact info is exchanged.
             </p>
           </div>
-          <a href="#" className="btn btn-brand" style={{ width: '100%', marginBottom: 22 }}>
+          <Link to="/contact" className="btn btn-brand" style={{ width: '100%', marginBottom: 22 }}>
             Apply for a Professional account
-          </a>
+          </Link>
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', marginBottom: 18 }}></div>
           <div className="pricing-features" style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
             {[...shared, ...proOnly].map((f) => (

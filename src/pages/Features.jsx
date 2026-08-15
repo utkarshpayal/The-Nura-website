@@ -148,7 +148,7 @@ export default function Features() {
       <FeatureRow
         eyebrow="Consultations & health library"
         title="Real answers from real clinicians, when you need them"
-        body="Book chat, audio, or video consultations with verified gynaecologists directly in the app. Pair that with a health library covering PCOS, endometriosis, pregnancy, and more, available in multiple languages with text-to-speech."
+        body="Book chat, audio, or video consultations with verified gynaecologists directly in the app. Pair that with a health library covering PCOS, endometriosis, pregnancy, and more, available in 11+ languages with text-to-speech."
         tags={['Verified clinicians', 'Secure payments', 'Consultation history']}
         img={screenInsights}
         alt="Health insights"

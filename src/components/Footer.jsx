@@ -32,6 +32,7 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <Link to="/about" style={linkStyle}>About</Link>
               <Link to="/careers" style={linkStyle}>Careers</Link>
+              <Link to="/faq" style={linkStyle}>FAQ</Link>
               <Link to="/contact" style={linkStyle}>Contact</Link>
             </div>
           </div>
@@ -40,7 +41,7 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <Link to="/privacy" style={linkStyle}>Privacy Policy</Link>
               <Link to="/terms" style={linkStyle}>Terms of Service</Link>
-              <Link to="/hipaa" style={linkStyle}>HIPAA Notice</Link>
+              <Link to="/data-protection" style={linkStyle}>Data Protection</Link>
             </div>
           </div>
         </div>

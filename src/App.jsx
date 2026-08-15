@@ -10,7 +10,9 @@ import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Hipaa from './pages/Hipaa';
+import Faq from './pages/Faq';
 import DeleteAccount from './pages/DeleteAccount';
+import NotFound from './pages/NotFound';
 import PageLoader from './components/PageLoader';
 
 function App() {
@@ -35,9 +37,14 @@ function App() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/faq" element={<Faq />} />
+        {/* Renamed from HIPAA to a jurisdiction-neutral notice; /hipaa kept as an alias so old links don't break. */}
+        <Route path="/data-protection" element={<Hipaa />} />
         <Route path="/hipaa" element={<Hipaa />} />
         {/* Intentionally not linked from Nav/Footer — reachable only by direct URL. */}
         <Route path="/account/delete" element={<DeleteAccount />} />
+        {/* Catch-all: anything unmatched renders a friendly 404 instead of a blank page. */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

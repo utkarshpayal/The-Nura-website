@@ -60,6 +60,23 @@ export default function About() {
         </div>
       </div>
 
+      {/* AT A GLANCE */}
+      <div style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '48px 32px' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'center', gap: 48, flexWrap: 'wrap', textAlign: 'center' }}>
+          {[
+            { k: '11+', l: 'Languages supported' },
+            { k: '24/7', l: 'AI health assistant' },
+            { k: 'End-to-end', l: 'Encrypted health data' },
+            { k: 'OB-GYN', l: 'Clinician-reviewed content' },
+          ].map((s) => (
+            <div key={s.l}>
+              <div style={{ font: "800 26px 'Manrope',sans-serif", color: 'var(--brand)' }}>{s.k}</div>
+              <div style={{ font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 4 }}>{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div ref={refValues} className={`reveal ${inValues ? 'in' : ''} container`} style={{ padding: '40px 32px 88px' }}>
         <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: 'var(--ink)', textAlign: 'center', margin: '0 0 40px', letterSpacing: '-0.01em' }}>
           What we build around

@@ -37,7 +37,7 @@ export default function Careers() {
           {roles.map((r) => (
             <a
               key={r.title}
-              href="mailto:careers@nura.health"
+              href="mailto:careers@thenura.care"
               className="faq-row"
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, padding: '18px 22px', color: 'inherit' }}
             >
@@ -51,7 +51,7 @@ export default function Careers() {
         </div>
         <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 18 }}>
           Don't see a fit? Send us your background at{' '}
-          <a href="mailto:careers@nura.health" style={{ fontWeight: 700 }}>careers@nura.health</a>, we read every note.
+          <a href="mailto:careers@thenura.care" style={{ fontWeight: 700 }}>careers@thenura.care</a>, we read every note.
         </p>
       </div>
 

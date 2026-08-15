@@ -6,11 +6,11 @@ import PageHero from '../components/PageHero';
 const sections = [
   {
     title: 'Our commitment',
-    body: 'Nura treats every piece of health information you share (cycle logs, symptoms, lab results, and consultation notes) as protected health information (PHI), whether or not a given feature falls under HIPAA. We apply HIPAA-aligned safeguards across the platform as a baseline, not a ceiling.',
+    body: 'Nura treats every piece of health information you share — cycle logs, symptoms, lab results, and consultation notes — as sensitive personal data. We apply strong safeguards across the platform as a baseline, not a ceiling, and handle your data in line with applicable data-protection law, including India’s Digital Personal Data Protection (DPDP) Act, 2023.',
   },
   {
     title: 'How your data is protected',
-    body: 'Health logs and uploaded documents are encrypted at rest and in transit. Access is limited to systems and personnel who need it to operate the service, and consultation records are only visible to you and the clinician you spoke with.',
+    body: 'Health logs and uploaded documents are encrypted at rest and in transit. Access is limited to the systems and personnel needed to operate the service, and consultation records are only visible to you and the clinician you spoke with.',
   },
   {
     title: 'Consultations with clinicians',
@@ -22,11 +22,11 @@ const sections = [
   },
   {
     title: 'Your rights',
-    body: 'You can request an export of your health data at any time from Settings, and you can permanently delete your account and associated data, typically processed within 30 days. You can also request corrections to inaccurate information.',
+    body: 'You can request an export of your health data at any time from Settings, and you can permanently delete your account and associated data — typically processed within 30 days. You can also request corrections to inaccurate information.',
   },
   {
     title: 'Breach notification',
-    body: 'In the unlikely event of a security incident affecting your health information, we will notify affected users and relevant authorities in accordance with applicable law.',
+    body: 'In the unlikely event of a security incident affecting your health information, we will notify affected users and the relevant authorities in accordance with applicable law.',
   },
   {
     title: 'Contact our privacy team',
@@ -39,7 +39,12 @@ export default function Hipaa() {
     <div className="page">
       <Nav />
 
-      <PageHero eyebrow="Legal" title="HIPAA & Health Data Notice" subtitle="Last updated August 1, 2026" max={720} />
+      <PageHero
+        eyebrow="Legal"
+        title="Health Data Protection Notice"
+        subtitle="How we safeguard your health information. Last updated August 1, 2026."
+        max={720}
+      />
 
       <div className="container" style={{ maxWidth: 760, padding: '48px 32px 96px' }}>
         <div className="card" style={{ padding: '8px 36px' }}>

@@ -28,7 +28,7 @@ const screenshots = [
 const testimonials = [
   {
     quote: 'The AI report chat helped me understand my hormone panel before my appointment. I finally knew what to ask my doctor.',
-    name: 'Jinal.',
+    name: 'Jinal M.',
     tag: 'Using Nura for 2 months',
     initial: 'J',
   },
@@ -40,7 +40,7 @@ const testimonials = [
   },
   {
     quote: 'Booking a video consultation in-app, then getting a plain-language summary of my report, saved me so much anxiety.',
-    name: 'Anshika ',
+    name: 'Anshika R.',
     tag: 'Nura Professional consultation',
     initial: 'A',
   },
@@ -95,7 +95,7 @@ const featureCards = [
       </svg>
     ),
     title: 'Documents & report chat',
-    body: 'Store lab results and prescriptions securely, then ask your reports questions in plain language, in any of 11 languages.',
+    body: 'Store lab results and prescriptions securely, then ask your reports questions in plain language, in any of 11+ languages.',
   },
   {
     bg: 'var(--teal-tint)',

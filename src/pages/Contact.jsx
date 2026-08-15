@@ -13,13 +13,13 @@ const topics = [
   'Privacy & data',
   'Bug report',
   'Partnership / press',
-  'Billing (Nura Plus)',
+  'Billing (Professional)',
 ];
 
 const channels = [
   { title: 'General support', body: 'Questions about the app, your account, or a bug you found.', email: 'hello@thenura.care' },
   { title: 'Press & media', body: 'Interview requests, press kits, or media inquiries.', email: 'hello@thenura.care' },
-  { title: 'Careers', body: 'Applications, referrals, or questions about open roles.', email: 'careers@nura.health' },
+  { title: 'Careers', body: 'Applications, referrals, or questions about open roles.', email: 'careers@thenura.care' },
   { title: 'Clinicians & partners', body: 'Gynac Onboarding, Creator Profile, or partnership inquiries.', email: 'hello@thenura.care' },
 ];
 
