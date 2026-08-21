@@ -7,11 +7,14 @@ import useReveal from '../hooks/useReveal';
 const shared = [
   'Smart cycle & symptom tracking', 'Adaptive forecasts (learns your rhythm)', 'End-to-end encryption',
   'Sleep, mood & symptom logging', 'Daily insight cards tailored to your phase', 'Optional biometric app lock',
-  'Customizable reminders & notifications', 'Partner Sync sharing', 'Nominate Buddy anonymous matching',
+  'Customizable reminders & notifications', 'Partner Sync sharing with smart care suggestions', 'Nominate Buddy anonymous matching',
   'Nura Forest habit tracking', 'Anonymous community Q&A', 'AI health assistant, voice & text',
   'Deep physiological trend reports', 'Guided wellbeing audio library', 'Early access to new features',
   'Voice logging & text-to-speech', 'App, chat & reports in 11+ languages', 'Upload lab results, scans & prescriptions',
-  'AI chat with your medical reports', 'Unified health report generator',
+  'AI chat with your medical reports', 'Unified, doctor-ready health report generator',
+  'PCOS/endometriosis/fibroid/thyroid symptom screening', 'Personalized symptom predictions',
+  'Book real gynaecologist consultations (pay-per-session)', 'Government schemes & benefits guide',
+  'Blogs & short-form video library', 'Graphs & Reports dashboard',
 ];
 
 const proOnly = [

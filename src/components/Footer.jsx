@@ -22,6 +22,7 @@ export default function Footer() {
             <div style={headingStyle}>Product</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <Link to="/features" style={linkStyle}>Features</Link>
+              <Link to="/diagnostics" style={linkStyle}>Diagnostics</Link>
               <Link to="/pricing" style={linkStyle}>Pricing</Link>
               <Link to="/privacy" style={linkStyle}>Privacy</Link>
               <Link to="/download" style={linkStyle}>Download</Link>

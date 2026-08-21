@@ -396,3 +396,26 @@ textarea:focus {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Mini step-flow (pill -> pill -> pill): stacks vertically on narrow screens
+   instead of wrapping mid-row, and its connecting chevrons rotate to point
+   down so the connector direction always matches the actual layout. */
+.mini-flow-item {
+  display: flex;
+  align-items: center;
+}
+.mini-flow-chevron {
+  transition: transform 0.15s ease;
+}
+@media (max-width: 640px) {
+  .mini-flow {
+    flex-direction: column;
+  }
+  .mini-flow-item {
+    flex-direction: column;
+  }
+  .mini-flow-chevron {
+    transform: rotate(90deg);
+    margin: 2px 0 !important;
+  }
+}

@@ -120,6 +120,18 @@ const featureCards = [
     title: 'Partner Sync & community',
     body: 'Share gentle context with a partner on your terms, or connect anonymously with people navigating similar experiences.',
   },
+  {
+    bg: 'var(--amber-tint)',
+    badge: 'Only in Nura',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M4 21h16M5 21V10.5L12 6l7 4.5V21M9 21v-6h6v6" stroke="var(--amber)" strokeWidth="1.7" strokeLinejoin="round" />
+        <path d="M12 6V3" stroke="var(--amber)" strokeWidth="1.7" strokeLinecap="round" />
+      </svg>
+    ),
+    title: 'Government schemes & benefits',
+    body: 'Browse real government health schemes for reproductive and menstrual health, check eligibility, and track applications, a feature almost no period app has.',
+  },
 ];
 
 export default function Home() {
@@ -134,7 +146,7 @@ export default function Home() {
 
       {/* HERO */}
       <div className="container" style={{ padding: '76px 32px 48px', display: 'flex', alignItems: 'center', gap: 56, flexWrap: 'wrap' }}>
-        <div style={{ flex: '1 1 460px', minWidth: 300 }}>
+        <div style={{ flex: '1 1 460px', minWidth: 0 }}>
           <div className="eyebrow" style={{ marginBottom: 22 }}>
             AI Women's Health Platform
           </div>
@@ -153,10 +165,10 @@ export default function Home() {
               Explore features
             </Link>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 28px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 24px' }}>
             {trustPoints.map((t) => (
-              <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 7, font: "600 13px 'Inter',sans-serif", color: 'var(--ink-3)' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0, whiteSpace: 'nowrap', font: "600 13px 'Inter',sans-serif", color: 'var(--ink-3)' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
                   <path d="M4 12.5L9.5 18L20 6" stroke="var(--teal)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 {t}
@@ -196,8 +208,55 @@ export default function Home() {
         </div>
       </div>
 
+      {/* UNIQUE CALLOUTS */}
+      <div className="container" style={{ padding: '0 32px 8px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <Link
+          to="/features"
+          className="card card-hover"
+          style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px 18px', padding: '20px 24px', textDecoration: 'none' }}
+        >
+          <div className="icon-tile" style={{ background: 'var(--amber-tint)', flexShrink: 0 }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 21h16M5 21V10.5L12 6l7 4.5V21M9 21v-6h6v6" stroke="var(--amber)" strokeWidth="1.7" strokeLinejoin="round" />
+              <path d="M12 6V3" stroke="var(--amber)" strokeWidth="1.7" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div style={{ flex: '3 1 200px' }}>
+            <div style={{ font: "700 15px 'Inter',sans-serif", color: 'var(--ink)' }}>
+              Only in Nura: real government health scheme guidance
+            </div>
+            <div style={{ font: "500 13px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>
+              Browse, check eligibility, and track applications for real reproductive-health benefits, right inside the app.
+            </div>
+          </div>
+          <span style={{ font: "700 13px 'Inter',sans-serif", color: 'var(--brand)', flexShrink: 0, marginLeft: 'auto' }}>Learn more →</span>
+        </Link>
+
+        <Link
+          to="/diagnostics"
+          className="card card-hover"
+          style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px 18px', padding: '20px 24px', textDecoration: 'none' }}
+        >
+          <div className="icon-tile" style={{ background: 'var(--teal-tint)', flexShrink: 0 }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M10 3h4M10.5 3v5.2L6 17a2 2 0 0 0 1.8 2.9h8.4A2 2 0 0 0 18 17l-4.5-8.8V3" stroke="var(--teal)" strokeWidth="1.7" strokeLinejoin="round" />
+              <path d="M8 15h8" stroke="var(--teal)" strokeWidth="1.7" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div style={{ flex: '3 1 200px' }}>
+            <div style={{ font: "700 15px 'Inter',sans-serif", color: 'var(--ink)' }}>
+              Coming soon: Nura Diagnostics
+            </div>
+            <div style={{ font: "500 13px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>
+              Home sample collection, digital lab reports, and a straight line from results to a gynecologist, all connected.
+            </div>
+          </div>
+          <span style={{ font: "700 13px 'Inter',sans-serif", color: 'var(--brand)', flexShrink: 0, marginLeft: 'auto' }}>Learn more →</span>
+        </Link>
+      </div>
+
       {/* FEATURES */}
-      <div ref={refFeatures} className={`reveal ${inFeatures ? 'in' : ''} container`} style={{ padding: '80px 32px 40px' }}>
+      <div ref={refFeatures} className={`reveal ${inFeatures ? 'in' : ''} container`} style={{ padding: '48px 32px 40px' }}>
         <div style={{ maxWidth: 620, margin: '0 auto 48px', textAlign: 'center' }}>
           <h2 style={{ font: "800 32px/1.25 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
             One app for your whole cycle
@@ -207,9 +266,14 @@ export default function Home() {
           </p>
           <Link to="/features" style={{ font: "700 14px 'Inter',sans-serif" }}>See all features →</Link>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
           {featureCards.map((f) => (
-            <div key={f.title} className="card card-hover" style={{ padding: 26 }}>
+            <div key={f.title} className="card card-hover" style={{ padding: 26, position: 'relative', flex: '0 1 300px', maxWidth: 360 }}>
+              {f.badge && (
+                <span style={{ position: 'absolute', top: 20, right: 20, font: "700 10.5px 'Inter',sans-serif", color: 'var(--amber)', background: 'var(--amber-tint)', borderRadius: 999, padding: '4px 10px' }}>
+                  {f.badge}
+                </span>
+              )}
               <div className="icon-tile" style={{ background: f.bg, marginBottom: 16 }}>{f.icon}</div>
               <h3 style={{ font: "700 16.5px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px' }}>{f.title}</h3>
               <p style={{ font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{f.body}</p>
@@ -238,14 +302,34 @@ export default function Home() {
         </div>
       </div>
 
+      {/* WHY DIFFERENT — a single confident statement, not another grid */}
+      <div className="container" style={{ padding: '96px 32px', textAlign: 'center' }}>
+        <div className="eyebrow" style={{ marginBottom: 24 }}>Why Nura is different</div>
+        <p
+          style={{
+            font: "700 30px/1.45 'Manrope',sans-serif",
+            color: 'var(--ink)',
+            margin: '0 auto 28px',
+            maxWidth: 780,
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Most apps stop at <span style={{ color: 'var(--ink-4)', fontWeight: 500 }}>a calendar and a guess.</span> Nura adds{' '}
+          <span style={{ color: 'var(--brand)' }}>real doctors</span>, a{' '}
+          <span style={{ color: 'var(--teal)' }}>doctor-ready report</span>, and{' '}
+          <span style={{ color: 'var(--accent)' }}>government benefits</span> you may not know you qualify for.
+        </p>
+        <Link to="/features" style={{ font: "700 14px 'Inter',sans-serif" }}>See the full comparison →</Link>
+      </div>
+
       {/* TESTIMONIALS */}
       <div ref={refTestimonials} className={`reveal ${inTestimonials ? 'in' : ''} container`} style={{ padding: '88px 32px' }}>
         <h2 style={{ font: "800 32px/1.25 'Manrope',sans-serif", color: 'var(--ink)', textAlign: 'center', margin: '0 0 48px', letterSpacing: '-0.01em' }}>
           What people track with Nura
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
           {testimonials.map((t) => (
-            <div key={t.name} className="card" style={{ padding: 26 }}>
+            <div key={t.name} className="card" style={{ padding: 26, flex: '0 1 320px', maxWidth: 380 }}>
               <p style={{ font: "500 15px/1.7 'Inter',sans-serif", color: 'var(--ink)', margin: '0 0 20px' }}>"{t.quote}"</p>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--brand-tint)', display: 'flex', alignItems: 'center', justifyContent: 'center', font: "700 13px 'Manrope',sans-serif", color: 'var(--brand-dark)' }}>
