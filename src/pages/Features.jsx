@@ -14,7 +14,7 @@ const tagStyle = { background: 'var(--surface)', border: '1px solid var(--line)'
 function FeatureRow({ eyebrow, title, body, tags, img, alt, reversed }) {
   const [ref, visible] = useReveal();
   const textBlock = (
-    <div style={{ flex: '1 1 380px', minWidth: 300 }}>
+    <div style={{ flex: '1 1 380px', minWidth: 0 }}>
       <div className="eyebrow" style={{ marginBottom: 18 }}>{eyebrow}</div>
       <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 14px', letterSpacing: '-0.01em' }}>{title}</h2>
       <p style={{ font: "500 15.5px/1.7 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 20px' }}>{body}</p>
@@ -49,6 +49,50 @@ function FeatureRow({ eyebrow, title, body, tags, img, alt, reversed }) {
   );
 }
 
+const uniqueHighlights = [
+  {
+    badge: 'Only in Nura',
+    title: 'Government schemes & benefits',
+    body: 'Browse real Indian government health schemes (national + state) for reproductive and menstrual health, get an honest eligibility check, find your nearest government hospital, and track every application, without leaving the app. Almost no period app offers this.',
+    icon: (
+      <>
+        <path d="M4 21h16M5 21V10.5L12 6l7 4.5V21M9 21v-6h6v6" stroke="#fff" strokeWidth="1.7" strokeLinejoin="round" />
+        <path d="M12 6V3" stroke="#fff" strokeWidth="1.7" strokeLinecap="round" />
+      </>
+    ),
+  },
+  {
+    badge: 'Doctor-ready, automatically',
+    title: 'AI-written health report',
+    body: "Months of logs and documents, turned into a written summary a real doctor can actually use, not raw data they have to decode themselves in a five-minute appointment.",
+    icon: (
+      <>
+        <path d="M9 3h6l1 4h-8l1-4ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" stroke="#fff" strokeWidth="1.7" strokeLinejoin="round" />
+        <path d="M9.5 13.2l1.8 1.8L15 11" stroke="#fff" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+      </>
+    ),
+  },
+  {
+    badge: 'Beyond "share my data"',
+    title: 'Smart partner care suggestions',
+    body: 'Partner Sync doesn’t just show a partner a phase label, it translates it into real guidance, like "she’s feeling anxious today, a calm evening would help", so caring about you doesn’t require guesswork.',
+    icon: (
+      <path d="M20.8 8.6c0 4.8-8.8 10.4-8.8 10.4S3.2 13.4 3.2 8.6a4.8 4.8 0 0 1 8.8-2.6 4.8 4.8 0 0 1 8.8 2.6Z" stroke="#fff" strokeWidth="1.7" strokeLinejoin="round" />
+    ),
+  },
+];
+
+const comparisonRows = [
+  { them: 'Logs your period, guesses the next one', us: 'Same, plus predictions personalized to your own logged symptom history' },
+  { them: 'A generic list of possible symptoms', us: 'A full, color-coded log covering flow, mood, sex, discharge, pregnancy tests, digestion, and more' },
+  { them: 'Static articles about periods', us: 'A conversational AI you can actually ask, by voice or text, in real time' },
+  { them: 'Data that stays trapped in the app', us: 'An AI-written, doctor-ready PDF report you can hand to a physician' },
+  { them: 'No real medical help', us: 'Actual video consultations with real gynaecologists, booked in-app' },
+  { them: '"Share with partner" is all-or-nothing', us: 'Switch-by-switch sharing, plus care advice a partner can actually act on' },
+  { them: 'Habit tracking feels like a chore', us: 'A living, growing tree that makes consistency feel rewarding' },
+  { them: 'No connection to real-world help', us: 'Direct guidance to real government health schemes you may qualify for' },
+];
+
 const moreFeatures = [
   {
     title: 'Health documents & AI intelligence',
@@ -57,10 +101,33 @@ const moreFeatures = [
     icon: <path d="M4 19V6a2 2 0 0 1 2-2h11l3 3v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke="var(--amber)" strokeWidth="1.7" strokeLinejoin="round" />,
   },
   {
-    title: 'Unified health report',
-    body: 'Combine logs, cycle history, and consultations into one report you can share with any healthcare provider.',
+    title: 'Symptom checker & early screening',
+    body: 'A guided questionnaire that flags possible signs of PCOS, endometriosis, fibroids, or thyroid issues early, and keeps a history of past check-ins.',
     bg: 'var(--brand-tint)',
-    icon: <path d="M9 3h6l1 4h-8l1-4ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" stroke="var(--brand-dark)" strokeWidth="1.7" strokeLinejoin="round" />,
+    icon: (
+      <>
+        <path d="M9 3h6l1 4h-8l1-4ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" stroke="var(--brand-dark)" strokeWidth="1.7" strokeLinejoin="round" />
+        <path d="M9.5 13.2l1.8 1.8L15 11" stroke="var(--brand-dark)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+      </>
+    ),
+  },
+  {
+    title: 'Personalized symptom predictions',
+    body: '"You’re likely to get headaches around day 3" — likelihood by cycle phase, calculated from your own history, not a generic chart.',
+    bg: 'var(--teal-tint)',
+    icon: <path d="M4 18l5-6 4 3 7-9M20 4h-4M20 4v4" stroke="var(--teal)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />,
+  },
+  {
+    title: 'Graphs & Reports dashboard',
+    body: 'A visual dashboard of cycle length, weight, temperature, water intake, and sleep trends over time, plus a ranked symptom report.',
+    bg: 'var(--amber-tint)',
+    icon: <path d="M5 21V10M12 21V4M19 21v-7" stroke="var(--amber)" strokeWidth="1.7" strokeLinecap="round" />,
+  },
+  {
+    title: 'Blogs & short-form video library',
+    body: 'Categorized, easy-to-read articles and bite-sized educational videos on periods, hygiene, and wellness.',
+    bg: 'var(--teal-tint)',
+    icon: <path d="M6 4l14 8-14 8V4Z" stroke="var(--teal)" strokeWidth="1.7" strokeLinejoin="round" />,
   },
   {
     title: 'Multilingual voice agent',
@@ -126,6 +193,35 @@ export default function Features() {
         </p>
       </div>
 
+      {/* ONLY IN NURA — flagship differentiators */}
+      <div className="container" style={{ padding: '52px 32px 12px' }}>
+        <div style={{ background: 'var(--surface-dark)', borderRadius: 'var(--radius-lg)', padding: '48px 36px' }}>
+          <div style={{ textAlign: 'center', maxWidth: 620, margin: '0 auto 40px' }}>
+            <div className="eyebrow" style={{ marginBottom: 16, color: '#EFC97A' }}>Why Nura is different</div>
+            <h2 style={{ font: "800 28px/1.3 'Manrope',sans-serif", color: '#fff', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
+              Not just another period tracker
+            </h2>
+            <p style={{ font: "500 15px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.65)', margin: 0 }}>
+              These three don’t show up in most period apps at all.
+            </p>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
+            {uniqueHighlights.map((f) => (
+              <div key={f.title} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 16, padding: 26, flex: '0 1 300px', maxWidth: 340 }}>
+                <span style={{ display: 'inline-block', font: "700 11px 'Inter',sans-serif", color: '#221A3D', background: '#EFC97A', borderRadius: 999, padding: '4px 11px', marginBottom: 16 }}>
+                  {f.badge}
+                </span>
+                <div style={{ width: 40, height: 40, borderRadius: 11, background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">{f.icon}</svg>
+                </div>
+                <h3 style={{ font: "700 16.5px 'Manrope',sans-serif", color: '#fff', margin: '0 0 8px' }}>{f.title}</h3>
+                <p style={{ font: "500 13.5px/1.65 'Inter',sans-serif", color: 'rgba(255,255,255,0.7)', margin: 0 }}>{f.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <FeatureRow
         eyebrow="Cycle tracking"
         title="Cycle & symptom tracking that takes seconds"
@@ -164,6 +260,43 @@ export default function Features() {
         reversed
       />
 
+      {/* COMPARISON TABLE */}
+      <div className="container" style={{ padding: '24px 32px 8px' }}>
+        <div style={{ textAlign: 'center', maxWidth: 620, margin: '0 auto 36px' }}>
+          <h2 style={{ font: "800 28px/1.3 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
+            What people expect vs. what Nura adds
+          </h2>
+          <p style={{ font: "500 15px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+            Other apps track what’s happening to you. Nura tracks that too, then does something about it.
+          </p>
+        </div>
+        <div className="card" style={{ overflow: 'hidden' }}>
+          <div style={{ display: 'flex', padding: '14px 24px', background: 'var(--surface)', borderBottom: '1px solid var(--line)' }}>
+            <div style={{ flex: '1 1 0', font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>A typical period app</div>
+            <div style={{ flex: '1 1 0', font: "700 12.5px 'Inter',sans-serif", color: 'var(--brand-dark)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>What Nura adds</div>
+          </div>
+          {comparisonRows.map((r, i) => (
+            <div
+              key={r.them}
+              style={{
+                display: 'flex',
+                gap: 16,
+                padding: '18px 24px',
+                borderBottom: i === comparisonRows.length - 1 ? 'none' : '1px solid var(--line)',
+              }}
+            >
+              <div style={{ flex: '1 1 0', font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)' }}>{r.them}</div>
+              <div style={{ flex: '1 1 0', display: 'flex', gap: 9, alignItems: 'flex-start' }}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
+                  <path d="M4 12.5L9.5 18L20 6" stroke="var(--teal)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span style={{ font: "600 14px/1.6 'Inter',sans-serif", color: 'var(--ink)' }}>{r.us}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* GRID OF REMAINING FEATURES */}
       <div ref={refGrid} className={`reveal ${inGrid ? 'in' : ''} container`} style={{ padding: '80px 32px' }}>
         <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 44px' }}>
@@ -172,9 +305,9 @@ export default function Features() {
             Nura is a full platform, not a single feature. Here's what else comes with it.
           </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 18 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 18 }}>
           {moreFeatures.map((f) => (
-            <div key={f.title} className="card card-hover" style={{ padding: 24 }}>
+            <div key={f.title} className="card card-hover" style={{ padding: 24, flex: '0 1 300px', maxWidth: 340 }}>
               <div className="icon-tile" style={{ background: f.bg, marginBottom: 14 }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">{f.icon}</svg>
               </div>

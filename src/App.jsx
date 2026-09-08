@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Features from './pages/Features';
+import Diagnostics from './pages/Diagnostics';
 import Pricing from './pages/Pricing';
 import Download from './pages/Download';
 import Privacy from './pages/Privacy';
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/features" element={<Features />} />
+        <Route path="/diagnostics" element={<Diagnostics />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/download" element={<Download />} />
         <Route path="/privacy" element={<Privacy />} />
