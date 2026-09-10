@@ -14,6 +14,7 @@ const LINKS = [
 export default function Nav() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setOpen(false);
@@ -26,6 +27,13 @@ export default function Nav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <div
       style={{
@@ -35,6 +43,8 @@ export default function Nav() {
         background: 'rgba(251,250,252,0.9)',
         backdropFilter: 'blur(10px)',
         borderBottom: '1px solid var(--line)',
+        boxShadow: scrolled ? '0 8px 24px rgba(23, 21, 31, 0.06)' : 'none',
+        transition: 'box-shadow .25s ease',
       }}
     >
       <div

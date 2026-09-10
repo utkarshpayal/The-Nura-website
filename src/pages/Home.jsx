@@ -73,7 +73,7 @@ const featureCards = [
       </svg>
     ),
     title: 'AI health assistant',
-    body: 'Ask anything, anonymously, by voice or text, in your language. Nura explains symptoms and reports in plain terms.',
+    body: 'Ask anything, anonymously, by voice or text, in your language. It draws on the same intelligence layer as your predictions and insights, not a generic chatbot.',
   },
   {
     bg: 'var(--teal-tint)',
@@ -120,19 +120,9 @@ const featureCards = [
     title: 'Partner Sync & community',
     body: 'Share gentle context with a partner on your terms, or connect anonymously with people navigating similar experiences.',
   },
-  {
-    bg: 'var(--amber-tint)',
-    badge: 'Only in Nura',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M4 21h16M5 21V10.5L12 6l7 4.5V21M9 21v-6h6v6" stroke="var(--amber)" strokeWidth="1.7" strokeLinejoin="round" />
-        <path d="M12 6V3" stroke="var(--amber)" strokeWidth="1.7" strokeLinecap="round" />
-      </svg>
-    ),
-    title: 'Government schemes & benefits',
-    body: 'Browse real government health schemes for reproductive and menstrual health, check eligibility, and track applications, a feature almost no period app has.',
-  },
 ];
+// Government schemes & benefits is deliberately not repeated here — it
+// already has its own dedicated callout card directly above this grid.
 
 export default function Home() {
   const [refFeatures, inFeatures] = useReveal();
@@ -147,15 +137,12 @@ export default function Home() {
       {/* HERO */}
       <div className="container" style={{ padding: '76px 32px 48px', display: 'flex', alignItems: 'center', gap: 56, flexWrap: 'wrap' }}>
         <div style={{ flex: '1 1 460px', minWidth: 0 }}>
-          <div className="eyebrow" style={{ marginBottom: 22 }}>
-            AI Women's Health Platform
-          </div>
           <h1 style={{ font: "800 48px/1.15 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 20px', letterSpacing: '-0.02em' }}>
             Understand your body. Get answers you can trust.
           </h1>
           <p style={{ font: "500 17px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 32px', maxWidth: 500 }}>
-            Nura combines cycle tracking, AI health insights, and real gynaecologist consultations in one private,
-            secure app so you always know what's going on and what to do about it.
+            Nura is built on an AI and ML engine that learns your cycle: tracking, predictions, and real gynaecologist
+            consultations in one private, secure app so you always know what's going on and what to do about it.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 36 }}>
             <Link to="/download" className="btn btn-brand" style={{ padding: '15px 26px' }}>
@@ -266,17 +253,23 @@ export default function Home() {
           </p>
           <Link to="/features" style={{ font: "700 14px 'Inter',sans-serif" }}>See all features →</Link>
         </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
-          {featureCards.map((f) => (
-            <div key={f.title} className="card card-hover" style={{ padding: 26, position: 'relative', flex: '0 1 300px', maxWidth: 360 }}>
-              {f.badge && (
-                <span style={{ position: 'absolute', top: 20, right: 20, font: "700 10.5px 'Inter',sans-serif", color: 'var(--amber)', background: 'var(--amber-tint)', borderRadius: 999, padding: '4px 10px' }}>
-                  {f.badge}
-                </span>
-              )}
-              <div className="icon-tile" style={{ background: f.bg, marginBottom: 16 }}>{f.icon}</div>
-              <h3 style={{ font: "700 16.5px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px' }}>{f.title}</h3>
-              <p style={{ font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{f.body}</p>
+        <div className="home-features-grid">
+          {featureCards.map((f, i) => (
+            <div key={f.title} className="feature-row" style={{ display: 'flex', gap: 18, padding: '26px 0', borderTop: '1px solid var(--line)' }}>
+              <span style={{ font: "700 13px 'Inter',sans-serif", color: 'var(--ink-4)', flexShrink: 0, paddingTop: 2, fontVariantNumeric: 'tabular-nums' }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 6 }}>
+                  <h3 style={{ font: "700 16px 'Manrope',sans-serif", color: 'var(--ink)', margin: 0 }}>{f.title}</h3>
+                  {f.badge && (
+                    <span style={{ font: "700 10px 'Inter',sans-serif", color: 'var(--amber)', background: 'var(--amber-tint)', borderRadius: 999, padding: '3px 9px', flexShrink: 0 }}>
+                      {f.badge}
+                    </span>
+                  )}
+                </div>
+                <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0, maxWidth: 320 }}>{f.body}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -351,8 +344,11 @@ export default function Home() {
           <h2 style={{ font: "800 32px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 14px', letterSpacing: '-0.01em' }}>
             Start understanding your health today
           </h2>
-          <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.65)', margin: '0 0 32px' }}>
-            Free to download. Core tracking and AI insights, always free.
+          <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.65)', margin: '0 0 16px' }}>
+            Free to download. Core tracking and AI insights, always free, deeper features unlock individually as you need them.
+          </p>
+          <p style={{ font: "600 13.5px 'Inter',sans-serif", margin: '0 0 32px' }}>
+            <Link to="/pricing" style={{ color: '#fff', textDecoration: 'underline' }}>See what's free vs. paid →</Link>
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
             <GooglePlayButton

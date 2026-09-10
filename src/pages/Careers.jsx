@@ -4,12 +4,13 @@ import PageHero from '../components/PageHero';
 import useReveal from '../hooks/useReveal';
 
 const roles = [
-  { title: 'Senior React Native Engineer', team: 'Engineering', location: 'Remote', type: 'Full-time' },
-  { title: 'ML Engineer, Health Predictions', team: 'AI / Data', location: 'Remote', type: 'Full-time' },
-  { title: 'Product Designer', team: 'Design', location: 'Remote', type: 'Full-time' },
-  { title: 'Clinical Content Lead (OB-GYN background)', team: 'Medical', location: 'Remote', type: 'Contract' },
-  { title: 'Backend Engineer, Platform & Security', team: 'Engineering', location: 'Remote', type: 'Full-time' },
-  { title: 'Community & Trust Manager', team: 'Operations', location: 'Remote', type: 'Full-time' },
+  { title: 'AI Engineer', team: 'AI / Data', location: 'Remote', type: 'Full-time' },
+  { title: 'Frontend Engineer', team: 'Engineering', location: 'Remote', type: 'Full-time' },
+  { title: 'Backend Engineer', team: 'Engineering', location: 'Remote', type: 'Full-time' },
+  { title: 'UI/UX Designer', team: 'Design', location: 'Remote', type: 'Full-time' },
+  { title: 'Graphic Designer', team: 'Design', location: 'Remote', type: 'Full-time' },
+  { title: 'Content Writer', team: 'Content', location: 'Remote', type: 'Full-time' },
+  { title: 'Medical Advisor (OB-GYN background)', team: 'Medical', location: 'Remote', type: 'Contract' },
 ];
 
 const perks = [
@@ -37,7 +38,7 @@ export default function Careers() {
           {roles.map((r) => (
             <a
               key={r.title}
-              href="mailto:careers@thenura.care"
+              href="mailto:hello@thenura.care"
               className="faq-row"
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, padding: '18px 22px', color: 'inherit' }}
             >
@@ -51,7 +52,7 @@ export default function Careers() {
         </div>
         <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 18 }}>
           Don't see a fit? Send us your background at{' '}
-          <a href="mailto:careers@thenura.care" style={{ fontWeight: 700 }}>careers@thenura.care</a>, we read every note.
+          <a href="mailto:hello@thenura.care" style={{ fontWeight: 700 }}>hello@thenura.care</a>, we read every note.
         </p>
       </div>
 

@@ -250,72 +250,123 @@ function FlowChevron() {
 }
 
 /**
+ * A single step's icon medallion — shared between the mobile rail and the
+ * desktop grid so both stay visually identical, just rearranged.
+ */
+function JourneyMedallion({ index }) {
+  const step = journeySteps[index];
+  return (
+    <div
+      style={{
+        width: 46,
+        height: 46,
+        borderRadius: '50%',
+        background: 'var(--surface)',
+        border: '1.5px solid var(--accent-tint)',
+        boxShadow: 'var(--shadow-sm)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        zIndex: 1,
+        flexShrink: 0,
+      }}
+    >
+      <span
+        style={{
+          position: 'absolute',
+          top: -6,
+          right: -6,
+          width: 18,
+          height: 18,
+          borderRadius: '50%',
+          background: 'var(--accent)',
+          color: '#fff',
+          font: "700 9.5px 'Inter',sans-serif",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {index + 1}
+      </span>
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.6" aria-hidden="true">
+        {step.icon}
+      </svg>
+    </div>
+  );
+}
+
+/**
  * The 9-step journey diagram — the visual centerpiece of the page.
- * A single vertical rail, deliberately not a wrapping horizontal row: a
- * connected timeline reads identically at every viewport width, so there's
- * no breakpoint where the last step ends up orphaned or a connector wraps
- * onto its own line.
+ * Two renderings of the same 9 steps, toggled by CSS media query (never
+ * both in layout at once): a vertical connected rail on mobile (reads
+ * top-to-bottom identically at any narrow width), and a fixed 3×3 grid on
+ * desktop, connected row-by-row with a horizontal rail instead of wasting
+ * most of a wide screen on one narrow column. 9 is deliberately chosen to
+ * be 3-divisible so the desktop grid always lands as a clean 3×3 — never a
+ * short last row.
  */
 function JourneyDiagram() {
+  const rows = [journeySteps.slice(0, 3), journeySteps.slice(3, 6), journeySteps.slice(6, 9)];
+
   return (
-    <div role="list" aria-label="The Nura Diagnostics journey, from concern to follow-up care" style={{ maxWidth: 600, margin: '0 auto' }}>
-      {journeySteps.map((step, i) => {
-        const isLast = i === journeySteps.length - 1;
-        return (
-          <div key={step.label} role="listitem" style={{ display: 'flex', gap: 18 }}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
-              <div
-                style={{
-                  width: 46,
-                  height: 46,
-                  borderRadius: '50%',
-                  background: 'var(--surface)',
-                  border: '1.5px solid var(--brand-tint-2)',
-                  boxShadow: 'var(--shadow-sm)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  flexShrink: 0,
-                }}
-              >
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: -6,
-                    right: -6,
-                    width: 18,
-                    height: 18,
-                    borderRadius: '50%',
-                    background: 'var(--brand)',
-                    color: '#fff',
-                    font: "700 9.5px 'Inter',sans-serif",
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {i + 1}
-                </span>
-                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--brand-dark)" strokeWidth="1.6" aria-hidden="true">
-                  {step.icon}
-                </svg>
+    <>
+      {/* Mobile / tablet — vertical rail */}
+      <div
+        className="journey-mobile"
+        role="list"
+        aria-label="The Nura Diagnostics journey, from concern to follow-up care"
+        style={{ maxWidth: 600, margin: '0 auto' }}
+      >
+        {journeySteps.map((step, i) => {
+          const isLast = i === journeySteps.length - 1;
+          return (
+            <div key={step.label} role="listitem" style={{ display: 'flex', gap: 18 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
+                <JourneyMedallion index={i} />
+                {!isLast && (
+                  <div
+                    aria-hidden="true"
+                    style={{ width: 2, flex: '1 1 auto', minHeight: 28, margin: '4px 0', background: 'linear-gradient(var(--accent-tint), var(--teal-tint))' }}
+                  />
+                )}
               </div>
-              {!isLast && (
-                <div
-                  aria-hidden="true"
-                  style={{ width: 2, flex: '1 1 auto', minHeight: 28, margin: '4px 0', background: 'linear-gradient(var(--brand-tint-2), var(--teal-tint))' }}
-                />
-              )}
+              <div style={{ paddingTop: 8, paddingBottom: isLast ? 0 : 26 }}>
+                <div style={{ font: "700 15px 'Manrope',sans-serif", color: 'var(--ink)', marginBottom: 3 }}>{step.label}</div>
+                <div style={{ font: "500 13px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>{step.blurb}</div>
+              </div>
             </div>
-            <div style={{ paddingTop: 8, paddingBottom: isLast ? 0 : 26 }}>
-              <div style={{ font: "700 15px 'Manrope',sans-serif", color: 'var(--ink)', marginBottom: 3 }}>{step.label}</div>
-              <div style={{ font: "500 13px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>{step.blurb}</div>
-            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop — 3×3 grid, connected left-to-right within each row */}
+      <div
+        className="journey-desktop"
+        role="list"
+        aria-label="The Nura Diagnostics journey, from concern to follow-up care"
+      >
+        {rows.map((row, rowIndex) => (
+          <div key={rowIndex} className="journey-row">
+            {row.map((step, colIndex) => {
+              const globalIndex = rowIndex * 3 + colIndex;
+              const isLastInRow = colIndex === row.length - 1;
+              return (
+                <div key={step.label} role="listitem" className="journey-step">
+                  {!isLastInRow && <div aria-hidden="true" className="journey-connector" />}
+                  <JourneyMedallion index={globalIndex} />
+                  <div style={{ marginTop: 14, maxWidth: 200 }}>
+                    <div style={{ font: "700 14.5px 'Manrope',sans-serif", color: 'var(--ink)', marginBottom: 3 }}>{step.label}</div>
+                    <div style={{ font: "500 12.5px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>{step.blurb}</div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 

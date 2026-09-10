@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
@@ -101,6 +102,18 @@ const moreFeatures = [
     icon: <path d="M4 19V6a2 2 0 0 1 2-2h11l3 3v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke="var(--amber)" strokeWidth="1.7" strokeLinejoin="round" />,
   },
   {
+    title: 'Voice check-in calls',
+    body: 'A real outbound phone call from Nura, on demand or on a schedule tied to your cycle, that checks in and logs what you tell it.',
+    bg: 'var(--teal-tint)',
+    icon: <path d="M6.5 3.5c1 0 2.6 2.2 2.6 3.4 0 1-1.4 1.7-1.4 2.6 0 1.8 3 4.8 4.8 4.8.9 0 1.6-1.4 2.6-1.4 1.2 0 3.4 1.6 3.4 2.6 0 1.6-1.9 3-3.4 3-5 0-11-6-11-11 0-1.5 1.4-3.4 3-3.4Z" stroke="var(--teal)" strokeWidth="1.7" strokeLinejoin="round" />,
+  },
+  {
+    title: 'Reminders & daily notifications',
+    body: 'Customizable period, ovulation, and fertility-window reminders, plus a gentle nudge to log if a day slips by unlogged.',
+    bg: 'var(--brand-tint)',
+    icon: <path d="M12 3a6 6 0 0 0-6 6v3.5L4 16h16l-2-3.5V9a6 6 0 0 0-6-6ZM10 19a2 2 0 0 0 4 0" stroke="var(--brand-dark)" strokeWidth="1.7" strokeLinejoin="round" strokeLinecap="round" />,
+  },
+  {
     title: 'Symptom checker & early screening',
     body: 'A guided questionnaire that flags possible signs of PCOS, endometriosis, fibroids, or thyroid issues early, and keeps a history of past check-ins.',
     bg: 'var(--brand-tint)',
@@ -202,7 +215,7 @@ export default function Features() {
               Not just another period tracker
             </h2>
             <p style={{ font: "500 15px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.65)', margin: 0 }}>
-              These three don’t show up in most period apps at all.
+              These three don’t show up in most period apps at all, and every one of them, along with your predictions, insights, and AI chat, draws on the same personalization engine built from your own logged history.
             </p>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
@@ -305,14 +318,16 @@ export default function Features() {
             Nura is a full platform, not a single feature. Here's what else comes with it.
           </p>
         </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 18 }}>
+        <div className="more-features-grid">
           {moreFeatures.map((f) => (
-            <div key={f.title} className="card card-hover" style={{ padding: 24, flex: '0 1 300px', maxWidth: 340 }}>
-              <div className="icon-tile" style={{ background: f.bg, marginBottom: 14 }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">{f.icon}</svg>
+            <div key={f.title} style={{ display: 'flex', gap: 14, padding: '22px 0', borderTop: '1px solid var(--line)' }}>
+              <div style={{ width: 30, height: 30, borderRadius: 9, background: f.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">{f.icon}</svg>
               </div>
-              <h3 style={{ font: "700 15.5px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 6px' }}>{f.title}</h3>
-              <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{f.body}</p>
+              <div>
+                <h3 style={{ font: "700 14px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 4px' }}>{f.title}</h3>
+                <p style={{ font: "500 12.5px/1.55 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{f.body}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -320,7 +335,10 @@ export default function Features() {
 
       {/* CTA */}
       <div ref={refCta} className={`reveal ${inCta ? 'in' : ''}`} style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
-        <h2 style={{ font: "800 30px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 28px', letterSpacing: '-0.01em' }}>Ready to feel supported?</h2>
+        <h2 style={{ font: "800 30px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 12px', letterSpacing: '-0.01em' }}>Ready to feel supported?</h2>
+        <p style={{ font: "500 14.5px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.6)', margin: '0 0 28px' }}>
+          Core tracking, predictions, and daily insights are free, always. A handful of deeper features unlock individually as you need them. <Link to="/pricing" style={{ color: '#fff', textDecoration: 'underline' }}>See pricing →</Link>
+        </p>
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
           <GooglePlayButton
             url={ANDROID_APK_URL}

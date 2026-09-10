@@ -65,7 +65,7 @@ export default function Privacy() {
 
       {/* STATS */}
       <div ref={refStats} className={`reveal ${inStats ? 'in' : ''} container`} style={{ maxWidth: 960, padding: '44px 32px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 16 }}>
+        <div className="grid-clean-3">
           {[
             ['100%', 'Encrypted on-device'],
             ['0', 'Data sold to advertisers'],

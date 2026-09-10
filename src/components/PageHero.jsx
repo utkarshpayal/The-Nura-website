@@ -1,6 +1,8 @@
-export default function PageHero({ eyebrow, title, subtitle, max = 720 }) {
-  return (
-    <div className="container" style={{ maxWidth: max, padding: '76px 32px 8px', textAlign: 'center' }}>
+import SoftGlow from './SoftGlow';
+
+export default function PageHero({ eyebrow, title, subtitle, max = 720, glow = false }) {
+  const content = (
+    <div className="container" style={{ position: glow ? 'relative' : 'static', zIndex: 1, maxWidth: max, padding: '76px 32px 8px', textAlign: 'center' }}>
       {eyebrow && (
         <div className="eyebrow" style={{ marginBottom: 20 }}>
           {eyebrow}
@@ -12,6 +14,15 @@ export default function PageHero({ eyebrow, title, subtitle, max = 720 }) {
       {subtitle && (
         <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{subtitle}</p>
       )}
+    </div>
+  );
+
+  if (!glow) return content;
+
+  return (
+    <div style={{ position: 'relative', overflow: 'hidden' }}>
+      <SoftGlow />
+      {content}
     </div>
   );
 }

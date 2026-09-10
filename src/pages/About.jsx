@@ -81,7 +81,7 @@ export default function About() {
         <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: 'var(--ink)', textAlign: 'center', margin: '0 0 40px', letterSpacing: '-0.01em' }}>
           What we build around
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 18 }}>
+        <div className="grid-clean-2">
           {values.map((v) => (
             <div key={v.title} className="card card-hover" style={{ padding: 26 }}>
               <div className="icon-tile" style={{ background: v.bg, marginBottom: 16 }}>
