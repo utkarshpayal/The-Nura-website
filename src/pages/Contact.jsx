@@ -272,6 +272,15 @@ export default function Contact() {
               </div>
             ))}
           </div>
+
+          <div style={{ marginTop: 32, textAlign: 'center' }}>
+            <div style={{ font: "700 13px 'Inter',sans-serif", color: 'var(--ink-4)', marginBottom: 6 }}>Legal / registered contact</div>
+            <div style={{ font: "600 14px 'Inter',sans-serif", color: 'var(--ink-2)' }}>
+              UTKARSH &middot;{' '}
+              <a href="mailto:utkarsh12march2004@gmail.com">utkarsh12march2004@gmail.com</a>
+              {' '}&middot; <a href="tel:+918890866167">8890866167</a>
+            </div>
+          </div>
         </div>
       </div>
 
