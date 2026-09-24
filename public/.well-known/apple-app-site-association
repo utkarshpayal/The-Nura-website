@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["REPLACE_WITH_APPLE_TEAM_ID.com.uvin124.thenura"],
+        "components": [{ "/": "/app", "comment": "Shared-content links (/app?deeplink=...)" }]
+      }
+    ]
+  }
+}

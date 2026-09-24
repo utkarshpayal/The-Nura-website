@@ -1,0 +1,17 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.uvin124.thenura",
+      "sha256_cert_fingerprints": [
+        "4F:8A:AF:11:FA:01:89:BC:BF:F9:48:19:48:8D:C9:CF:EE:67:31:FB:20:23:7B:F8:B7:13:66:CA:49:F6:8C:A7",
+        "EF:8E:03:9E:9B:E8:78:3B:ED:98:BE:97:41:02:86:A1:21:80:77:D1:64:72:EA:88:F6:92:45:D6:3B:56:D7:74",
+        "DA:FC:CB:53:F4:BD:9C:51:67:44:6C:EF:07:A8:38:72:BB:F9:1E:20:8F:A3:94:9E:90:5B:D8:D0:21:7E:A1:15"
+      ]
+    }
+  }
+]

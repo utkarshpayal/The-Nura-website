@@ -14,10 +14,16 @@ import Hipaa from './pages/Hipaa';
 import Faq from './pages/Faq';
 import DeleteAccount from './pages/DeleteAccount';
 import NotFound from './pages/NotFound';
+import AppRedirect from './pages/AppRedirect';
 import PageLoader from './components/PageLoader';
 
+// /app is the shared-link bounce page (see pages/AppRedirect.jsx). It skips
+// the splash loader so it can hand off to the app immediately — a delayed
+// launch loses the tap's navigation and Chrome may then block it.
+const isAppRedirect = /^\/app\/?$/.test(window.location.pathname);
+
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!isAppRedirect);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
@@ -30,6 +36,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* Shared-link landing page for the app — not linked from Nav/Footer. */}
+        <Route path="/app" element={<AppRedirect />} />
         <Route path="/features" element={<Features />} />
         <Route path="/diagnostics" element={<Diagnostics />} />
         <Route path="/pricing" element={<Pricing />} />
