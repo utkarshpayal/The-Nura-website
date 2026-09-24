@@ -2,7 +2,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import Newsletter from '../components/Newsletter';
 import useReveal from '../hooks/useReveal';
-import { ANDROID_APK_URL } from '../constants';
+import { ANDROID_PLAY_STORE_URL } from '../constants';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
 import PhoneFrame from '../components/PhoneFrame';
 import screenHome from '../assets/images/screen-home.png';
@@ -34,11 +34,11 @@ export default function Download() {
           Get Nura on your phone
         </h1>
         <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 32px' }}>
-          Android is available now as a direct download. iOS is coming soon.
+          Android is available now on Google Play. iOS is coming soon.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14, marginBottom: 12 }}>
           <GooglePlayButton
-            url={ANDROID_APK_URL}
+            url={ANDROID_PLAY_STORE_URL}
             theme="dark"
             title="Download for"
             width={210}
@@ -55,7 +55,7 @@ export default function Download() {
           />
         </div>
         <p style={{ font: "500 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', margin: '0 0 28px' }}>
-          Direct APK download. Android may ask you to allow installs from this source.
+          Available on the Google Play Store for Android 10 and above.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div className="card" style={{ padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>

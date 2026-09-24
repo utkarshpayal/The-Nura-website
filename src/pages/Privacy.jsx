@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
-import { ANDROID_APK_URL } from '../constants';
+import { ANDROID_PLAY_STORE_URL } from '../constants';
 
 const faqData = [
   { question: 'Do you ever sell my health data?', answer: 'Never. Your cycle and symptom data is never sold or shared with advertisers, data brokers, or third parties, under any circumstance.' },
@@ -122,7 +122,7 @@ export default function Privacy() {
         <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 28px', letterSpacing: '-0.01em' }}>Track with confidence</h2>
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
           <GooglePlayButton
-            url={ANDROID_APK_URL}
+            url={ANDROID_PLAY_STORE_URL}
             theme="light"
             title="Download for"
             width={210}

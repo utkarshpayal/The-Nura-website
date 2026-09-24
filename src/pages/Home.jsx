@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import Newsletter from '../components/Newsletter';
 import useReveal from '../hooks/useReveal';
-import { ANDROID_APK_URL } from '../constants';
+import { ANDROID_PLAY_STORE_URL } from '../constants';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
 import PhoneFrame from '../components/PhoneFrame';
 import screenHome from '../assets/images/screen-home.png';
@@ -352,7 +352,7 @@ export default function Home() {
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
             <GooglePlayButton
-              url={ANDROID_APK_URL}
+              url={ANDROID_PLAY_STORE_URL}
               theme="light"
               title="Download for"
               width={210}

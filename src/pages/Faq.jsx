@@ -15,7 +15,7 @@ const groups = [
       },
       {
         q: 'Which devices are supported?',
-        a: 'Android 10 and above is available now as a direct download. The iOS app is coming soon.',
+        a: 'Android 10 and above is available now on Google Play. The iOS app is coming soon.',
       },
       {
         q: 'What languages does Nura support?',

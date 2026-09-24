@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
 import PhoneFrame from '../components/PhoneFrame';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
-import { ANDROID_APK_URL } from '../constants';
+import { ANDROID_PLAY_STORE_URL } from '../constants';
 import screenHome from '../assets/images/screen-home.png';
 import screenInsights from '../assets/images/screen-insights.png';
 import screenWellbeing from '../assets/images/screen-wellbeing.png';
@@ -341,7 +341,7 @@ export default function Features() {
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
           <GooglePlayButton
-            url={ANDROID_APK_URL}
+            url={ANDROID_PLAY_STORE_URL}
             theme="light"
             title="Download for"
             width={210}
