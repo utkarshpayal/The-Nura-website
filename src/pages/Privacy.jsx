@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
 import { ANDROID_PLAY_STORE_URL } from '../constants';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const faqData = [
   { question: 'Do you ever sell my health data?', answer: 'Never. Your cycle and symptom data is never sold or shared with advertisers, data brokers, or third parties, under any circumstance.' },
@@ -40,6 +41,8 @@ const pillars = [
 ];
 
 export default function Privacy() {
+  useDocumentMeta('Privacy | Nura', 'How Nura protects your health data: App Lock, encryption, consent controls, and a promise never to sell your data.');
+
   const [open, setOpen] = useState({});
   const [refStats, inStats] = useReveal();
   const [refPillars, inPillars] = useReveal();
@@ -102,11 +105,11 @@ export default function Privacy() {
             {faqData.map((q, i) => {
               const isOpen = !!open[i];
               return (
-                <div key={q.question} className="faq-row" onClick={() => toggle(i)} style={{ padding: '18px 22px', cursor: 'pointer' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}>
+                <div key={q.question} className="faq-row" style={{ padding: '18px 22px' }}>
+                  <button type="button" onClick={() => toggle(i)} aria-expanded={isOpen} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, padding: 0, background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
                     <span style={{ font: "700 14.5px 'Inter',sans-serif", color: 'var(--ink)' }}>{q.question}</span>
-                    <span style={{ font: "700 18px 'Inter',sans-serif", color: 'var(--brand)', transition: 'transform .2s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>+</span>
-                  </div>
+                    <span aria-hidden="true" style={{ font: "700 18px 'Inter',sans-serif", color: 'var(--brand)', flexShrink: 0, transition: 'transform .2s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>+</span>
+                  </button>
                   {isOpen && (
                     <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '12px 0 0' }}>{q.answer}</p>
                   )}

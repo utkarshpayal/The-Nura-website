@@ -4,6 +4,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import useReveal from '../hooks/useReveal';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const groups = [
   {
@@ -97,6 +98,8 @@ function FaqItem({ q, a }) {
 }
 
 export default function Faq() {
+  useDocumentMeta('FAQ | Nura', 'Answers to the most common questions about Nura: pricing, devices, languages, AI, and privacy.');
+
   const [ref, visible] = useReveal();
 
   return (

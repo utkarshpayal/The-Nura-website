@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import SoftGlow from '../components/SoftGlow';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 export default function NotFound() {
+  useDocumentMeta('Page not found | Nura');
+
   return (
     <>
       <Nav />
