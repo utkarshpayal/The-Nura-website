@@ -4,11 +4,13 @@ import Newsletter from '../components/Newsletter';
 import useReveal from '../hooks/useReveal';
 import { ANDROID_PLAY_STORE_URL } from '../constants';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
+import { QRCodeSVG } from 'qrcode.react';
 import PhoneFrame from '../components/PhoneFrame';
-import screenHome from '../assets/images/screen-home.png';
-import screenInsights from '../assets/images/screen-insights.png';
-import screenWellbeing from '../assets/images/screen-wellbeing.png';
-import screenApplock from '../assets/images/screen-applock.png';
+import screenHome from '../assets/images/screen-home.webp';
+import screenInsights from '../assets/images/screen-insights.webp';
+import screenWellbeing from '../assets/images/screen-wellbeing.webp';
+import screenApplock from '../assets/images/screen-applock.webp';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const screenshots = [
   { id: 'dl-home', src: screenHome, alt: 'Cycle dashboard' },
@@ -18,6 +20,8 @@ const screenshots = [
 ];
 
 export default function Download() {
+  useDocumentMeta('Download Nura for Android | Nura', 'Get Nura free on Google Play for Android 10 and above. iOS is coming soon.');
+
   const [refScreens, inScreens] = useReveal();
   const [refReqs, inReqs] = useReveal();
 
@@ -59,18 +63,16 @@ export default function Download() {
         </p>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div className="card" style={{ padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-            <svg width="88" height="88" viewBox="0 0 100 100">
-              <rect width="100" height="100" fill="#fff" />
-              <g fill="var(--ink)">
-                <rect x="6" y="6" width="24" height="24" /><rect x="70" y="6" width="24" height="24" /><rect x="6" y="70" width="24" height="24" />
-                <rect x="12" y="12" width="12" height="12" fill="#fff" /><rect x="76" y="12" width="12" height="12" fill="#fff" /><rect x="12" y="76" width="12" height="12" fill="#fff" />
-                <rect x="38" y="6" width="6" height="6" /><rect x="50" y="6" width="6" height="12" /><rect x="38" y="20" width="12" height="6" /><rect x="58" y="20" width="6" height="6" />
-                <rect x="38" y="38" width="6" height="6" /><rect x="50" y="38" width="12" height="6" /><rect x="70" y="38" width="6" height="12" /><rect x="82" y="38" width="12" height="6" />
-                <rect x="38" y="50" width="6" height="18" /><rect x="52" y="50" width="6" height="6" /><rect x="64" y="50" width="6" height="6" /><rect x="76" y="52" width="18" height="6" />
-                <rect x="38" y="76" width="6" height="6" /><rect x="50" y="70" width="18" height="6" /><rect x="70" y="76" width="6" height="12" /><rect x="82" y="82" width="12" height="6" /><rect x="50" y="82" width="12" height="6" />
-              </g>
-            </svg>
-            <span style={{ font: "600 11.5px 'Inter',sans-serif", color: 'var(--ink-3)' }}>Scan to download</span>
+            <QRCodeSVG
+              value={ANDROID_PLAY_STORE_URL}
+              size={112}
+              level="M"
+              marginSize={2}
+              fgColor="#17151F"
+              bgColor="#FFFFFF"
+              title="QR code: Nura on Google Play"
+            />
+            <span style={{ font: "600 11.5px 'Inter',sans-serif", color: 'var(--ink-3)' }}>Scan to get it on Google Play</span>
           </div>
         </div>
       </div>

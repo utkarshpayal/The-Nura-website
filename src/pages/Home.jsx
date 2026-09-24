@@ -6,10 +6,11 @@ import useReveal from '../hooks/useReveal';
 import { ANDROID_PLAY_STORE_URL } from '../constants';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
 import PhoneFrame from '../components/PhoneFrame';
-import screenHome from '../assets/images/screen-home.png';
-import screenInsights from '../assets/images/screen-insights.png';
-import screenWellbeing from '../assets/images/screen-wellbeing.png';
-import screenBuddy from '../assets/images/screen-buddy.png';
+import screenHome from '../assets/images/screen-home.webp';
+import screenInsights from '../assets/images/screen-insights.webp';
+import screenWellbeing from '../assets/images/screen-wellbeing.webp';
+import screenBuddy from '../assets/images/screen-buddy.webp';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const trustPoints = [
   'Reviewed with OB-GYNs',
@@ -125,6 +126,8 @@ const featureCards = [
 // already has its own dedicated callout card directly above this grid.
 
 export default function Home() {
+  useDocumentMeta("Nura: AI Women's Health Platform", "Nura is an AI-powered women's health platform for cycle tracking, medical guidance, and everyday wellbeing.");
+
   const [refFeatures, inFeatures] = useReveal();
   const [refScreens, inScreens] = useReveal();
   const [refTestimonials, inTestimonials] = useReveal();
@@ -166,7 +169,7 @@ export default function Home() {
 
         <div style={{ flex: '1 1 280px', minWidth: 240, display: 'flex', justifyContent: 'center' }}>
           <div className="phone-shell" style={{ position: 'relative', width: 290, maxWidth: '100%' }}>
-            <PhoneFrame src={screenHome} alt="Nura cycle dashboard" width={290} />
+            <PhoneFrame src={screenHome} alt="Nura cycle dashboard" width={290} loading="eager" />
             <div
               className="card"
               style={{

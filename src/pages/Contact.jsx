@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero';
 import Loader from '../components/Loader';
 import useReveal from '../hooks/useReveal';
 import { submitContactMessage } from '../lib/api';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const MESSAGE_MIN_LENGTH = 20;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -51,6 +52,8 @@ const channels = [
 const fieldLabelStyle = { font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 7 };
 
 export default function Contact() {
+  useDocumentMeta('Contact | Nura', 'Questions, bug reports, partnerships, or press: get in touch with the Nura team.');
+
   const [refForm, inForm] = useReveal();
   const [refChannels, inChannels] = useReveal();
   const [form, setForm] = useState({ name: '', email: '', topic: topics[0], message: '' });

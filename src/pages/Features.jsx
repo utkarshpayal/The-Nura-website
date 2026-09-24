@@ -5,10 +5,11 @@ import useReveal from '../hooks/useReveal';
 import PhoneFrame from '../components/PhoneFrame';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
 import { ANDROID_PLAY_STORE_URL } from '../constants';
-import screenHome from '../assets/images/screen-home.png';
-import screenInsights from '../assets/images/screen-insights.png';
-import screenWellbeing from '../assets/images/screen-wellbeing.png';
-import screenBuddy from '../assets/images/screen-buddy.png';
+import screenHome from '../assets/images/screen-home.webp';
+import screenInsights from '../assets/images/screen-insights.webp';
+import screenWellbeing from '../assets/images/screen-wellbeing.webp';
+import screenBuddy from '../assets/images/screen-buddy.webp';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const tagStyle = { background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 999, padding: '7px 14px', font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-2)' };
 
@@ -187,6 +188,8 @@ const moreFeatures = [
 ];
 
 export default function Features() {
+  useDocumentMeta('Features | Nura', 'Cycle tracking and AI predictions, an AI health assistant, gynaecologist consultations, report chat, Partner Sync, and more, all in one private app.');
+
   const [refGrid, inGrid] = useReveal();
   const [refCta, inCta] = useReveal();
 

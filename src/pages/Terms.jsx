@@ -1,6 +1,7 @@
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const sections = [
   {
@@ -46,6 +47,8 @@ const sections = [
 ];
 
 export default function Terms() {
+  useDocumentMeta('Terms of Service | Nura', 'The terms that govern your use of the Nura app and website.');
+
   return (
     <div className="page">
       <Nav />

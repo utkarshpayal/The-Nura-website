@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 // Always free, core experience — nothing here is ever gated.
 const freeFeatures = [
@@ -48,6 +49,8 @@ const faqDefs = [
 ];
 
 export default function Pricing() {
+  useDocumentMeta('Pricing | Nura', 'Tracking, predictions, and daily insights are free forever. Deeper features unlock individually, and Nura Professional is for verified clinicians and creators.');
+
   const [faqOpen, setFaqOpen] = useState({});
   const [refPlans, inPlans] = useReveal();
   const [refFaq, inFaq] = useReveal();
@@ -180,11 +183,11 @@ export default function Pricing() {
           {faqDefs.map((q) => {
             const open = !!faqOpen[q.id];
             return (
-              <div key={q.id} className="faq-row" onClick={() => toggleFaq(q.id)} style={{ padding: '18px 22px', cursor: 'pointer' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+              <div key={q.id} className="faq-row" style={{ padding: '18px 22px' }}>
+                <button type="button" onClick={() => toggleFaq(q.id)} aria-expanded={open} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, padding: 0, background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
                   <span style={{ font: "700 14.5px 'Inter',sans-serif", color: 'var(--ink)' }}>{q.question}</span>
-                  <span style={{ font: "700 18px 'Inter',sans-serif", color: 'var(--brand)', flexShrink: 0 }}>{open ? '−' : '+'}</span>
-                </div>
+                  <span aria-hidden="true" style={{ font: "700 18px 'Inter',sans-serif", color: 'var(--brand)', flexShrink: 0 }}>{open ? '−' : '+'}</span>
+                </button>
                 {open && (
                   <p style={{ font: "500 13.5px/1.7 'Inter',sans-serif", color: 'var(--ink-3)', margin: '12px 0 0' }}>{q.answer}</p>
                 )}
