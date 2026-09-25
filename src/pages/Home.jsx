@@ -6,10 +6,10 @@ import useReveal from '../hooks/useReveal';
 import { ANDROID_PLAY_STORE_URL } from '../constants';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
 import PhoneFrame from '../components/PhoneFrame';
-import screenHome from '../assets/images/screen-home.webp';
-import screenInsights from '../assets/images/screen-insights.webp';
-import screenWellbeing from '../assets/images/screen-wellbeing.webp';
-import screenBuddy from '../assets/images/screen-buddy.webp';
+import screenHome from '../assets/images/screens/screen-home.webp';
+import screenInsights from '../assets/images/screens/screen-insights.webp';
+import screenWellbeing from '../assets/images/screens/screen-wellbeing.webp';
+import screenBuddy from '../assets/images/screens/screen-buddy.webp';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const trustPoints = [
