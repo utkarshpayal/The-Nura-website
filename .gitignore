@@ -11,7 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+# every env variant holds real values; only the example is tracked
 .env
+.env.*
+!.env.example
+.claude/settings.local.json
 
 # Editor directories and files
 .vscode/*
