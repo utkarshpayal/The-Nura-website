@@ -6,10 +6,10 @@ import { ANDROID_PLAY_STORE_URL } from '../constants';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
 import { QRCodeSVG } from 'qrcode.react';
 import PhoneFrame from '../components/PhoneFrame';
-import screenHome from '../assets/images/screen-home.webp';
-import screenInsights from '../assets/images/screen-insights.webp';
-import screenWellbeing from '../assets/images/screen-wellbeing.webp';
-import screenApplock from '../assets/images/screen-applock.webp';
+import screenHome from '../assets/images/screens/screen-home.webp';
+import screenInsights from '../assets/images/screens/screen-insights.webp';
+import screenWellbeing from '../assets/images/screens/screen-wellbeing.webp';
+import screenApplock from '../assets/images/screens/screen-applock.webp';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const screenshots = [
