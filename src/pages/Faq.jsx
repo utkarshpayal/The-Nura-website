@@ -79,17 +79,17 @@ function FaqItem({ q, a }) {
           border: 'none',
           cursor: 'pointer',
           textAlign: 'left',
-          font: "700 15px 'Inter',sans-serif",
+          font: 'var(--t-label)',
           color: 'var(--ink)',
         }}
       >
         {q}
-        <span style={{ color: 'var(--brand)', flexShrink: 0, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform .18s ease', font: "400 22px 'Inter',sans-serif", lineHeight: 1 }}>
+        <span style={{ color: 'var(--brand)', flexShrink: 0, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform .18s ease', font: 'var(--t-lead)', lineHeight: 1 }}>
           +
         </span>
       </button>
       {open && (
-        <p style={{ font: "500 14.5px/1.75 'Inter',sans-serif", color: 'var(--ink-2)', margin: '0 0 20px', maxWidth: 640 }}>
+        <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-2)', margin: '0 0 20px', maxWidth: 640 }}>
           {a}
         </p>
       )}
@@ -116,7 +116,7 @@ export default function Faq() {
       <div ref={ref} className={`reveal ${visible ? 'in' : ''} container`} style={{ maxWidth: 760, padding: '40px 32px 72px' }}>
         {groups.map((g) => (
           <div key={g.heading} style={{ marginBottom: 40 }}>
-            <h2 style={{ font: "800 20px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px', letterSpacing: '-0.01em' }}>
+            <h2 style={{ font: 'var(--t-h4)', color: 'var(--ink)', margin: '0 0 8px', letterSpacing: '-0.01em' }}>
               {g.heading}
             </h2>
             <div className="card" style={{ padding: '4px 28px' }}>
@@ -128,7 +128,7 @@ export default function Faq() {
         ))}
 
         <div style={{ textAlign: 'center', marginTop: 8 }}>
-          <p style={{ font: "500 14.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 14px' }}>
+          <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: '0 0 14px' }}>
             Didn’t find what you were looking for?
           </p>
           <Link to="/contact" className="btn btn-brand">Contact us</Link>

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import SoftGlow from '../components/SoftGlow';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
 export default function NotFound() {
@@ -11,7 +10,6 @@ export default function NotFound() {
     <>
       <Nav />
       <div style={{ position: 'relative', overflow: 'hidden' }}>
-        <SoftGlow />
         <div
           className="container"
           style={{
@@ -64,7 +62,7 @@ export default function NotFound() {
                   borderRadius: '50%',
                   background: 'linear-gradient(135deg, var(--accent-tint) 0%, var(--brand-tint) 100%)',
                   border: '1.5px solid var(--brand-tint-2)',
-                  boxShadow: '0 16px 40px rgba(196, 82, 122, 0.18)',
+                  boxShadow: '0 16px 40px rgba(194, 65, 111, 0.18)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -88,11 +86,10 @@ export default function NotFound() {
                   borderRadius: '50%',
                   background: 'var(--brand)',
                   color: '#fff',
-                  font: "800 18px 'Manrope',sans-serif",
+                  font: 'var(--t-title)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 6px 16px rgba(108, 86, 214, 0.4)',
                 }}
               >
                 ?
@@ -115,10 +112,10 @@ export default function NotFound() {
           </div>
 
           <div className="eyebrow">404 · Page not found</div>
-          <h1 style={{ font: "800 32px/1.3 'Manrope',sans-serif", color: 'var(--ink)', margin: 0, maxWidth: 560, letterSpacing: '-0.01em' }}>
+          <h1 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: 0, maxWidth: 560, letterSpacing: '-0.01em' }}>
             People say they can't understand women.
           </h1>
-          <p style={{ font: "500 16px/1.7 'Inter',sans-serif", color: 'var(--ink-3)', maxWidth: 440, margin: 0 }}>
+          <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', maxWidth: 440, margin: 0 }}>
             But Nura can. Let's get you back to it.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', marginTop: 6 }}>

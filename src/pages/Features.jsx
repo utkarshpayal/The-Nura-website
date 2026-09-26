@@ -11,15 +11,15 @@ import screenWellbeing from '../assets/images/screens/screen-wellbeing.webp';
 import screenBuddy from '../assets/images/screens/screen-buddy.webp';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
-const tagStyle = { background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 999, padding: '7px 14px', font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-2)' };
+const tagStyle = { background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 999, padding: '7px 14px', font: 'var(--t-label-sm)', color: 'var(--ink-2)' };
 
 function FeatureRow({ eyebrow, title, body, tags, img, alt, reversed }) {
   const [ref, visible] = useReveal();
   const textBlock = (
     <div style={{ flex: '1 1 380px', minWidth: 0 }}>
       <div className="eyebrow" style={{ marginBottom: 18 }}>{eyebrow}</div>
-      <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 14px', letterSpacing: '-0.01em' }}>{title}</h2>
-      <p style={{ font: "500 15.5px/1.7 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 20px' }}>{body}</p>
+      <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: '0 0 14px', letterSpacing: '-0.01em' }}>{title}</h2>
+      <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: '0 0 20px' }}>{body}</p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {tags.map((t) => (
           <span key={t} style={tagStyle}>{t}</span>
@@ -201,10 +201,10 @@ export default function Features() {
         <div className="eyebrow" style={{ marginBottom: 20 }}>
           Features
         </div>
-        <h1 style={{ font: "800 42px/1.2 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 auto 16px', maxWidth: 720, letterSpacing: '-0.02em' }}>
+        <h1 style={{ font: 'var(--t-h1)', color: 'var(--ink)', margin: '0 auto 16px', maxWidth: 720, letterSpacing: '-0.02em' }}>
           Everything you need to understand and manage your health
         </h1>
-        <p style={{ font: "500 16.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 auto', maxWidth: 560 }}>
+        <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: '0 auto', maxWidth: 560 }}>
           From daily tracking to real medical consultations, built around how your cycle actually feels, not a spreadsheet pretending to be one.
         </p>
       </div>
@@ -213,25 +213,25 @@ export default function Features() {
       <div className="container" style={{ padding: '52px 32px 12px' }}>
         <div style={{ background: 'var(--surface-dark)', borderRadius: 'var(--radius-lg)', padding: '48px 36px' }}>
           <div style={{ textAlign: 'center', maxWidth: 620, margin: '0 auto 40px' }}>
-            <div className="eyebrow" style={{ marginBottom: 16, color: '#EFC97A' }}>Why Nura is different</div>
-            <h2 style={{ font: "800 28px/1.3 'Manrope',sans-serif", color: '#fff', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
+            <div className="eyebrow" style={{ marginBottom: 16, color: 'var(--gold)' }}>Why Nura is different</div>
+            <h2 style={{ font: 'var(--t-h2)', color: '#fff', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
               Not just another period tracker
             </h2>
-            <p style={{ font: "500 15px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.65)', margin: 0 }}>
+            <p style={{ font: 'var(--t-body)', color: 'rgba(255,255,255,0.65)', margin: 0 }}>
               These three don’t show up in most period apps at all, and every one of them, along with your predictions, insights, and AI chat, draws on the same personalization engine built from your own logged history.
             </p>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
             {uniqueHighlights.map((f) => (
               <div key={f.title} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 16, padding: 26, flex: '0 1 300px', maxWidth: 340 }}>
-                <span style={{ display: 'inline-block', font: "700 11px 'Inter',sans-serif", color: '#221A3D', background: '#EFC97A', borderRadius: 999, padding: '4px 11px', marginBottom: 16 }}>
+                <span style={{ display: 'inline-block', font: 'var(--t-micro)', color: 'var(--surface-dark)', background: 'var(--gold)', borderRadius: 999, padding: '4px 11px', marginBottom: 16 }}>
                   {f.badge}
                 </span>
                 <div style={{ width: 40, height: 40, borderRadius: 11, background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">{f.icon}</svg>
                 </div>
-                <h3 style={{ font: "700 16.5px 'Manrope',sans-serif", color: '#fff', margin: '0 0 8px' }}>{f.title}</h3>
-                <p style={{ font: "500 13.5px/1.65 'Inter',sans-serif", color: 'rgba(255,255,255,0.7)', margin: 0 }}>{f.body}</p>
+                <h3 style={{ font: 'var(--t-title)', color: '#fff', margin: '0 0 8px' }}>{f.title}</h3>
+                <p style={{ font: 'var(--t-body-sm)', color: 'rgba(255,255,255,0.7)', margin: 0 }}>{f.body}</p>
               </div>
             ))}
           </div>
@@ -279,17 +279,17 @@ export default function Features() {
       {/* COMPARISON TABLE */}
       <div className="container" style={{ padding: '24px 32px 8px' }}>
         <div style={{ textAlign: 'center', maxWidth: 620, margin: '0 auto 36px' }}>
-          <h2 style={{ font: "800 28px/1.3 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
+          <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
             What people expect vs. what Nura adds
           </h2>
-          <p style={{ font: "500 15px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+          <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: 0 }}>
             Other apps track what’s happening to you. Nura tracks that too, then does something about it.
           </p>
         </div>
         <div className="card" style={{ overflow: 'hidden' }}>
           <div style={{ display: 'flex', padding: '14px 24px', background: 'var(--surface)', borderBottom: '1px solid var(--line)' }}>
-            <div style={{ flex: '1 1 0', font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>A typical period app</div>
-            <div style={{ flex: '1 1 0', font: "700 12.5px 'Inter',sans-serif", color: 'var(--brand-dark)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>What Nura adds</div>
+            <div style={{ flex: '1 1 0', font: 'var(--t-label-sm)', color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>A typical period app</div>
+            <div style={{ flex: '1 1 0', font: 'var(--t-label-sm)', color: 'var(--brand-dark)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>What Nura adds</div>
           </div>
           {comparisonRows.map((r, i) => (
             <div
@@ -301,12 +301,12 @@ export default function Features() {
                 borderBottom: i === comparisonRows.length - 1 ? 'none' : '1px solid var(--line)',
               }}
             >
-              <div style={{ flex: '1 1 0', font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)' }}>{r.them}</div>
+              <div style={{ flex: '1 1 0', font: 'var(--t-body-sm)', color: 'var(--ink-3)' }}>{r.them}</div>
               <div style={{ flex: '1 1 0', display: 'flex', gap: 9, alignItems: 'flex-start' }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
                   <path d="M4 12.5L9.5 18L20 6" stroke="var(--teal)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span style={{ font: "600 14px/1.6 'Inter',sans-serif", color: 'var(--ink)' }}>{r.us}</span>
+                <span style={{ font: 'var(--t-label)', color: 'var(--ink)' }}>{r.us}</span>
               </div>
             </div>
           ))}
@@ -316,8 +316,8 @@ export default function Features() {
       {/* GRID OF REMAINING FEATURES */}
       <div ref={refGrid} className={`reveal ${inGrid ? 'in' : ''} container`} style={{ padding: '80px 32px' }}>
         <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 44px' }}>
-          <h2 style={{ font: "800 30px/1.25 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>And a lot more, built in</h2>
-          <p style={{ font: "500 15.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+          <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>And a lot more, built in</h2>
+          <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: 0 }}>
             Nura is a full platform, not a single feature. Here's what else comes with it.
           </p>
         </div>
@@ -328,8 +328,8 @@ export default function Features() {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none">{f.icon}</svg>
               </div>
               <div>
-                <h3 style={{ font: "700 14px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 4px' }}>{f.title}</h3>
-                <p style={{ font: "500 12.5px/1.55 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{f.body}</p>
+                <h3 style={{ font: 'var(--t-title-sm)', color: 'var(--ink)', margin: '0 0 4px' }}>{f.title}</h3>
+                <p style={{ font: 'var(--t-caption)', color: 'var(--ink-3)', margin: 0 }}>{f.body}</p>
               </div>
             </div>
           ))}
@@ -338,8 +338,8 @@ export default function Features() {
 
       {/* CTA */}
       <div ref={refCta} className={`reveal ${inCta ? 'in' : ''}`} style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
-        <h2 style={{ font: "800 30px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 12px', letterSpacing: '-0.01em' }}>Ready to feel supported?</h2>
-        <p style={{ font: "500 14.5px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.6)', margin: '0 0 28px' }}>
+        <h2 style={{ font: 'var(--t-h2)', color: '#fff', margin: '0 0 12px', letterSpacing: '-0.01em' }}>Ready to feel supported?</h2>
+        <p style={{ font: 'var(--t-body-sm)', color: 'rgba(255,255,255,0.6)', margin: '0 0 28px' }}>
           Core tracking, predictions, and daily insights are free, always. A handful of deeper features unlock individually as you need them. <Link to="/pricing" style={{ color: '#fff', textDecoration: 'underline' }}>See pricing →</Link>
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>

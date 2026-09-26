@@ -1,33 +1,62 @@
 :root {
-  /* Brand */
-  --brand: #6C56D6;
-  --brand-dark: #5642B0;
-  --brand-tint: #F1EEFC;
-  --brand-tint-2: #E6E0FA;
-  --accent: #C4527A;
-  --accent-tint: #FBEAF0;
-  --teal: #12806A;
-  --teal-tint: #E5F4EF;
-  --amber: #B4790F;
-  --amber-tint: #FCF1DF;
+  /* Brand — rose, taken from the logo and the app's primary pink, darkened
+     just enough that white text on it and rose text on white both pass
+     WCAG AA (4.9:1). Lavender and teal are the two supporting hues from the
+     app's cycle-phase gradient; teal doubles as the "safe / verified" color. */
+  --brand: #C2416F;
+  --brand-dark: #9E2F58;
+  --brand-tint: #FCEEF3;
+  --brand-tint-2: #F7DCE6;
+  --accent: #6A5BC9;
+  --accent-tint: #EFECFB;
+  --teal: #0F7A64;
+  --teal-tint: #E4F3EE;
+  --amber: #9A6710;
+  --amber-tint: #FBF1DE;
+  --gold: #EFC97A;
+  --danger: #B42318;
+  --danger-tint: #FDECEA;
 
-  /* Neutrals */
-  --ink: #17151F;
-  --ink-2: #423E52;
-  --ink-3: #6C6779;
-  --ink-4: #948FA0;
-  --line: #E7E4EE;
-  --line-2: #EFEDF5;
-  --bg: #FBFAFC;
+  /* Neutrals — slightly warm/plum so grays sit with the rose rather than
+     reading as cold blue-gray. ink-4 is the lightest text color and still
+     clears 4.5:1 on white. */
+  --ink: #1E1823;
+  --ink-2: #453C4C;
+  --ink-3: #5E5566;
+  --ink-4: #736A79;
+  --line: #ECE5EA;
+  --line-2: #F4EFF2;
+  --bg: #FCFAFB;
   --surface: #FFFFFF;
-  --surface-dark: #221A3D;
+  --surface-dark: #2A1830;
+
+  /* Type — Nunito is the app's own typeface, so the site reads as the same
+     product rather than a generic template; Nunito Sans is its text
+     companion. Every inline `font:` in the pages uses one of these tokens;
+     don't add ad-hoc sizes. */
+  --font-display: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --t-display: 800 clamp(36px, 5.2vw, 54px)/1.08 var(--font-display);
+  --t-h1: 800 clamp(31px, 4.4vw, 44px)/1.12 var(--font-display);
+  --t-h2: 800 clamp(25px, 3.2vw, 34px)/1.18 var(--font-display);
+  --t-h3: 800 clamp(20px, 2.3vw, 24px)/1.28 var(--font-display);
+  --t-h4: 800 20px/1.3 var(--font-display);
+  --t-title: 700 17px/1.4 var(--font-display);
+  --t-title-sm: 700 15px/1.4 var(--font-display);
+  --t-lead: 400 18px/1.65 var(--font-sans);
+  --t-body: 400 16px/1.65 var(--font-sans);
+  --t-body-sm: 400 14.5px/1.6 var(--font-sans);
+  --t-caption: 400 13px/1.55 var(--font-sans);
+  --t-label: 600 14.5px/1.4 var(--font-sans);
+  --t-label-sm: 600 13px/1.4 var(--font-sans);
+  --t-micro: 600 11.5px/1.3 var(--font-sans);
 
   --radius-sm: 10px;
   --radius-md: 16px;
-  --radius-lg: 22px;
-  --shadow-sm: 0 2px 8px rgba(23, 21, 31, 0.06);
-  --shadow-md: 0 10px 28px rgba(23, 21, 31, 0.08);
-  --shadow-lg: 0 24px 56px rgba(23, 21, 31, 0.12);
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 2px rgba(30, 24, 35, 0.04), 0 2px 8px rgba(30, 24, 35, 0.04);
+  --shadow-md: 0 1px 2px rgba(30, 24, 35, 0.04), 0 12px 28px rgba(30, 24, 35, 0.07);
+  --shadow-lg: 0 2px 6px rgba(30, 24, 35, 0.05), 0 28px 56px rgba(30, 24, 35, 0.11);
 
   --container: 1180px;
 }
@@ -43,27 +72,40 @@ html {
 body {
   margin: 0;
   background: var(--bg);
-  font-family: 'Inter', sans-serif;
+  font: var(--t-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   color: var(--ink);
 }
 
 h1, h2, h3 {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--brand-tint-2);
+  color: var(--ink);
 }
 
 a {
   color: var(--brand);
   text-decoration: none;
+  transition: color .15s ease;
 }
 
 a:hover {
   color: var(--brand-dark);
 }
 
-button {
-  font-family: 'Inter', sans-serif;
+button, input, select, textarea {
+  font-family: var(--font-sans);
 }
 
 @keyframes fadeIn {
@@ -80,22 +122,6 @@ button {
   to { transform: rotate(360deg); }
 }
 
-/* Soft ambient wash — a single calm, static gradient behind a hero/section,
-   no motion, no network graphics. See components/SoftGlow.jsx. */
-.soft-glow {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(600px 320px at 18% 0%, var(--brand-tint) 0%, transparent 65%),
-    radial-gradient(500px 280px at 88% 12%, var(--teal-tint) 0%, transparent 60%);
-}
-.soft-glow--dark {
-  background: radial-gradient(600px 320px at 18% 0%, rgba(108, 86, 214, 0.35) 0%, transparent 65%),
-    radial-gradient(500px 280px at 88% 12%, rgba(18, 128, 106, 0.22) 0%, transparent 60%);
-}
-
 .page {
   width: 100%;
   overflow-x: hidden;
@@ -110,17 +136,13 @@ button {
   padding: 0 32px;
 }
 
-/* A quiet section label, not a shouty colored badge — muted gray, modest
-   size at every breakpoint (this used to jump to 16px/purple on desktop,
-   which read as a loud "AI template" kicker competing with the headline). */
+/* A quiet section label in plain sentence case — no uppercase tracking,
+   no color, so it reads as context for the headline rather than a
+   template "kicker" competing with it. */
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink-4);
-  font: 600 12px/1 'Inter', sans-serif;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  display: inline-block;
+  color: var(--ink-3);
+  font: 600 15px/1.4 var(--font-display);
 }
 
 /* Accessibility: visible keyboard focus */
@@ -131,7 +153,8 @@ select:focus-visible,
 textarea:focus-visible,
 .nav-toggle:focus-visible {
   outline: 2px solid var(--brand);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 input:focus,
@@ -157,32 +180,28 @@ textarea:focus {
   justify-content: center;
   gap: 8px;
   padding: 13px 24px;
-  border-radius: var(--radius-sm);
-  font: 700 14.5px 'Inter', sans-serif;
+  border-radius: 999px;
+  font: 600 14.5px/1.2 var(--font-sans);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform .2s cubic-bezier(.2,.7,.3,1), box-shadow .2s ease, background .2s ease, border-color .2s ease;
+  font-family: var(--font-display);
+  font-weight: 700;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
   white-space: nowrap;
 }
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0); }
 
 .btn-primary {
   background: var(--brand);
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
   color: #fff;
-  box-shadow: 0 6px 16px rgba(108, 86, 214, 0.24);
 }
-.btn-primary:hover { box-shadow: 0 10px 26px rgba(108, 86, 214, 0.36); color: #fff; }
-.btn-primary:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+.btn-primary:hover { background: var(--brand-dark); color: #fff; }
+.btn-primary:disabled { opacity: 0.65; cursor: not-allowed; }
 
 .btn-brand {
   background: var(--brand);
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
   color: #fff;
-  box-shadow: 0 8px 20px rgba(108, 86, 214, 0.28);
 }
-.btn-brand:hover { box-shadow: 0 12px 30px rgba(108, 86, 214, 0.4); color: #fff; }
+.btn-brand:hover { background: var(--brand-dark); color: #fff; }
 
 .btn-secondary {
   background: var(--surface);
@@ -208,12 +227,10 @@ textarea:focus {
 }
 
 .card-hover {
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  transition: border-color .15s ease;
 }
 .card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--line-2);
+  border-color: var(--ink-4);
 }
 
 .icon-tile {
@@ -229,13 +246,24 @@ textarea:focus {
 /* Nav */
 .nav-link {
   color: var(--ink-3);
-  font: 600 14.5px 'Inter', sans-serif;
+  position: relative;
+  font: 500 14.5px/1 var(--font-sans);
   transition: color .15s ease;
 }
 .nav-link:hover { color: var(--ink) !important; }
 .nav-link.active {
   color: var(--ink);
-  font-weight: 700;
+  font-weight: 600;
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--brand);
 }
 
 /* FAQ */
@@ -250,13 +278,6 @@ textarea:focus {
    count always divides evenly and no row is left with a single orphaned
    card — home-features-grid's 6 items are 1/2/3/6-divisible, so 1, 2, or 3
    columns all land clean; more-features-grid stays at a flat 1 or 2. */
-.feature-row {
-  transition: padding-left .2s ease, border-color .2s ease;
-}
-.feature-row:hover {
-  padding-left: 6px;
-  border-color: var(--ink-4);
-}
 .home-features-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -330,7 +351,7 @@ textarea:focus {
   left: 50%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-tint), var(--teal-tint));
+  background: linear-gradient(90deg, var(--brand-tint-2), var(--teal-tint));
 }
 
 /* 404 page's puzzled little face — a slow head-tilt, not a spin/bounce, so
@@ -403,13 +424,6 @@ textarea:focus {
 }
 
 @media (max-width: 640px) {
-  h1 {
-    font-size: clamp(28px, 7.5vw, 40px) !important;
-    line-height: 1.18 !important;
-  }
-  h2 {
-    font-size: clamp(22px, 5.5vw, 30px) !important;
-  }
   .container {
     padding: 0 20px;
   }
@@ -458,8 +472,8 @@ textarea:focus {
   transform: translateY(-2px);
 }
 .store-badge--dark {
-  background: #17151f !important;
-  border-color: #17151f !important;
+  background: var(--ink) !important;
+  border-color: var(--ink) !important;
   color: #fff !important;
   box-shadow: var(--shadow-md);
 }
@@ -485,7 +499,7 @@ textarea:focus {
   opacity: 0.55;
 }
 .store-badge, .store-badge div, .store-badge span {
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-sans) !important;
 }
 /* react-mobile-app-button hardcodes its internal text at a fixed font
    size (20px bold store name) regardless of the width/height props, and
@@ -562,4 +576,17 @@ textarea:focus {
     transform: rotate(90deg);
     margin: 2px 0 !important;
   }
+}
+
+/* Home privacy & safety cards — 4 items, so 1 → 2 → 4 columns, never 3. */
+.safety-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .safety-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1040px) {
+  .safety-grid { grid-template-columns: repeat(4, 1fr); }
 }

@@ -30,10 +30,10 @@ export default function Newsletter({ title, subtitle, padding = '96px 32px' }) {
   return (
     <div ref={ref} className={`reveal ${visible ? 'in' : ''}`} style={{ padding, background: 'var(--surface)', borderTop: '1px solid var(--line)' }}>
       <div style={{ maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
-        <h2 style={{ font: "800 26px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 10px' }}>
+        <h2 style={{ font: 'var(--t-h3)', color: 'var(--ink)', margin: '0 0 10px' }}>
           {title}
         </h2>
-        <p style={{ font: "500 15px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 26px' }}>
+        <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: '0 0 26px' }}>
           {subtitle}
         </p>
         {subscribed ? (
@@ -47,7 +47,7 @@ export default function Newsletter({ title, subtitle, padding = '96px 32px' }) {
               color: 'var(--teal)',
               borderRadius: 14,
               padding: '16px 22px',
-              font: "700 14px 'Inter',sans-serif",
+              font: 'var(--t-label)',
             }}
           >
             You're on the list - thanks for subscribing.
@@ -68,7 +68,7 @@ export default function Newsletter({ title, subtitle, padding = '96px 32px' }) {
                   padding: '13px 16px',
                   borderRadius: 10,
                   border: '1px solid var(--line)',
-                  font: "500 14px 'Inter',sans-serif",
+                  font: 'var(--t-body-sm)',
                   color: 'var(--ink)',
                 }}
               />
@@ -77,7 +77,7 @@ export default function Newsletter({ title, subtitle, padding = '96px 32px' }) {
               </button>
             </form>
             {error && (
-              <p style={{ color: 'var(--accent)', font: "600 13px 'Inter',sans-serif", margin: '12px 0 0' }}>{error}</p>
+              <p style={{ color: 'var(--danger)', font: 'var(--t-label-sm)', margin: '12px 0 0' }}>{error}</p>
             )}
           </>
         )}

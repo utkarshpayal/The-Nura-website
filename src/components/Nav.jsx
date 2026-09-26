@@ -40,11 +40,12 @@ export default function Nav() {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        background: 'rgba(251,250,252,0.9)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid var(--line)',
-        boxShadow: scrolled ? '0 8px 24px rgba(23, 21, 31, 0.06)' : 'none',
-        transition: 'box-shadow .25s ease',
+        background: 'rgba(252,250,251,0.86)',
+        backdropFilter: 'saturate(160%) blur(12px)',
+        WebkitBackdropFilter: 'saturate(160%) blur(12px)',
+        borderBottom: `1px solid ${scrolled ? 'var(--line)' : 'transparent'}`,
+        boxShadow: scrolled ? '0 6px 20px rgba(30, 24, 35, 0.05)' : 'none',
+        transition: 'box-shadow .25s ease, border-color .25s ease',
       }}
     >
       <div
@@ -56,9 +57,9 @@ export default function Nav() {
           padding: '14px 32px',
         }}
       >
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Logo size={40} />
-          <span style={{ font: "800 24px 'Manrope',sans-serif", color: 'var(--ink)' }}>Nura</span>
+        <Link to="/" aria-label="Nura home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <Logo size={36} />
+          <span style={{ font: "600 23px/1 var(--font-display)", letterSpacing: '-0.02em', color: 'var(--ink)' }}>The Nura</span>
         </Link>
 
         <div className="nav-desktop-links" style={{ alignItems: 'center', gap: 30 }}>
@@ -72,7 +73,7 @@ export default function Nav() {
           })}
         </div>
 
-        <Link to="/download" className="btn btn-primary nav-cta">
+        <Link to="/download" className="btn btn-primary btn-sm nav-cta">
           Get the app
         </Link>
 
@@ -88,8 +89,8 @@ export default function Nav() {
             width: 38,
             height: 38,
             border: '1px solid var(--line)',
-            borderRadius: 10,
-            background: '#fff',
+            borderRadius: 999,
+            background: 'var(--surface)',
             cursor: 'pointer',
           }}
         >
@@ -114,7 +115,7 @@ export default function Nav() {
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
-              style={{ font: "600 15px 'Inter',sans-serif", color: active ? 'var(--ink)' : 'var(--ink-3)' }}
+              style={{ font: 'var(--t-label)', color: active ? 'var(--ink)' : 'var(--ink-3)' }}
             >
               {l.label}
             </Link>

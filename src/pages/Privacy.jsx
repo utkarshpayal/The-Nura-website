@@ -58,10 +58,10 @@ export default function Privacy() {
         <div className="eyebrow" style={{ marginBottom: 20, color: 'var(--teal)' }}>
           Private by design
         </div>
-        <h1 style={{ font: "800 40px/1.2 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 16px', letterSpacing: '-0.02em' }}>
+        <h1 style={{ font: 'var(--t-h1)', color: 'var(--ink)', margin: '0 0 16px', letterSpacing: '-0.02em' }}>
           Your cycle data is yours. Full stop.
         </h1>
-        <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+        <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: 0 }}>
           No ads. No data brokers. No exceptions. Here's exactly how we protect it.
         </p>
       </div>
@@ -75,8 +75,8 @@ export default function Privacy() {
             ['1-tap', 'Full data export or delete'],
           ].map(([stat, label]) => (
             <div key={label} className="card" style={{ padding: 24, textAlign: 'center' }}>
-              <div style={{ font: "800 28px 'Manrope',sans-serif", color: 'var(--brand)' }}>{stat}</div>
-              <div style={{ font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-3)', marginTop: 6 }}>{label}</div>
+              <div style={{ font: 'var(--t-h2)', color: 'var(--brand)' }}>{stat}</div>
+              <div style={{ font: 'var(--t-label-sm)', color: 'var(--ink-3)', marginTop: 6 }}>{label}</div>
             </div>
           ))}
         </div>
@@ -90,8 +90,8 @@ export default function Privacy() {
               <div className="icon-tile" style={{ background: p.bg, marginBottom: 16 }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">{p.icon}</svg>
               </div>
-              <h3 style={{ font: "700 16.5px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px' }}>{p.title}</h3>
-              <p style={{ font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{p.body}</p>
+              <h3 style={{ font: 'var(--t-title)', color: 'var(--ink)', margin: '0 0 8px' }}>{p.title}</h3>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0 }}>{p.body}</p>
             </div>
           ))}
         </div>
@@ -100,18 +100,18 @@ export default function Privacy() {
       {/* FAQ */}
       <div ref={refFaq} className={`reveal ${inFaq ? 'in' : ''}`} style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '80px 32px' }}>
         <div className="container" style={{ maxWidth: 720 }}>
-          <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: 'var(--ink)', textAlign: 'center', margin: '0 0 32px', letterSpacing: '-0.01em' }}>Privacy questions</h2>
+          <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', textAlign: 'center', margin: '0 0 32px', letterSpacing: '-0.01em' }}>Privacy questions</h2>
           <div className="card" style={{ overflow: 'hidden' }}>
             {faqData.map((q, i) => {
               const isOpen = !!open[i];
               return (
                 <div key={q.question} className="faq-row" style={{ padding: '18px 22px' }}>
                   <button type="button" onClick={() => toggle(i)} aria-expanded={isOpen} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, padding: 0, background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
-                    <span style={{ font: "700 14.5px 'Inter',sans-serif", color: 'var(--ink)' }}>{q.question}</span>
-                    <span aria-hidden="true" style={{ font: "700 18px 'Inter',sans-serif", color: 'var(--brand)', flexShrink: 0, transition: 'transform .2s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>+</span>
+                    <span style={{ font: 'var(--t-label)', color: 'var(--ink)' }}>{q.question}</span>
+                    <span aria-hidden="true" style={{ font: 'var(--t-title)', color: 'var(--brand)', flexShrink: 0, transition: 'transform .2s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>+</span>
                   </button>
                   {isOpen && (
-                    <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '12px 0 0' }}>{q.answer}</p>
+                    <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: '12px 0 0' }}>{q.answer}</p>
                   )}
                 </div>
               );
@@ -122,7 +122,7 @@ export default function Privacy() {
 
       {/* CTA */}
       <div style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
-        <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 28px', letterSpacing: '-0.01em' }}>Track with confidence</h2>
+        <h2 style={{ font: 'var(--t-h2)', color: '#fff', margin: '0 0 28px', letterSpacing: '-0.01em' }}>Track with confidence</h2>
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
           <GooglePlayButton
             url={ANDROID_PLAY_STORE_URL}

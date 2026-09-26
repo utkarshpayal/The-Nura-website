@@ -235,8 +235,8 @@ function SectionIntro({ eyebrow, title, body, max = 620 }) {
   return (
     <div style={{ textAlign: 'center', maxWidth: max, margin: '0 auto 44px' }}>
       {eyebrow && <div className="eyebrow" style={{ marginBottom: 16 }}>{eyebrow}</div>}
-      <h2 style={{ font: "800 30px/1.3 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>{title}</h2>
-      {body && <p style={{ font: "500 15.5px/1.65 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{body}</p>}
+      <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>{title}</h2>
+      {body && <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: 0 }}>{body}</p>}
     </div>
   );
 }
@@ -282,7 +282,7 @@ function JourneyMedallion({ index }) {
           borderRadius: '50%',
           background: 'var(--accent)',
           color: '#fff',
-          font: "700 9.5px 'Inter',sans-serif",
+          font: 'var(--t-micro)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -333,8 +333,8 @@ function JourneyDiagram() {
                 )}
               </div>
               <div style={{ paddingTop: 8, paddingBottom: isLast ? 0 : 26 }}>
-                <div style={{ font: "700 15px 'Manrope',sans-serif", color: 'var(--ink)', marginBottom: 3 }}>{step.label}</div>
-                <div style={{ font: "500 13px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>{step.blurb}</div>
+                <div style={{ font: 'var(--t-title-sm)', color: 'var(--ink)', marginBottom: 3 }}>{step.label}</div>
+                <div style={{ font: 'var(--t-caption)', color: 'var(--ink-3)' }}>{step.blurb}</div>
               </div>
             </div>
           );
@@ -357,8 +357,8 @@ function JourneyDiagram() {
                   {!isLastInRow && <div aria-hidden="true" className="journey-connector" />}
                   <JourneyMedallion index={globalIndex} />
                   <div style={{ marginTop: 14, maxWidth: 200 }}>
-                    <div style={{ font: "700 14.5px 'Manrope',sans-serif", color: 'var(--ink)', marginBottom: 3 }}>{step.label}</div>
-                    <div style={{ font: "500 12.5px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>{step.blurb}</div>
+                    <div style={{ font: 'var(--t-title-sm)', color: 'var(--ink)', marginBottom: 3 }}>{step.label}</div>
+                    <div style={{ font: 'var(--t-caption)', color: 'var(--ink-3)' }}>{step.blurb}</div>
                   </div>
                 </div>
               );
@@ -383,7 +383,7 @@ function MiniFlow({ items }) {
               border: '1px solid var(--line)',
               borderRadius: 999,
               padding: '10px 18px',
-              font: "700 13.5px 'Inter',sans-serif",
+              font: 'var(--t-label-sm)',
               color: 'var(--ink)',
               boxShadow: 'var(--shadow-sm)',
             }}
@@ -423,16 +423,16 @@ export default function Diagnostics() {
       {/* HERO */}
       <div className="container" style={{ padding: '76px 32px 8px', textAlign: 'center' }}>
         <div className="eyebrow" style={{ marginBottom: 20 }}>Nura Diagnostics · An expanding capability</div>
-        <h1 style={{ font: "800 44px/1.18 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 auto 18px', maxWidth: 760, letterSpacing: '-0.02em' }}>
+        <h1 style={{ font: 'var(--t-display)', color: 'var(--ink)', margin: '0 auto 18px', maxWidth: 760, letterSpacing: '-0.02em' }}>
           From concern to clarity to care.
         </h1>
-        <p style={{ font: "500 17px/1.65 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 auto 32px', maxWidth: 600 }}>
+        <p style={{ font: 'var(--t-lead)', color: 'var(--ink-3)', margin: '0 auto 32px', maxWidth: 600 }}>
           Connect your women's health journey, from symptoms and diagnostics to reports and gynecological care, all in one place.
         </p>
         <a href="#journey" className="btn btn-brand" style={{ padding: '15px 28px' }}>
           Explore Nura
         </a>
-        <p style={{ font: "500 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', margin: '18px 0 0' }}>
+        <p style={{ font: 'var(--t-caption)', color: 'var(--ink-4)', margin: '18px 0 0' }}>
           Now taking shape across the Nura platform, rolling out in phases.
         </p>
       </div>
@@ -447,7 +447,7 @@ export default function Diagnostics() {
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20, marginBottom: 56 }}>
             <div className="card" style={{ padding: 30 }}>
-              <div style={{ font: "700 12px 'Inter',sans-serif", color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 18 }}>
+              <div style={{ font: 'var(--t-micro)', color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 18 }}>
                 A typical fragmented experience
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -456,13 +456,13 @@ export default function Diagnostics() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ flexShrink: 0, marginTop: 3 }}>
                       <path d="M6 6l12 12M18 6L6 18" stroke="var(--ink-4)" strokeWidth="2" strokeLinecap="round" />
                     </svg>
-                    <span style={{ font: "500 14px/1.55 'Inter',sans-serif", color: 'var(--ink-3)' }}>{f}</span>
+                    <span style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)' }}>{f}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="card" style={{ padding: 30, borderColor: 'var(--brand-tint-2)' }}>
-              <div style={{ font: "700 12px 'Inter',sans-serif", color: 'var(--brand-dark)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 18 }}>
+              <div style={{ font: 'var(--t-micro)', color: 'var(--brand-dark)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 18 }}>
                 The connected Nura experience
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -471,7 +471,7 @@ export default function Diagnostics() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ flexShrink: 0, marginTop: 3 }}>
                       <path d="M4 12.5L9.5 18L20 6" stroke="var(--teal)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span style={{ font: "600 14px/1.55 'Inter',sans-serif", color: 'var(--ink)' }}>{f}</span>
+                    <span style={{ font: 'var(--t-label)', color: 'var(--ink)' }}>{f}</span>
                   </div>
                 ))}
               </div>
@@ -483,8 +483,8 @@ export default function Diagnostics() {
         <div id="journey" style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '72px 32px', scrollMarginTop: 76 }}>
           <div className="container">
             <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 44px' }}>
-              <h3 style={{ font: "800 22px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 10px' }}>One journey, nine steps, zero gaps</h3>
-              <p style={{ font: "500 14.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+              <h3 style={{ font: 'var(--t-h3)', color: 'var(--ink)', margin: '0 0 10px' }}>One journey, nine steps, zero gaps</h3>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0 }}>
                 Every step below feeds the next, and every step is remembered by the one after it.
               </p>
             </div>
@@ -508,8 +508,8 @@ export default function Diagnostics() {
                   {p.icon}
                 </svg>
               </div>
-              <h3 style={{ font: "700 16px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px' }}>{p.title}</h3>
-              <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{p.body}</p>
+              <h3 style={{ font: 'var(--t-title)', color: 'var(--ink)', margin: '0 0 8px' }}>{p.title}</h3>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0 }}>{p.body}</p>
             </div>
           ))}
         </div>
@@ -535,7 +535,7 @@ export default function Diagnostics() {
                   border: '1px solid var(--line)',
                   borderRadius: 999,
                   padding: '8px 16px',
-                  font: "600 12.5px 'Inter',sans-serif",
+                  font: 'var(--t-label-sm)',
                   color: 'var(--ink-2)',
                 }}
               >
@@ -557,30 +557,30 @@ export default function Diagnostics() {
           <div className="card" style={{ padding: 28, boxShadow: 'var(--shadow-md)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 18 }}>
               <div>
-                <div style={{ font: "700 15.5px 'Manrope',sans-serif", color: 'var(--ink)' }}>Thyroid Panel</div>
-                <div style={{ font: "500 12.5px 'Inter',sans-serif", color: 'var(--ink-4)' }}>TSH · Collected 14 Aug 2026</div>
+                <div style={{ font: 'var(--t-title-sm)', color: 'var(--ink)' }}>Thyroid Panel</div>
+                <div style={{ font: 'var(--t-caption)', color: 'var(--ink-4)' }}>TSH · Collected 14 Aug 2026</div>
               </div>
-              <span style={{ font: "700 11px 'Inter',sans-serif", color: 'var(--amber)', background: 'var(--amber-tint)', borderRadius: 999, padding: '5px 12px', whiteSpace: 'nowrap' }}>
+              <span style={{ font: 'var(--t-micro)', color: 'var(--amber)', background: 'var(--amber-tint)', borderRadius: 999, padding: '5px 12px', whiteSpace: 'nowrap' }}>
                 Slightly elevated
               </span>
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
-              <span style={{ font: "800 34px 'Manrope',sans-serif", color: 'var(--ink)' }}>4.8</span>
-              <span style={{ font: "600 13px 'Inter',sans-serif", color: 'var(--ink-4)' }}>mIU/L</span>
+              <span style={{ font: 'var(--t-h2)', color: 'var(--ink)' }}>4.8</span>
+              <span style={{ font: 'var(--t-label-sm)', color: 'var(--ink-4)' }}>mIU/L</span>
             </div>
-            <div style={{ font: "500 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', marginBottom: 18 }}>Reference range: 0.4 – 4.0 mIU/L</div>
+            <div style={{ font: 'var(--t-caption)', color: 'var(--ink-4)', marginBottom: 18 }}>Reference range: 0.4 – 4.0 mIU/L</div>
 
             <div style={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 12, padding: 16, marginBottom: 20 }}>
-              <div style={{ font: "700 11px 'Inter',sans-serif", color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.03em', marginBottom: 8 }}>
+              <div style={{ font: 'var(--t-micro)', color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.03em', marginBottom: 8 }}>
                 In plain language
               </div>
-              <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-2)', margin: 0 }}>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-2)', margin: 0 }}>
                 Your TSH is a little above the typical range, which can be linked to cycle changes, fatigue, or mood. It's usually not urgent, but worth discussing with a gynecologist.
               </p>
             </div>
 
             <div style={{ marginBottom: 22 }}>
-              <div style={{ font: "700 11px 'Inter',sans-serif", color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.03em', marginBottom: 10 }}>
+              <div style={{ font: 'var(--t-micro)', color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.03em', marginBottom: 10 }}>
                 Trend over time
               </div>
               <svg width="100%" height="90" viewBox="0 0 260 90" role="img" aria-label="TSH trend rising from 3.6 in March to 4.8 now">
@@ -601,7 +601,7 @@ export default function Diagnostics() {
               Discuss with a Gynecologist
             </Link>
           </div>
-          <p style={{ font: "500 12px/1.5 'Inter',sans-serif", color: 'var(--ink-4)', textAlign: 'center', margin: '16px 0 0' }}>
+          <p style={{ font: 'var(--t-caption)', color: 'var(--ink-4)', textAlign: 'center', margin: '16px 0 0' }}>
             Illustrative example. Real reports vary by test and lab partner.
           </p>
         </div>
@@ -634,7 +634,7 @@ export default function Diagnostics() {
                   {s.icon}
                 </svg>
               </div>
-              <div style={{ font: "700 12.5px 'Manrope',sans-serif", color: 'var(--ink-2)' }}>{s.title}</div>
+              <div style={{ font: 'var(--t-title-sm)', color: 'var(--ink-2)' }}>{s.title}</div>
             </div>
           ))}
         </div>
@@ -642,8 +642,8 @@ export default function Diagnostics() {
           <path d="M12 5v13M6 13l6 6 6-6" stroke="var(--ink-4)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <div style={{ maxWidth: 560, margin: '0 auto', background: 'var(--brand-tint)', borderRadius: 'var(--radius-lg)', padding: '26px 30px', textAlign: 'center' }}>
-          <div style={{ font: "800 17px 'Manrope',sans-serif", color: 'var(--brand-dark)', marginBottom: 6 }}>Your Nura Health Record</div>
-          <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-2)', margin: 0 }}>
+          <div style={{ font: 'var(--t-title)', color: 'var(--brand-dark)', marginBottom: 6 }}>Your Nura Health Record</div>
+          <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-2)', margin: 0 }}>
             One continuous history of you, so every conversation with a doctor starts with context, not from zero.
           </p>
         </div>
@@ -658,13 +658,13 @@ export default function Diagnostics() {
               <path d="M12 3l9 4.5v5c0 5-3.6 8.7-9 9.5-5.4-.8-9-4.5-9-9.5v-5L12 3Z" stroke="var(--amber)" strokeWidth="1.6" strokeLinejoin="round" />
               <path d="M12 8v5.5M12 16.5v.1" stroke="var(--amber)" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
-            <p style={{ font: "600 13px/1.6 'Inter',sans-serif", color: '#7A5209', margin: 0 }}>
+            <p style={{ font: 'var(--t-label-sm)', color: '#7A5209', margin: 0 }}>
               Nura's AI helps you understand your body and your results. It does not diagnose conditions or prescribe treatment, that's always a licensed clinician's role.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 20, maxWidth: 820, margin: '0 auto' }}>
             <div className="card" style={{ padding: 28 }}>
-              <div style={{ font: "700 12px 'Inter',sans-serif", color: 'var(--teal)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 16 }}>
+              <div style={{ font: 'var(--t-micro)', color: 'var(--teal)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 16 }}>
                 What Nura AI does
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
@@ -673,13 +673,13 @@ export default function Diagnostics() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ flexShrink: 0, marginTop: 3 }}>
                       <path d="M4 12.5L9.5 18L20 6" stroke="var(--teal)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span style={{ font: "500 14px/1.55 'Inter',sans-serif", color: 'var(--ink-2)' }}>{t}</span>
+                    <span style={{ font: 'var(--t-body-sm)', color: 'var(--ink-2)' }}>{t}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="card" style={{ padding: 28 }}>
-              <div style={{ font: "700 12px 'Inter',sans-serif", color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 16 }}>
+              <div style={{ font: 'var(--t-micro)', color: 'var(--ink-4)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 16 }}>
                 What only a clinician does
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
@@ -688,7 +688,7 @@ export default function Diagnostics() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ flexShrink: 0, marginTop: 3 }}>
                       <path d="M6 11V8a6 6 0 0 1 12 0v3M5 11h14v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9Z" stroke="var(--ink-4)" strokeWidth="1.7" strokeLinejoin="round" />
                     </svg>
-                    <span style={{ font: "500 14px/1.55 'Inter',sans-serif", color: 'var(--ink-2)' }}>{t}</span>
+                    <span style={{ font: 'var(--t-body-sm)', color: 'var(--ink-2)' }}>{t}</span>
                   </div>
                 ))}
               </div>
@@ -700,10 +700,10 @@ export default function Diagnostics() {
       {/* FINAL CTA */}
       <div ref={refCta} className={`reveal ${inCta ? 'in' : ''}`} style={{ background: 'var(--surface-dark)', padding: '80px 32px', textAlign: 'center' }}>
         <div className="container" style={{ maxWidth: 640 }}>
-          <h2 style={{ font: "800 32px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 14px', letterSpacing: '-0.01em' }}>
+          <h2 style={{ font: 'var(--t-h2)', color: '#fff', margin: '0 0 14px', letterSpacing: '-0.01em' }}>
             From concern to clarity to care.
           </h2>
-          <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.65)', margin: '0 0 32px' }}>
+          <p style={{ font: 'var(--t-body)', color: 'rgba(255,255,255,0.65)', margin: '0 0 32px' }}>
             Experience the future of connected women's healthcare with The Nura.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
