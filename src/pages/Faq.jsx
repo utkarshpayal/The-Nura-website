@@ -12,7 +12,7 @@ const groups = [
     items: [
       {
         q: 'Is Nura free?',
-        a: 'Yes. The full Nura app — cycle tracking, AI health assistant, insights, community, and more — is free forever, with no locked features. Professional is a separate, verified add-on for licensed clinicians and wellness creators.',
+        a: 'Yes. Cycle tracking, predictions, daily insights, the AI health assistant, and the community are free forever. A handful of deeper features, like saved AI chat history and document chat, unlock individually if you want them. Nura Professional is a separate, verified add-on for licensed clinicians and wellness creators.',
       },
       {
         q: 'Which devices are supported?',
@@ -37,7 +37,7 @@ const groups = [
       },
       {
         q: 'What is the report chat?',
-        a: 'You can securely upload lab results and prescriptions, and then ask questions about them in plain language. Nura summarizes reports and highlights values worth discussing with your clinician.',
+        a: 'You can securely upload lab results and prescriptions, and then ask questions about them in plain language. Nura summarizes reports and highlights values worth discussing with your clinician. Medical Document Vault & Chat is a Premium feature.',
       },
     ],
   },
@@ -54,7 +54,7 @@ const groups = [
       },
       {
         q: 'What does Partner Sync share?',
-        a: 'Only what you explicitly choose. Partner Sync gives someone you invite gentle context and care reminders on a permission-based basis — never your raw data unless you turn that on.',
+        a: 'Only what you explicitly choose. Partner Sync gives someone you invite gentle context and care reminders on a permission-based basis — never your raw data unless you turn that on. Partner Connect is a Premium feature.',
       },
     ],
   },
