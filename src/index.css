@@ -7,6 +7,9 @@
   --brand-dark: #9E2F58;
   --brand-tint: #FCEEF3;
   --brand-tint-2: #F7DCE6;
+  /* The logo's own deepest pink, used for the wordmark next to it. Only for
+     large bold text: it's 3:1 on the page background, too light for body copy. */
+  --logo-pink: #E36A81;
   --accent: #6A5BC9;
   --accent-tint: #EFECFB;
   --teal: #0F7A64;
@@ -252,9 +255,10 @@ textarea:focus {
 }
 .nav-link:hover { color: var(--ink) !important; }
 .nav-link.active {
-  color: var(--ink);
+  color: var(--brand);
   font-weight: 600;
 }
+.nav-link.active:hover { color: var(--brand-dark) !important; }
 .nav-link.active::after {
   content: '';
   position: absolute;
@@ -432,35 +436,27 @@ textarea:focus {
 @media (max-width: 380px) {
   .phone-shell {
     width: 230px !important;
-    height: 469px !important;
   }
 }
 
-@media (max-width: 480px) {
-  .phone-shell .card {
-    left: 0 !important;
-  }
-}
-
-/* Phone device frame — screenshots already include their own device bezel,
-   so this just sizes/clips the image and adds depth; no extra chrome on top. */
+/* Phone device frame — draws a uniform bezel around the cropped screenshot
+   (see components/PhoneFrame.jsx for why the baked-in one is cropped off). */
 .phone-frame {
   position: relative;
   box-sizing: border-box;
   max-width: 100%;
   margin: 0 auto;
-  overflow: hidden;
-  background: #0b0b0d;
+  background: #1B1318;
   box-shadow:
     0 0 0 1px rgba(0,0,0,0.06),
     var(--shadow-lg);
 }
 .phone-frame__screen {
   position: relative;
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
+  overflow: hidden;
+  background: #FDF4F6;
+  /* keeps the rounded clip crisp in Safari while the image scales */
+  isolation: isolate;
 }
 
 /* Store download badges (react-mobile-app-button overrides) */

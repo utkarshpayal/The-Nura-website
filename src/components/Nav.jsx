@@ -58,8 +58,8 @@ export default function Nav() {
         }}
       >
         <Link to="/" aria-label="Nura home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Logo size={36} />
-          <span style={{ font: "600 23px/1 var(--font-display)", letterSpacing: '-0.02em', color: 'var(--ink)' }}>The Nura</span>
+          <Logo size={44} />
+          <span style={{ font: "800 23px/1 var(--font-display)", letterSpacing: '-0.02em', color: 'var(--logo-pink)' }}>The Nura</span>
         </Link>
 
         <div className="nav-desktop-links" style={{ alignItems: 'center', gap: 30 }}>
@@ -115,7 +115,7 @@ export default function Nav() {
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
-              style={{ font: 'var(--t-label)', color: active ? 'var(--ink)' : 'var(--ink-3)' }}
+              style={{ font: 'var(--t-label)', color: active ? 'var(--brand)' : 'var(--ink-3)' }}
             >
               {l.label}
             </Link>
