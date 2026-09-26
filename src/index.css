@@ -590,3 +590,16 @@ textarea:focus {
 @media (min-width: 1040px) {
   .safety-grid { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* Marks a paid feature wherever it's described outside the Pricing page,
+   so nobody downloads the app expecting it free. */
+.premium-tag {
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--brand-tint);
+  color: var(--brand-dark);
+  font: 700 11px/1.5 var(--font-sans);
+  vertical-align: middle;
+}

@@ -36,7 +36,7 @@ const pillars = [
     bg: 'var(--teal-tint)',
     icon: <path d="M12 15V3M12 15l-4-4M12 15l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="var(--teal)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />,
     title: 'Export or delete, instantly',
-    body: 'Download a full PDF health report anytime, or permanently delete your account and all data in one tap.',
+    body: 'Request an export of your data from Settings anytime, or permanently delete your account and all associated data.',
   },
 ];
 

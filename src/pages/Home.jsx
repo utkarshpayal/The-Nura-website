@@ -41,7 +41,7 @@ const testimonials = [
   {
     quote: 'Booking a video consultation in-app, then getting a plain-language summary of my report, saved me so much anxiety.',
     name: 'Anshika R.',
-    tag: 'Nura Professional consultation',
+    tag: 'Booked a video consultation',
   },
 ];
 
@@ -94,6 +94,7 @@ const featureCards = [
       </svg>
     ),
     title: 'Documents & report chat',
+    badge: 'Premium',
     body: 'Store lab results and prescriptions securely, then ask your reports questions in plain language, in any of 11+ languages.',
   },
   {
@@ -117,7 +118,7 @@ const featureCards = [
       </svg>
     ),
     title: 'Partner Sync & community',
-    body: 'Share gentle context with a partner on your terms, or connect anonymously with people navigating similar experiences.',
+    body: 'Join the anonymous community for free. With Premium, invite a partner into a permission-based view of your cycle.',
   },
 ];
 // Same promises the Privacy page makes, surfaced on Home so the trust story
@@ -137,7 +138,7 @@ const safetyPoints = [
   },
   {
     title: 'Export or delete anytime',
-    body: 'Download a full health report, or permanently delete your account and data.',
+    body: 'Request an export of your data from Settings, or permanently delete your account and data.',
   },
 ];
 
@@ -197,7 +198,7 @@ export default function Home() {
               Only in Nura: real government health scheme guidance
             </div>
             <div style={{ font: 'var(--t-caption)', color: 'var(--ink-3)' }}>
-              Browse, check eligibility, and track applications for real reproductive-health benefits, right inside the app.
+              Browse reproductive-health benefits and check your eligibility for free. Premium helps you submit and track applications.
             </div>
           </div>
           <span style={{ font: 'var(--t-label-sm)', color: 'var(--brand)', flexShrink: 0, marginLeft: 'auto' }}>Learn more →</span>
@@ -213,7 +214,7 @@ export default function Home() {
               Coming soon: Nura Diagnostics
             </div>
             <div style={{ font: 'var(--t-caption)', color: 'var(--ink-3)' }}>
-              Home sample collection, digital lab reports, and a straight line from results to a gynecologist, all connected.
+              Home sample collection, digital lab reports, and a straight line from results to a gynaecologist, all connected.
             </div>
           </div>
           <span style={{ font: 'var(--t-label-sm)', color: 'var(--brand)', flexShrink: 0, marginLeft: 'auto' }}>Learn more →</span>
@@ -238,9 +239,7 @@ export default function Home() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 6 }}>
                   <h3 style={{ font: 'var(--t-title)', color: 'var(--ink)', margin: 0 }}>{f.title}</h3>
                   {f.badge && (
-                    <span style={{ font: 'var(--t-micro)', color: 'var(--amber)', background: 'var(--amber-tint)', borderRadius: 999, padding: '3px 9px', flexShrink: 0 }}>
-                      {f.badge}
-                    </span>
+                    <span className="premium-tag">{f.badge}</span>
                   )}
                 </div>
                 <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0, maxWidth: 320 }}>{f.body}</p>
@@ -328,7 +327,7 @@ export default function Home() {
             Start understanding your health today
           </h2>
           <p style={{ font: 'var(--t-body)', color: 'rgba(255,255,255,0.65)', margin: '0 0 16px' }}>
-            Free to download. Core tracking and AI insights, always free, deeper features unlock individually as you need them.
+            Free to download. Core tracking and AI insights are always free. Deeper features unlock one at a time, or all together with Premium.
           </p>
           <p style={{ font: 'var(--t-label-sm)', margin: '0 0 32px' }}>
             <Link to="/pricing" style={{ color: '#fff', textDecoration: 'underline' }}>See what's free vs. paid →</Link>

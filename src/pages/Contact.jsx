@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
@@ -10,13 +11,19 @@ import useDocumentMeta from '../hooks/useDocumentMeta';
 const MESSAGE_MIN_LENGTH = 20;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Must match the backend's allowed list (marketingSchema.js and the
+// ContactMessage model in The-Nura-Backend), or the API rejects the message.
+const PROFESSIONAL_TOPIC = 'Apply for Nura Professional';
 const topics = [
   'General question',
+  PROFESSIONAL_TOPIC,
   'Privacy & data',
   'Bug report',
   'Partnership / press',
-  'Billing (Professional)',
+  'Billing (Premium)',
 ];
+// /contact?topic=professional opens the form with that topic already chosen.
+const TOPIC_PARAMS = { professional: PROFESSIONAL_TOPIC };
 
 const channels = [
   {
@@ -56,7 +63,9 @@ export default function Contact() {
 
   const [refForm, inForm] = useReveal();
   const [refChannels, inChannels] = useReveal();
-  const [form, setForm] = useState({ name: '', email: '', topic: topics[0], message: '' });
+  const [searchParams] = useSearchParams();
+  const initialTopic = TOPIC_PARAMS[searchParams.get('topic')] || topics[0];
+  const [form, setForm] = useState({ name: '', email: '', topic: initialTopic, message: '' });
   const [touched, setTouched] = useState({});
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -100,7 +109,7 @@ export default function Contact() {
   };
 
   const resetForm = () => {
-    setForm({ name: '', email: '', topic: topics[0], message: '' });
+    setForm({ name: '', email: '', topic: initialTopic, message: '' });
     setTouched({});
     setSent(false);
   };
@@ -229,7 +238,11 @@ export default function Contact() {
                     value={form.message}
                     onChange={update('message')}
                     onBlur={touch('message')}
-                    placeholder="How can we help?"
+                    placeholder={
+                      form.topic === PROFESSIONAL_TOPIC
+                        ? 'Tell us your qualification, medical registration number (for clinicians), city, and whether you want a Creator Profile or Gynac Onboarding listing.'
+                        : 'How can we help?'
+                    }
                     style={{ ...fieldStyle(messageValid, 'message'), resize: 'vertical' }}
                   />
                 </div>

@@ -77,7 +77,7 @@ const journeySteps = [
     ),
   },
   {
-    label: 'Gynecologist Consultation',
+    label: 'Gynaecologist Consultation',
     blurb: 'Discuss results with a real clinician',
     icon: (
       <>
@@ -121,7 +121,7 @@ const concernPathways = [
   },
   {
     title: 'PCOS evaluation',
-    body: 'A structured look at the symptom patterns and markers commonly associated with PCOS, to help you and your gynecologist decide what to check next.',
+    body: 'A structured look at the symptom patterns and markers commonly associated with PCOS, to help you and your gynaecologist decide what to check next.',
     icon: (
       <>
         <circle cx="9" cy="9" r="3.2" />
@@ -164,7 +164,7 @@ const connectedPoints = [
   'One assessment that already knows your cycle and symptom history',
   'A pathway matched to your concern, not a generic panel',
   'Results that land inside the app you already track in',
-  'A gynecologist who sees the full picture before you even speak',
+  'A gynaecologist who sees the full picture before you even speak',
 ];
 
 const trendPoints = [
@@ -174,7 +174,7 @@ const trendPoints = [
 ];
 const trendLine = trendPoints.map((p) => `${p.x},${p.y}`).join(' ');
 
-const careFlowSteps = ['Report', 'Gynecologist', 'Care Plan', 'Follow-up'];
+const careFlowSteps = ['Report', 'Gynaecologist', 'Care Plan', 'Follow-up'];
 
 const recordSources = [
   {
@@ -212,7 +212,7 @@ const recordSources = [
 const aiDoes = [
   'Explains medical terminology and lab values in plain language',
   'Summarizes reports and highlights what has changed over time',
-  'Helps you prepare questions to bring to your gynecologist',
+  'Helps you prepare questions to bring to your gynaecologist',
 ];
 
 const clinicianDoes = [
@@ -404,7 +404,7 @@ function MiniFlow({ items }) {
 export default function Diagnostics() {
   useDocumentMeta(
     "Nura Diagnostics: Women's Health Diagnostics & Home Sample Collection | Nura",
-    'Nura Diagnostics connects women’s health concerns to clinically designed diagnostic pathways, home sample collection, easy-to-understand lab reports, and gynecologist consultations, all inside one connected health record.'
+    'Nura Diagnostics connects women’s health concerns to clinically designed diagnostic pathways, home sample collection, easy-to-understand lab reports, and gynaecologist consultations, all inside one connected health record.'
   );
 
   const [refFrag, inFrag] = useReveal();
@@ -422,12 +422,12 @@ export default function Diagnostics() {
 
       {/* HERO */}
       <div className="container" style={{ padding: '76px 32px 8px', textAlign: 'center' }}>
-        <div className="eyebrow" style={{ marginBottom: 20 }}>Nura Diagnostics · An expanding capability</div>
+        <div className="eyebrow" style={{ marginBottom: 20 }}>Nura Diagnostics · Coming soon</div>
         <h1 style={{ font: 'var(--t-display)', color: 'var(--ink)', margin: '0 auto 18px', maxWidth: 760, letterSpacing: '-0.02em' }}>
           From concern to clarity to care.
         </h1>
         <p style={{ font: 'var(--t-lead)', color: 'var(--ink-3)', margin: '0 auto 32px', maxWidth: 600 }}>
-          Connect your women's health journey, from symptoms and diagnostics to reports and gynecological care, all in one place.
+          Connect your women's health journey, from symptoms and diagnostics to reports and gynaecological care, all in one place.
         </p>
         <a href="#journey" className="btn btn-brand" style={{ padding: '15px 28px' }}>
           Explore Nura
@@ -575,7 +575,7 @@ export default function Diagnostics() {
                 In plain language
               </div>
               <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-2)', margin: 0 }}>
-                Your TSH is a little above the typical range, which can be linked to cycle changes, fatigue, or mood. It's usually not urgent, but worth discussing with a gynecologist.
+                Your TSH is a little above the typical range, which can be linked to cycle changes, fatigue, or mood. It's usually not urgent, but worth discussing with a gynaecologist.
               </p>
             </div>
 
@@ -589,7 +589,7 @@ export default function Diagnostics() {
                 {trendPoints.map((p) => (
                   <g key={p.label}>
                     <circle cx={p.x} cy={p.y} r="4" fill="var(--surface)" stroke="var(--teal)" strokeWidth="2.5" />
-                    <text x={p.x} y="86" textAnchor="middle" fontSize="9" fill="var(--ink-4)" fontFamily="Inter, sans-serif" fontWeight="600">
+                    <text x={p.x} y="86" textAnchor="middle" fontSize="9" fill="var(--ink-4)" fontFamily="Nunito Sans, sans-serif" fontWeight="600">
                       {p.label}
                     </text>
                   </g>
@@ -598,7 +598,7 @@ export default function Diagnostics() {
             </div>
 
             <Link to="/download" className="btn btn-brand" style={{ width: '100%' }}>
-              Discuss with a Gynecologist
+              Discuss with a Gynaecologist
             </Link>
           </div>
           <p style={{ font: 'var(--t-caption)', color: 'var(--ink-4)', textAlign: 'center', margin: '16px 0 0' }}>
@@ -613,7 +613,7 @@ export default function Diagnostics() {
           <SectionIntro
             eyebrow="From results to care"
             title="Results should lead to care"
-            body="Your gynecologist reviews your relevant cycle history, symptoms, medical documents, and diagnostic results together, then recommends the right next step, whether that's a treatment discussion, further investigation, or a follow-up plan."
+            body="Your gynaecologist reviews your relevant cycle history, symptoms, medical documents, and diagnostic results together, then recommends the right next step, whether that's a treatment discussion, further investigation, or a follow-up plan."
           />
           <MiniFlow items={careFlowSteps} />
         </div>

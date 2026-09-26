@@ -55,7 +55,7 @@ const uniqueHighlights = [
   {
     badge: 'Only in Nura',
     title: 'Government schemes & benefits',
-    body: 'Browse real Indian government health schemes (national + state) for reproductive and menstrual health, get an honest eligibility check, find your nearest government hospital, and track every application, without leaving the app. Almost no period app offers this.',
+    body: 'Browse real Indian government health schemes (national + state) for reproductive and menstrual health, get an honest eligibility check, and find your nearest government hospital, free. With Premium, submit and track applications without leaving the app. Almost no period app offers this.',
     icon: (
       <>
         <path d="M4 21h16M5 21V10.5L12 6l7 4.5V21M9 21v-6h6v6" stroke="#fff" strokeWidth="1.7" strokeLinejoin="round" />
@@ -66,6 +66,7 @@ const uniqueHighlights = [
   {
     badge: 'Doctor-ready, automatically',
     title: 'AI-written health report',
+    premium: true,
     body: "Months of logs and documents, turned into a written summary a real doctor can actually use, not raw data they have to decode themselves in a five-minute appointment.",
     icon: (
       <>
@@ -77,6 +78,7 @@ const uniqueHighlights = [
   {
     badge: 'Beyond "share my data"',
     title: 'Smart partner care suggestions',
+    premium: true,
     body: 'Partner Sync doesn’t just show a partner a phase label, it translates it into real guidance, like "she’s feeling anxious today, a calm evening would help", so caring about you doesn’t require guesswork.',
     icon: (
       <path d="M20.8 8.6c0 4.8-8.8 10.4-8.8 10.4S3.2 13.4 3.2 8.6a4.8 4.8 0 0 1 8.8-2.6 4.8 4.8 0 0 1 8.8 2.6Z" stroke="#fff" strokeWidth="1.7" strokeLinejoin="round" />
@@ -98,12 +100,14 @@ const comparisonRows = [
 const moreFeatures = [
   {
     title: 'Health documents & AI intelligence',
+    premium: true,
     body: 'Store lab results, prescriptions, and scans securely. Nura summarizes them and flags abnormal values automatically.',
     bg: 'var(--amber-tint)',
     icon: <path d="M4 19V6a2 2 0 0 1 2-2h11l3 3v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke="var(--amber)" strokeWidth="1.7" strokeLinejoin="round" />,
   },
   {
     title: 'Voice check-in calls',
+    premium: true,
     body: 'A real outbound phone call from Nura, on demand or on a schedule tied to your cycle, that checks in and logs what you tell it.',
     bg: 'var(--teal-tint)',
     icon: <path d="M6.5 3.5c1 0 2.6 2.2 2.6 3.4 0 1-1.4 1.7-1.4 2.6 0 1.8 3 4.8 4.8 4.8.9 0 1.6-1.4 2.6-1.4 1.2 0 3.4 1.6 3.4 2.6 0 1.6-1.9 3-3.4 3-5 0-11-6-11-11 0-1.5 1.4-3.4 3-3.4Z" stroke="var(--teal)" strokeWidth="1.7" strokeLinejoin="round" />,
@@ -116,6 +120,7 @@ const moreFeatures = [
   },
   {
     title: 'Symptom checker & early screening',
+    premium: true,
     body: 'A guided questionnaire that flags possible signs of PCOS, endometriosis, fibroids, or thyroid issues early, and keeps a history of past check-ins.',
     bg: 'var(--brand-tint)',
     icon: (
@@ -127,6 +132,7 @@ const moreFeatures = [
   },
   {
     title: 'Personalized symptom predictions',
+    premium: true,
     body: '"You’re likely to get headaches around day 3" — likelihood by cycle phase, calculated from your own history, not a generic chart.',
     bg: 'var(--teal-tint)',
     icon: <path d="M4 18l5-6 4 3 7-9M20 4h-4M20 4v4" stroke="var(--teal)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />,
@@ -157,6 +163,7 @@ const moreFeatures = [
   },
   {
     title: 'Nominate Buddy',
+    premium: true,
     body: 'AI matches you anonymously with people who share similar cycle patterns or symptoms, for private peer support.',
     bg: 'var(--brand-tint)',
     icon: <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM15 8a2.4 2.4 0 1 0 0-4.8M3 19a6 6 0 0 1 12 0M14.5 14.5c2.5.2 4.5 2.1 4.5 4.5" stroke="var(--brand-dark)" strokeWidth="1.7" strokeLinecap="round" />,
@@ -230,7 +237,9 @@ export default function Features() {
                 <div style={{ width: 40, height: 40, borderRadius: 11, background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">{f.icon}</svg>
                 </div>
-                <h3 style={{ font: 'var(--t-title)', color: '#fff', margin: '0 0 8px' }}>{f.title}</h3>
+                <h3 style={{ font: 'var(--t-title)', color: '#fff', margin: '0 0 8px' }}>
+                  {f.title} {f.premium && <span className="premium-tag">Premium</span>}
+                </h3>
                 <p style={{ font: 'var(--t-body-sm)', color: 'rgba(255,255,255,0.7)', margin: 0 }}>{f.body}</p>
               </div>
             ))}
@@ -269,7 +278,7 @@ export default function Features() {
       <FeatureRow
         eyebrow="Forest & partner sync"
         title="Wellness that grows with you and the people you choose"
-        body="Daily logging and healthy habits grow a tree in your personal Forest. Invite a partner into a permission-based space where they get gentle context and care reminders, never your raw data, unless you choose to share it."
+        body="Daily logging and healthy habits grow a tree in your personal Forest. With Premium, invite a partner into a permission-based space where they get gentle context and care reminders, never your raw data, unless you choose to share it."
         tags={['Gamified wellness', 'Streaks & rewards', 'Permission-based sharing']}
         img={screenWellbeing}
         alt="Wellbeing and forest"
@@ -318,7 +327,7 @@ export default function Features() {
         <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 44px' }}>
           <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>And a lot more, built in</h2>
           <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: 0 }}>
-            Nura is a full platform, not a single feature. Here's what else comes with it.
+            Nura is a full platform, not a single feature. Features marked Premium are paid, individually or all together.
           </p>
         </div>
         <div className="more-features-grid">
@@ -328,7 +337,9 @@ export default function Features() {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none">{f.icon}</svg>
               </div>
               <div>
-                <h3 style={{ font: 'var(--t-title-sm)', color: 'var(--ink)', margin: '0 0 4px' }}>{f.title}</h3>
+                <h3 style={{ font: 'var(--t-title-sm)', color: 'var(--ink)', margin: '0 0 4px' }}>
+                  {f.title} {f.premium && <span className="premium-tag">Premium</span>}
+                </h3>
                 <p style={{ font: 'var(--t-caption)', color: 'var(--ink-3)', margin: 0 }}>{f.body}</p>
               </div>
             </div>
@@ -340,7 +351,7 @@ export default function Features() {
       <div ref={refCta} className={`reveal ${inCta ? 'in' : ''}`} style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
         <h2 style={{ font: 'var(--t-h2)', color: '#fff', margin: '0 0 12px', letterSpacing: '-0.01em' }}>Ready to feel supported?</h2>
         <p style={{ font: 'var(--t-body-sm)', color: 'rgba(255,255,255,0.6)', margin: '0 0 28px' }}>
-          Core tracking, predictions, and daily insights are free, always. A handful of deeper features unlock individually as you need them. <Link to="/pricing" style={{ color: '#fff', textDecoration: 'underline' }}>See pricing →</Link>
+          Core tracking, predictions, and daily insights are free, always. Deeper features unlock one at a time, or all together with Premium. <Link to="/pricing" style={{ color: '#fff', textDecoration: 'underline' }}>See pricing →</Link>
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>
           <GooglePlayButton
