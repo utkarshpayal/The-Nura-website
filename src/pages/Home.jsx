@@ -10,6 +10,7 @@ import screenHome from '../assets/images/screens/screen-home.webp';
 import screenInsights from '../assets/images/screens/screen-insights.webp';
 import screenWellbeing from '../assets/images/screens/screen-wellbeing.webp';
 import screenBuddy from '../assets/images/screens/screen-buddy.webp';
+import screenApplock from '../assets/images/screens/screen-applock.webp';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const trustPoints = [
@@ -31,19 +32,16 @@ const testimonials = [
     quote: 'The AI report chat helped me understand my hormone panel before my appointment. I finally knew what to ask my doctor.',
     name: 'Jinal M.',
     tag: 'Using Nura for 2 months',
-    initial: 'J',
   },
   {
     quote: 'Partner Sync means my husband gets gentle context without me having to explain everything every month.',
     name: 'Priya R.',
     tag: 'Partner Sync user',
-    initial: 'P',
   },
   {
     quote: 'Booking a video consultation in-app, then getting a plain-language summary of my report, saved me so much anxiety.',
     name: 'Anshika R.',
     tag: 'Nura Professional consultation',
-    initial: 'A',
   },
 ];
 
@@ -122,6 +120,27 @@ const featureCards = [
     body: 'Share gentle context with a partner on your terms, or connect anonymously with people navigating similar experiences.',
   },
 ];
+// Same promises the Privacy page makes, surfaced on Home so the trust story
+// is visible before someone has to go looking for it.
+const safetyPoints = [
+  {
+    title: 'Never sold, never shared',
+    body: 'Your health data is never sold to advertisers or data brokers.',
+  },
+  {
+    title: 'Encrypted on your device',
+    body: 'Logs are encrypted on your phone, not just in transit, behind PIN or Face ID.',
+  },
+  {
+    title: 'Reviewed with OB-GYNs',
+    body: 'Health guidance is reviewed with clinicians, and consultations are with verified gynaecologists.',
+  },
+  {
+    title: 'Export or delete anytime',
+    body: 'Download a full health report, or permanently delete your account and data.',
+  },
+];
+
 // Government schemes & benefits is deliberately not repeated here — it
 // already has its own dedicated callout card directly above this grid.
 
@@ -130,6 +149,7 @@ export default function Home() {
 
   const [refFeatures, inFeatures] = useReveal();
   const [refScreens, inScreens] = useReveal();
+  const [refSafety, inSafety] = useReveal();
   const [refTestimonials, inTestimonials] = useReveal();
   const [refDownload, inDownload] = useReveal();
 
@@ -138,16 +158,16 @@ export default function Home() {
       <Nav />
 
       {/* HERO */}
-      <div className="container" style={{ padding: '76px 32px 48px', display: 'flex', alignItems: 'center', gap: 56, flexWrap: 'wrap' }}>
+      <div className="container" style={{ padding: '72px 32px 64px', display: 'flex', alignItems: 'center', gap: 56, flexWrap: 'wrap' }}>
         <div style={{ flex: '1 1 460px', minWidth: 0 }}>
-          <h1 style={{ font: "800 48px/1.15 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 20px', letterSpacing: '-0.02em' }}>
+          <h1 style={{ font: 'var(--t-display)', color: 'var(--ink)', margin: '0 0 20px' }}>
             Understand your body. Get answers you can trust.
           </h1>
-          <p style={{ font: "500 17px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 32px', maxWidth: 500 }}>
+          <p style={{ font: 'var(--t-lead)', color: 'var(--ink-3)', margin: '0 0 32px', maxWidth: 500 }}>
             Nura is built on an AI and ML engine that learns your cycle: tracking, predictions, and real gynaecologist
             consultations in one private, secure app so you always know what's going on and what to do about it.
           </p>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 36 }}>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 28 }}>
             <Link to="/download" className="btn btn-brand" style={{ padding: '15px 26px' }}>
               Download the app
             </Link>
@@ -155,45 +175,12 @@ export default function Home() {
               Explore features
             </Link>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 24px' }}>
-            {trustPoints.map((t) => (
-              <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0, whiteSpace: 'nowrap', font: "600 13px 'Inter',sans-serif", color: 'var(--ink-3)' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-                  <path d="M4 12.5L9.5 18L20 6" stroke="var(--teal)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                {t}
-              </span>
-            ))}
-          </div>
+          <p style={{ font: 'var(--t-caption)', color: 'var(--ink-4)', margin: 0 }}>{trustPoints.join(' · ')}</p>
         </div>
 
         <div style={{ flex: '1 1 280px', minWidth: 240, display: 'flex', justifyContent: 'center' }}>
-          <div className="phone-shell" style={{ position: 'relative', width: 290, maxWidth: '100%' }}>
+          <div className="phone-shell" style={{ width: 290, maxWidth: '100%' }}>
             <PhoneFrame src={screenHome} alt="Nura cycle dashboard" width={290} loading="eager" />
-            <div
-              className="card"
-              style={{
-                position: 'absolute',
-                left: -28,
-                bottom: 44,
-                padding: '12px 16px',
-                boxShadow: 'var(--shadow-md)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-                maxWidth: 190,
-              }}
-            >
-              <div style={{ width: 34, height: 34, borderRadius: 10, background: 'var(--teal-tint)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3c-3 3-5 5.8-5 9a5 5 0 0 0 10 0c0-3.2-2-6-5-9Z" stroke="var(--teal)" strokeWidth="1.8" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <div>
-                <div style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink)' }}>Next period</div>
-                <div style={{ font: "500 12px 'Inter',sans-serif", color: 'var(--ink-3)' }}>In 5 days</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -205,21 +192,15 @@ export default function Home() {
           className="card card-hover"
           style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px 18px', padding: '20px 24px', textDecoration: 'none' }}
         >
-          <div className="icon-tile" style={{ background: 'var(--amber-tint)', flexShrink: 0 }}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M4 21h16M5 21V10.5L12 6l7 4.5V21M9 21v-6h6v6" stroke="var(--amber)" strokeWidth="1.7" strokeLinejoin="round" />
-              <path d="M12 6V3" stroke="var(--amber)" strokeWidth="1.7" strokeLinecap="round" />
-            </svg>
-          </div>
           <div style={{ flex: '3 1 200px' }}>
-            <div style={{ font: "700 15px 'Inter',sans-serif", color: 'var(--ink)' }}>
+            <div style={{ font: 'var(--t-label)', color: 'var(--ink)' }}>
               Only in Nura: real government health scheme guidance
             </div>
-            <div style={{ font: "500 13px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>
+            <div style={{ font: 'var(--t-caption)', color: 'var(--ink-3)' }}>
               Browse, check eligibility, and track applications for real reproductive-health benefits, right inside the app.
             </div>
           </div>
-          <span style={{ font: "700 13px 'Inter',sans-serif", color: 'var(--brand)', flexShrink: 0, marginLeft: 'auto' }}>Learn more →</span>
+          <span style={{ font: 'var(--t-label-sm)', color: 'var(--brand)', flexShrink: 0, marginLeft: 'auto' }}>Learn more →</span>
         </Link>
 
         <Link
@@ -227,51 +208,42 @@ export default function Home() {
           className="card card-hover"
           style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px 18px', padding: '20px 24px', textDecoration: 'none' }}
         >
-          <div className="icon-tile" style={{ background: 'var(--teal-tint)', flexShrink: 0 }}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M10 3h4M10.5 3v5.2L6 17a2 2 0 0 0 1.8 2.9h8.4A2 2 0 0 0 18 17l-4.5-8.8V3" stroke="var(--teal)" strokeWidth="1.7" strokeLinejoin="round" />
-              <path d="M8 15h8" stroke="var(--teal)" strokeWidth="1.7" strokeLinecap="round" />
-            </svg>
-          </div>
           <div style={{ flex: '3 1 200px' }}>
-            <div style={{ font: "700 15px 'Inter',sans-serif", color: 'var(--ink)' }}>
+            <div style={{ font: 'var(--t-label)', color: 'var(--ink)' }}>
               Coming soon: Nura Diagnostics
             </div>
-            <div style={{ font: "500 13px/1.5 'Inter',sans-serif", color: 'var(--ink-3)' }}>
+            <div style={{ font: 'var(--t-caption)', color: 'var(--ink-3)' }}>
               Home sample collection, digital lab reports, and a straight line from results to a gynecologist, all connected.
             </div>
           </div>
-          <span style={{ font: "700 13px 'Inter',sans-serif", color: 'var(--brand)', flexShrink: 0, marginLeft: 'auto' }}>Learn more →</span>
+          <span style={{ font: 'var(--t-label-sm)', color: 'var(--brand)', flexShrink: 0, marginLeft: 'auto' }}>Learn more →</span>
         </Link>
       </div>
 
       {/* FEATURES */}
       <div ref={refFeatures} className={`reveal ${inFeatures ? 'in' : ''} container`} style={{ padding: '48px 32px 40px' }}>
         <div style={{ maxWidth: 620, margin: '0 auto 48px', textAlign: 'center' }}>
-          <h2 style={{ font: "800 32px/1.25 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
+          <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>
             One app for your whole cycle
           </h2>
-          <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 20px' }}>
+          <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: '0 0 20px' }}>
             From daily logging to doctor consultations, everything is designed around how your body actually feels.
           </p>
-          <Link to="/features" style={{ font: "700 14px 'Inter',sans-serif" }}>See all features →</Link>
+          <Link to="/features" style={{ font: 'var(--t-label)' }}>See all features →</Link>
         </div>
         <div className="home-features-grid">
-          {featureCards.map((f, i) => (
-            <div key={f.title} className="feature-row" style={{ display: 'flex', gap: 18, padding: '26px 0', borderTop: '1px solid var(--line)' }}>
-              <span style={{ font: "700 13px 'Inter',sans-serif", color: 'var(--ink-4)', flexShrink: 0, paddingTop: 2, fontVariantNumeric: 'tabular-nums' }}>
-                {String(i + 1).padStart(2, '0')}
-              </span>
+          {featureCards.map((f) => (
+            <div key={f.title} style={{ padding: '26px 0', borderTop: '1px solid var(--line)' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 6 }}>
-                  <h3 style={{ font: "700 16px 'Manrope',sans-serif", color: 'var(--ink)', margin: 0 }}>{f.title}</h3>
+                  <h3 style={{ font: 'var(--t-title)', color: 'var(--ink)', margin: 0 }}>{f.title}</h3>
                   {f.badge && (
-                    <span style={{ font: "700 10px 'Inter',sans-serif", color: 'var(--amber)', background: 'var(--amber-tint)', borderRadius: 999, padding: '3px 9px', flexShrink: 0 }}>
+                    <span style={{ font: 'var(--t-micro)', color: 'var(--amber)', background: 'var(--amber-tint)', borderRadius: 999, padding: '3px 9px', flexShrink: 0 }}>
                       {f.badge}
                     </span>
                   )}
                 </div>
-                <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0, maxWidth: 320 }}>{f.body}</p>
+                <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0, maxWidth: 320 }}>{f.body}</p>
               </div>
             </div>
           ))}
@@ -282,8 +254,8 @@ export default function Home() {
       <div id="screens" ref={refScreens} className={`reveal ${inScreens ? 'in' : ''}`} style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '88px 32px' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 48px' }}>
-            <h2 style={{ font: "800 32px/1.25 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>A look inside the app</h2>
-            <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+            <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: '0 0 12px', letterSpacing: '-0.01em' }}>A look inside the app</h2>
+            <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: 0 }}>
               Clear, uncluttered screens designed to make daily tracking feel effortless.
             </p>
           </div>
@@ -291,7 +263,7 @@ export default function Home() {
             {screenshots.map((s) => (
               <div key={s.id} style={{ width: 200 }}>
                 <PhoneFrame src={s.src} alt={s.label} width={200} />
-                <p style={{ textAlign: 'center', font: "700 13.5px 'Inter',sans-serif", color: 'var(--ink)', margin: '14px 0 0' }}>{s.label}</p>
+                <p style={{ textAlign: 'center', font: 'var(--t-label-sm)', color: 'var(--ink)', margin: '14px 0 0' }}>{s.label}</p>
               </div>
             ))}
           </div>
@@ -300,41 +272,49 @@ export default function Home() {
 
       {/* WHY DIFFERENT — a single confident statement, not another grid */}
       <div className="container" style={{ padding: '96px 32px', textAlign: 'center' }}>
-        <div className="eyebrow" style={{ marginBottom: 24 }}>Why Nura is different</div>
-        <p
-          style={{
-            font: "700 30px/1.45 'Manrope',sans-serif",
-            color: 'var(--ink)',
-            margin: '0 auto 28px',
-            maxWidth: 780,
-            letterSpacing: '-0.01em',
-          }}
-        >
-          Most apps stop at <span style={{ color: 'var(--ink-4)', fontWeight: 500 }}>a calendar and a guess.</span> Nura adds{' '}
-          <span style={{ color: 'var(--brand)' }}>real doctors</span>, a{' '}
-          <span style={{ color: 'var(--teal)' }}>doctor-ready report</span>, and{' '}
-          <span style={{ color: 'var(--accent)' }}>government benefits</span> you may not know you qualify for.
+        <p style={{ font: 'var(--t-h2)', letterSpacing: '-0.02em', color: 'var(--ink)', margin: '0 auto 24px', maxWidth: 780 }}>
+          Most apps stop at <span style={{ color: 'var(--ink-4)' }}>a calendar and a guess.</span> Nura adds real doctors, a
+          doctor-ready report, and government benefits you may not know you qualify for.
         </p>
-        <Link to="/features" style={{ font: "700 14px 'Inter',sans-serif" }}>See the full comparison →</Link>
+        <Link to="/features" style={{ font: 'var(--t-label)' }}>See the full comparison →</Link>
+      </div>
+
+      {/* PRIVACY & SAFETY */}
+      <div ref={refSafety} className={`reveal ${inSafety ? 'in' : ''}`} style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '88px 32px' }}>
+        <div className="container" style={{ padding: 0, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '48px 72px' }}>
+          <div style={{ flex: '0 1 240px', margin: '0 auto' }}>
+            <PhoneFrame src={screenApplock} alt="Nura App Lock screen" width={240} />
+          </div>
+          <div style={{ flex: '1 1 420px', minWidth: 0 }}>
+            <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: '0 0 12px' }}>Your health data stays yours</h2>
+            <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', margin: '0 0 28px', maxWidth: 520 }}>
+              Cycle and symptom data is some of the most personal information you have. We treat it that way.
+            </p>
+            <dl style={{ margin: '0 0 28px' }}>
+              {safetyPoints.map((p) => (
+                <div key={p.title} style={{ padding: '16px 0', borderTop: '1px solid var(--line)' }}>
+                  <dt style={{ font: 'var(--t-title-sm)', color: 'var(--ink)', marginBottom: 4 }}>{p.title}</dt>
+                  <dd style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0 }}>{p.body}</dd>
+                </div>
+              ))}
+            </dl>
+            <Link to="/privacy" style={{ font: 'var(--t-label)' }}>How we protect your data →</Link>
+          </div>
+        </div>
       </div>
 
       {/* TESTIMONIALS */}
       <div ref={refTestimonials} className={`reveal ${inTestimonials ? 'in' : ''} container`} style={{ padding: '88px 32px' }}>
-        <h2 style={{ font: "800 32px/1.25 'Manrope',sans-serif", color: 'var(--ink)', textAlign: 'center', margin: '0 0 48px', letterSpacing: '-0.01em' }}>
-          What people track with Nura
+        <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', textAlign: 'center', margin: '0 0 48px', letterSpacing: '-0.01em' }}>
+          What members say about Nura
         </h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
           {testimonials.map((t) => (
             <div key={t.name} className="card" style={{ padding: 26, flex: '0 1 320px', maxWidth: 380 }}>
-              <p style={{ font: "500 15px/1.7 'Inter',sans-serif", color: 'var(--ink)', margin: '0 0 20px' }}>"{t.quote}"</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--brand-tint)', display: 'flex', alignItems: 'center', justifyContent: 'center', font: "700 13px 'Manrope',sans-serif", color: 'var(--brand-dark)' }}>
-                  {t.initial}
-                </div>
-                <div>
-                  <div style={{ font: "700 13.5px 'Inter',sans-serif", color: 'var(--ink)' }}>{t.name}</div>
-                  <div style={{ font: "500 12.5px 'Inter',sans-serif", color: 'var(--ink-4)' }}>{t.tag}</div>
-                </div>
+              <p style={{ font: 'var(--t-body)', color: 'var(--ink)', margin: '0 0 20px' }}>"{t.quote}"</p>
+              <div>
+                <div style={{ font: 'var(--t-label-sm)', color: 'var(--ink)' }}>{t.name}</div>
+                <div style={{ font: 'var(--t-caption)', color: 'var(--ink-4)' }}>{t.tag}</div>
               </div>
             </div>
           ))}
@@ -344,13 +324,13 @@ export default function Home() {
       {/* DOWNLOAD CTA */}
       <div ref={refDownload} className={`reveal ${inDownload ? 'in' : ''}`} style={{ background: 'var(--surface-dark)', padding: '80px 32px' }}>
         <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ font: "800 32px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 14px', letterSpacing: '-0.01em' }}>
+          <h2 style={{ font: 'var(--t-h2)', color: '#fff', margin: '0 0 14px', letterSpacing: '-0.01em' }}>
             Start understanding your health today
           </h2>
-          <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'rgba(255,255,255,0.65)', margin: '0 0 16px' }}>
+          <p style={{ font: 'var(--t-body)', color: 'rgba(255,255,255,0.65)', margin: '0 0 16px' }}>
             Free to download. Core tracking and AI insights, always free, deeper features unlock individually as you need them.
           </p>
-          <p style={{ font: "600 13.5px 'Inter',sans-serif", margin: '0 0 32px' }}>
+          <p style={{ font: 'var(--t-label-sm)', margin: '0 0 32px' }}>
             <Link to="/pricing" style={{ color: '#fff', textDecoration: 'underline' }}>See what's free vs. paid →</Link>
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 14 }}>

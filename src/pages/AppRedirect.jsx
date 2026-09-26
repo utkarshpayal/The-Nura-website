@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
-import SoftGlow from '../components/SoftGlow';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import { ANDROID_PLAY_STORE_URL } from '../constants';
 
@@ -81,7 +80,6 @@ export default function AppRedirect() {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', background: 'var(--bg, #fff)' }}>
-      <SoftGlow />
       <div
         className="container"
         style={{
@@ -98,10 +96,10 @@ export default function AppRedirect() {
         }}
       >
         <Logo size={72} />
-        <h1 style={{ font: "800 28px/1.3 'Manrope',sans-serif", color: 'var(--ink)', margin: 0, letterSpacing: '-0.01em' }}>
+        <h1 style={{ font: 'var(--t-h2)', color: 'var(--ink)', margin: 0, letterSpacing: '-0.01em' }}>
           Open in Nura
         </h1>
-        <p style={{ font: "500 16px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', maxWidth: 420, margin: 0 }}>
+        <p style={{ font: 'var(--t-body)', color: 'var(--ink-3)', maxWidth: 420, margin: 0 }}>
           {message}
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', maxWidth: 320, marginTop: 8 }}>
@@ -119,7 +117,7 @@ export default function AppRedirect() {
               Get it on Google Play
             </a>
           )}
-          <Link to="/" style={{ font: "600 13.5px 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 4 }}>
+          <Link to="/" style={{ font: 'var(--t-label-sm)', color: 'var(--ink-4)', marginTop: 4 }}>
             Go to thenura.care
           </Link>
         </div>

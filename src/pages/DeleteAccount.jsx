@@ -11,7 +11,7 @@ const inputStyle = {
   padding: '12px 14px',
   borderRadius: 10,
   border: '1px solid var(--line)',
-  font: "500 14px 'Inter',sans-serif",
+  font: 'var(--t-body-sm)',
   color: 'var(--ink)',
   fontFamily: 'inherit',
 };
@@ -86,7 +86,7 @@ export default function DeleteAccount() {
           {step === 'email' && (
             <form onSubmit={handleRequest} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div>
-                <label htmlFor="delete-email" style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>
+                <label htmlFor="delete-email" style={{ font: 'var(--t-label-sm)', color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>
                   Account email
                 </label>
                 <input
@@ -99,11 +99,11 @@ export default function DeleteAccount() {
                   style={inputStyle}
                 />
               </div>
-              <p style={{ font: "500 13px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+              <p style={{ font: 'var(--t-caption)', color: 'var(--ink-3)', margin: 0 }}>
                 We'll send a one-time confirmation code to this address. Nothing is deleted until you enter that code below.
               </p>
               {error && (
-                <p style={{ color: 'var(--accent)', font: "600 13px 'Inter',sans-serif", margin: 0 }}>{error}</p>
+                <p style={{ color: 'var(--danger)', font: 'var(--t-label-sm)', margin: 0 }}>{error}</p>
               )}
               <button type="submit" className="btn btn-primary" disabled={!emailValid || submitting} style={{ alignSelf: 'flex-start' }}>
                 {submitting ? <Loader size={15} /> : 'Send confirmation code'}
@@ -113,12 +113,12 @@ export default function DeleteAccount() {
 
           {step === 'code' && (
             <form onSubmit={handleConfirm} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <p style={{ font: "500 13px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+              <p style={{ font: 'var(--t-caption)', color: 'var(--ink-3)', margin: 0 }}>
                 We sent a code to <strong style={{ color: 'var(--ink)' }}>{email.trim()}</strong>. Enter it below to permanently
                 delete this account and all of its data.
               </p>
               <div>
-                <label htmlFor="delete-code" style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>
+                <label htmlFor="delete-code" style={{ font: 'var(--t-label-sm)', color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>
                   Confirmation code
                 </label>
                 <input
@@ -131,7 +131,7 @@ export default function DeleteAccount() {
                 />
               </div>
               <div>
-                <label htmlFor="delete-confirm" style={{ font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>
+                <label htmlFor="delete-confirm" style={{ font: 'var(--t-label-sm)', color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>
                   Type DELETE to confirm
                 </label>
                 <input
@@ -144,7 +144,7 @@ export default function DeleteAccount() {
                 />
               </div>
               {error && (
-                <p style={{ color: 'var(--accent)', font: "600 13px 'Inter',sans-serif", margin: 0 }}>{error}</p>
+                <p style={{ color: 'var(--danger)', font: 'var(--t-label-sm)', margin: 0 }}>{error}</p>
               )}
               <div style={{ display: 'flex', gap: 12 }}>
                 <button
@@ -163,10 +163,10 @@ export default function DeleteAccount() {
 
           {step === 'done' && (
             <div style={{ textAlign: 'center', padding: '24px 0' }}>
-              <div style={{ font: "700 16px 'Manrope',sans-serif", color: 'var(--ink)', marginBottom: 8 }}>
+              <div style={{ font: 'var(--t-title)', color: 'var(--ink)', marginBottom: 8 }}>
                 Account deleted
               </div>
-              <p style={{ font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0 }}>
                 Your account and all associated data have been permanently removed.
               </p>
             </div>

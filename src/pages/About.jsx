@@ -51,12 +51,12 @@ export default function About() {
 
       <div ref={refStory} className={`reveal ${inStory ? 'in' : ''} container`} style={{ maxWidth: 760, padding: '48px 32px' }}>
         <div className="card" style={{ padding: 36 }}>
-          <h2 style={{ font: "800 22px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 14px' }}>Why we built Nura</h2>
-          <p style={{ font: "500 15px/1.75 'Inter',sans-serif", color: 'var(--ink-2)', margin: '0 0 16px' }}>
+          <h2 style={{ font: 'var(--t-h3)', color: 'var(--ink)', margin: '0 0 14px' }}>Why we built Nura</h2>
+          <p style={{ font: 'var(--t-body)', color: 'var(--ink-2)', margin: '0 0 16px' }}>
             Most period trackers stop at logging. Meanwhile, questions about hormonal symptoms, lab results, or when to
             actually see a doctor go unanswered, or worse, get answered by an anonymous forum thread at 2am.
           </p>
-          <p style={{ font: "500 15px/1.75 'Inter',sans-serif", color: 'var(--ink-2)', margin: 0 }}>
+          <p style={{ font: 'var(--t-body)', color: 'var(--ink-2)', margin: 0 }}>
             Nura combines cycle tracking with an AI health assistant, real gynaecologist consultations, and a private
             community, so tracking a symptom is the start of getting an answer, not the end of the conversation.
           </p>
@@ -73,15 +73,15 @@ export default function About() {
             { k: 'OB-GYN', l: 'Clinician-reviewed content' },
           ].map((s) => (
             <div key={s.l}>
-              <div style={{ font: "800 26px 'Manrope',sans-serif", color: 'var(--brand)' }}>{s.k}</div>
-              <div style={{ font: "600 12.5px 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 4 }}>{s.l}</div>
+              <div style={{ font: 'var(--t-h3)', color: 'var(--brand)' }}>{s.k}</div>
+              <div style={{ font: 'var(--t-label-sm)', color: 'var(--ink-4)', marginTop: 4 }}>{s.l}</div>
             </div>
           ))}
         </div>
       </div>
 
       <div ref={refValues} className={`reveal ${inValues ? 'in' : ''} container`} style={{ padding: '40px 32px 88px' }}>
-        <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: 'var(--ink)', textAlign: 'center', margin: '0 0 40px', letterSpacing: '-0.01em' }}>
+        <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', textAlign: 'center', margin: '0 0 40px', letterSpacing: '-0.01em' }}>
           What we build around
         </h2>
         <div className="grid-clean-2">
@@ -90,18 +90,18 @@ export default function About() {
               <div className="icon-tile" style={{ background: v.bg, marginBottom: 16 }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">{v.icon}</svg>
               </div>
-              <h3 style={{ font: "700 16px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 8px' }}>{v.title}</h3>
-              <p style={{ font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: 0 }}>{v.body}</p>
+              <h3 style={{ font: 'var(--t-title)', color: 'var(--ink)', margin: '0 0 8px' }}>{v.title}</h3>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0 }}>{v.body}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div ref={refCta} className={`reveal ${inCta ? 'in' : ''}`} style={{ background: 'var(--surface-dark)', padding: '76px 32px', textAlign: 'center' }}>
-        <h2 style={{ font: "800 28px/1.25 'Manrope',sans-serif", color: '#fff', margin: '0 0 20px', letterSpacing: '-0.01em' }}>
+        <h2 style={{ font: 'var(--t-h2)', color: '#fff', margin: '0 0 20px', letterSpacing: '-0.01em' }}>
           Want to help build this?
         </h2>
-        <Link to="/careers" className="btn" style={{ background: 'var(--brand)', color: '#fff', padding: '15px 28px', boxShadow: '0 8px 20px rgba(108,86,214,0.35)' }}>
+        <Link to="/careers" className="btn btn-brand" style={{ padding: '15px 28px' }}>
           See open roles
         </Link>
       </div>

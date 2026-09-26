@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 
-const linkStyle = { font: "500 14px 'Inter',sans-serif", color: 'var(--ink-3)' };
-const headingStyle = { font: "700 12px 'Inter',sans-serif", color: 'var(--ink)', marginBottom: 16, letterSpacing: '0.04em', textTransform: 'uppercase' };
+const linkStyle = { font: 'var(--t-body-sm)', color: 'var(--ink-3)' };
+const headingStyle = { font: 'var(--t-micro)', color: 'var(--ink)', marginBottom: 16, letterSpacing: '0.04em', textTransform: 'uppercase' };
 
 export default function Footer() {
   return (
@@ -11,11 +11,12 @@ export default function Footer() {
         <div style={{ flex: '1 1 260px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
             <Logo size={28} />
-            <span style={{ font: "800 16px 'Manrope',sans-serif", color: 'var(--ink)' }}>Nura</span>
+            <span style={{ font: "600 20px/1 var(--font-display)", letterSpacing: '-0.02em', color: 'var(--ink)' }}>Nura</span>
           </div>
-          <p style={{ font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', maxWidth: 300, margin: 0 }}>
+          <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', maxWidth: 300, margin: 0 }}>
             An AI-powered women's health platform for cycle tracking, medical guidance, and everyday wellbeing.
           </p>
+          <a href="mailto:hello@thenura.care" style={{ display: 'inline-block', marginTop: 16, font: 'var(--t-label-sm)' }}>hello@thenura.care</a>
         </div>
         <div style={{ display: 'flex', gap: 56, flexWrap: 'wrap' }}>
           <div>
@@ -48,8 +49,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="container" style={{ padding: '20px 32px 32px', borderTop: '1px solid var(--line-2)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-        <span style={{ font: "500 13px 'Inter',sans-serif", color: 'var(--ink-4)' }}>© 2026 The Nura Care</span>
-        <span style={{ font: "500 13px 'Inter',sans-serif", color: 'var(--ink-4)' }}>Not a substitute for professional medical advice.</span>
+        <span style={{ font: 'var(--t-caption)', color: 'var(--ink-4)' }}>© 2026 The Nura Care</span>
+        <span style={{ font: 'var(--t-caption)', color: 'var(--ink-4)', maxWidth: 560 }}>Nura provides health information, not a diagnosis, and is not a substitute for professional medical advice. In an emergency, contact your local emergency services.</span>
       </div>
     </div>
   );

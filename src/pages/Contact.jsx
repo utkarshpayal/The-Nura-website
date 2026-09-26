@@ -49,7 +49,7 @@ const channels = [
   },
 ];
 
-const fieldLabelStyle = { font: "700 12.5px 'Inter',sans-serif", color: 'var(--ink-2)', display: 'block', marginBottom: 7 };
+const fieldLabelStyle = { font: 'var(--t-label-sm)', color: 'var(--ink-2)', display: 'block', marginBottom: 7 };
 
 export default function Contact() {
   useDocumentMeta('Contact | Nura', 'Questions, bug reports, partnerships, or press: get in touch with the Nura team.');
@@ -75,8 +75,8 @@ export default function Contact() {
     padding: '13px 15px',
     borderRadius: 11,
     background: 'var(--bg)',
-    border: `1.5px solid ${touched[field] && !valid ? 'var(--accent)' : 'var(--line)'}`,
-    font: "500 14px 'Inter',sans-serif",
+    border: `1.5px solid ${touched[field] && !valid ? 'var(--danger)' : 'var(--line)'}`,
+    font: 'var(--t-body-sm)',
     color: 'var(--ink)',
     fontFamily: 'inherit',
     transition: 'border-color .15s ease, box-shadow .15s ease',
@@ -135,8 +135,8 @@ export default function Contact() {
                   <path d="M4 12.5L9.5 18L20 6" stroke="var(--teal)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <div style={{ font: "800 18px 'Manrope',sans-serif", color: 'var(--ink)', marginBottom: 8 }}>Message sent</div>
-              <p style={{ font: "500 14px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 22px' }}>
+              <div style={{ font: 'var(--t-title)', color: 'var(--ink)', marginBottom: 8 }}>Message sent</div>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: '0 0 22px' }}>
                 Thanks, {form.name.split(' ')[0]}. We typically reply within 1–2 business days.
               </p>
               <button type="button" onClick={resetForm} className="btn btn-secondary btn-sm">
@@ -152,8 +152,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <div style={{ font: "700 15.5px 'Manrope',sans-serif", color: 'var(--ink)' }}>Send us a message</div>
-                  <div style={{ font: "500 12.5px 'Inter',sans-serif", color: 'var(--ink-4)' }}>We read every one, personally.</div>
+                  <div style={{ font: 'var(--t-title-sm)', color: 'var(--ink)' }}>Send us a message</div>
+                  <div style={{ font: 'var(--t-caption)', color: 'var(--ink-4)' }}>We read every one, personally.</div>
                 </div>
               </div>
 
@@ -184,7 +184,7 @@ export default function Contact() {
                       style={fieldStyle(emailValid, 'email')}
                     />
                     {touched.email && !emailValid && (
-                      <p style={{ font: "600 11.5px 'Inter',sans-serif", color: 'var(--accent)', margin: '5px 0 0' }}>Enter a valid email address.</p>
+                      <p style={{ font: 'var(--t-micro)', color: 'var(--danger)', margin: '5px 0 0' }}>Enter a valid email address.</p>
                     )}
                   </div>
                 </div>
@@ -236,7 +236,7 @@ export default function Contact() {
 
                 {error && (
                   <div style={{ display: 'flex', gap: 8, background: 'var(--accent-tint)', borderRadius: 10, padding: '10px 14px' }}>
-                    <span style={{ font: "600 13px 'Inter',sans-serif", color: '#8A2E4C' }}>{error}</span>
+                    <span style={{ font: 'var(--t-label-sm)', color: '#8A2E4C' }}>{error}</span>
                   </div>
                 )}
 
@@ -258,7 +258,7 @@ export default function Contact() {
 
       <div ref={refChannels} className={`reveal ${inChannels ? 'in' : ''}`} style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '72px 32px' }}>
         <div className="container" style={{ maxWidth: 960 }}>
-          <h2 style={{ font: "800 24px 'Manrope',sans-serif", color: 'var(--ink)', textAlign: 'center', margin: '0 0 32px', letterSpacing: '-0.01em' }}>
+          <h2 style={{ font: 'var(--t-h3)', color: 'var(--ink)', textAlign: 'center', margin: '0 0 32px', letterSpacing: '-0.01em' }}>
             Or reach the right team directly
           </h2>
           <div className="grid-clean-2">
@@ -268,17 +268,17 @@ export default function Contact() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">{c.icon}</svg>
                 </div>
                 <div>
-                  <h3 style={{ font: "700 15px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 6px' }}>{c.title}</h3>
-                  <p style={{ font: "500 13px/1.6 'Inter',sans-serif", color: 'var(--ink-3)', margin: '0 0 10px' }}>{c.body}</p>
-                  <a href={`mailto:${c.email}`} style={{ font: "700 13px 'Inter',sans-serif" }}>{c.email}</a>
+                  <h3 style={{ font: 'var(--t-title-sm)', color: 'var(--ink)', margin: '0 0 6px' }}>{c.title}</h3>
+                  <p style={{ font: 'var(--t-caption)', color: 'var(--ink-3)', margin: '0 0 10px' }}>{c.body}</p>
+                  <a href={`mailto:${c.email}`} style={{ font: 'var(--t-label-sm)' }}>{c.email}</a>
                 </div>
               </div>
             ))}
           </div>
 
           <div style={{ marginTop: 32, textAlign: 'center' }}>
-            <div style={{ font: "700 13px 'Inter',sans-serif", color: 'var(--ink-4)', marginBottom: 6 }}>Legal / registered contact</div>
-            <div style={{ font: "600 14px 'Inter',sans-serif", color: 'var(--ink-2)' }}>
+            <div style={{ font: 'var(--t-label-sm)', color: 'var(--ink-4)', marginBottom: 6 }}>Legal / registered contact</div>
+            <div style={{ font: 'var(--t-label)', color: 'var(--ink-2)' }}>
               UTKARSH &middot;{' '}
               <a href="mailto:utkarsh12march2004@gmail.com">utkarsh12march2004@gmail.com</a>
               {' '}&middot; <a href="tel:+918890866167">8890866167</a>

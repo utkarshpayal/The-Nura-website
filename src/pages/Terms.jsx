@@ -59,12 +59,12 @@ export default function Terms() {
         <div className="card" style={{ padding: '8px 36px' }}>
           {sections.map((s, i) => (
             <div key={s.title} style={{ padding: '26px 0', borderBottom: i === sections.length - 1 ? 'none' : '1px solid var(--line)' }}>
-              <h2 style={{ font: "700 16.5px 'Manrope',sans-serif", color: 'var(--ink)', margin: '0 0 10px' }}>{s.title}</h2>
-              <p style={{ font: "500 14.5px/1.75 'Inter',sans-serif", color: 'var(--ink-2)', margin: 0 }}>{s.body}</p>
+              <h2 style={{ font: 'var(--t-title)', color: 'var(--ink)', margin: '0 0 10px' }}>{s.title}</h2>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-2)', margin: 0 }}>{s.body}</p>
             </div>
           ))}
         </div>
-        <p style={{ font: "500 13.5px/1.6 'Inter',sans-serif", color: 'var(--ink-4)', marginTop: 24, textAlign: 'center' }}>
+        <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-4)', marginTop: 24, textAlign: 'center' }}>
           Questions about these terms? Contact us at{' '}
           <a href="mailto:legal@thenura.care" style={{ fontWeight: 700 }}>legal@thenura.care</a>.
         </p>
