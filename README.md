@@ -6,6 +6,8 @@ account-deletion page that the app stores require.
 
 React 19 · Vite · React Router 7 · Oxlint. Hosted on Vercel.
 Backend: [period-buddy-be](https://github.com/utkarshpayal/period-buddy-be).
+All docs: [docs/README.md](docs/README.md) for this repo, and the system
+[ARCHITECTURE.md](https://github.com/utkarshpayal/period-buddy/blob/main/docs/ARCHITECTURE.md) for how it fits with the app and API.
 
 ---
 
@@ -45,6 +47,7 @@ Only the contact form, newsletter and account deletion call the API. Every other
 | `/features`, `/pricing`, `/download`, `/diagnostics` | Product |
 | `/about`, `/careers`, `/contact`, `/faq` | Company |
 | `/privacy`, `/terms`, `/data-protection` (`/hipaa`) | Legal |
+| `/security` | Security & Safety: how data is protected, in plain words. Must match the API's `docs/SECURITY.md` (see [docs/README.md](docs/README.md)) |
 | `/account/delete` | Delete an account (email code → confirm). Required by Google Play / App Store. |
 | `/app` | Deep-link bounce page into the mobile app |
 

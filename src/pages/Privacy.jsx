@@ -8,9 +8,9 @@ import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const faqData = [
   { question: 'Do you ever sell my health data?', answer: 'Never. Your cycle and symptom data is never sold or shared with advertisers, data brokers, or third parties, under any circumstance.' },
-  { question: 'What happens if I lose my phone?', answer: 'Your data stays encrypted on-device and behind App Lock. Signing in on a new device restores your history from your encrypted, password-protected account.' },
+  { question: 'What happens if I lose my phone?', answer: 'App Lock keeps Nura closed to whoever has it. From any other device, sign in and use Privacy & security to sign the lost phone out, or change your password to sign out everywhere. Your history is safe in your account and comes back when you sign in again.' },
   { question: 'Can my partner see everything I log?', answer: 'No. Partner Sync only shares what you explicitly enable, gentle context like cycle phase, never raw symptom logs unless you choose to share them.' },
-  { question: 'How do I delete my account?', answer: 'Settings → Account → Delete Account permanently erases your data from our servers within 30 days, no follow-up required.' },
+  { question: 'How do I delete my account?', answer: 'Profile → Delete account signs you out and hides you from others straight away, and erases your account and data from our servers 30 days later. No follow-up needed.' },
 ];
 
 const pillars = [
@@ -18,7 +18,7 @@ const pillars = [
     bg: 'var(--teal-tint)',
     icon: <path d="M6 11V8a6 6 0 0 1 12 0v3M5 11h14v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9Z" stroke="var(--teal)" strokeWidth="1.7" strokeLinejoin="round" />,
     title: 'App Lock & encryption',
-    body: 'PIN, Face ID, or Touch ID gate the app. Your logs are encrypted on your device, not just in transit.',
+    body: 'PIN, Face ID, or fingerprint gate the app. Everything is encrypted in transit, and your notes, chats and messages are encrypted in our database too.',
   },
   {
     bg: 'var(--brand-tint)',
@@ -36,7 +36,7 @@ const pillars = [
     bg: 'var(--teal-tint)',
     icon: <path d="M12 15V3M12 15l-4-4M12 15l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="var(--teal)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />,
     title: 'Export or delete, instantly',
-    body: 'Request an export of your data from Settings anytime, or permanently delete your account and all associated data.',
+    body: 'Download a copy of your data from Privacy & security anytime, or permanently delete your account and all associated data.',
   },
 ];
 
@@ -70,7 +70,7 @@ export default function Privacy() {
       <div ref={refStats} className={`reveal ${inStats ? 'in' : ''} container`} style={{ maxWidth: 960, padding: '44px 32px' }}>
         <div className="grid-clean-3">
           {[
-            ['100%', 'Encrypted on-device'],
+            ['AES-256', 'Encryption for your notes and chats'],
             ['0', 'Data sold to advertisers'],
             ['1-tap', 'Full data export or delete'],
           ].map(([stat, label]) => (

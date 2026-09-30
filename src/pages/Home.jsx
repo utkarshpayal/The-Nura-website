@@ -15,7 +15,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const trustPoints = [
   'Reviewed with OB-GYNs',
-  'End-to-end encrypted',
+  'Encrypted & private',
   '11+ languages',
   '24/7 AI health assistant',
 ];
@@ -129,8 +129,8 @@ const safetyPoints = [
     body: 'Your health data is never sold to advertisers or data brokers.',
   },
   {
-    title: 'Encrypted on your device',
-    body: 'Logs are encrypted on your phone, not just in transit, behind PIN or Face ID.',
+    title: 'Encrypted and locked',
+    body: 'Your notes, chats and messages are encrypted in our database, and App Lock keeps the app behind a PIN or Face ID.',
   },
   {
     title: 'Reviewed with OB-GYNs',
@@ -138,7 +138,7 @@ const safetyPoints = [
   },
   {
     title: 'Export or delete anytime',
-    body: 'Request an export of your data from Settings, or permanently delete your account and data.',
+    body: 'Download a copy of your data from Privacy & security, or permanently delete your account and data.',
   },
 ];
 
@@ -297,7 +297,7 @@ export default function Home() {
                 </div>
               ))}
             </dl>
-            <Link to="/privacy" style={{ font: 'var(--t-label)' }}>How we protect your data →</Link>
+            <Link to="/security" style={{ font: 'var(--t-label)' }}>How we protect your data →</Link>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const sections = [
   },
   {
     title: 'How your data is protected',
-    body: 'Health logs and uploaded documents are encrypted at rest and in transit. Access is limited to the systems and personnel needed to operate the service, and consultation records are only visible to you and the clinician you spoke with.',
+    body: 'All data is encrypted in transit. Free text you write (notes, AI chats, messages and consultation chats) is encrypted field by field with AES-256 in our database, and uploaded documents are kept in private, encrypted storage and opened through links that expire after 10 minutes. Our staff tools never show your health records, and consultation records are only visible to you and the clinician you spoke with.',
   },
   {
     title: 'Consultations with clinicians',
@@ -23,7 +23,7 @@ const sections = [
   },
   {
     title: 'Your rights',
-    body: 'You can request an export of your health data at any time from Settings, and you can permanently delete your account and associated data — typically processed within 30 days. You can also request corrections to inaccurate information.',
+    body: 'You can download a copy of your data at any time from Privacy & security in the app, and delete your account from Profile: you are signed out and hidden from others at once, and your account and data are erased 30 days later. You can also request corrections to inaccurate information.',
   },
   {
     title: 'Breach notification',
@@ -45,7 +45,7 @@ export default function Hipaa() {
       <PageHero
         eyebrow="Legal"
         title="Health Data Protection Notice"
-        subtitle="How we safeguard your health information. Last updated August 1, 2026."
+        subtitle="How we safeguard your health information. Last updated September 30, 2026."
         max={720}
       />
 
@@ -59,7 +59,8 @@ export default function Hipaa() {
           ))}
         </div>
         <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-4)', marginTop: 24, textAlign: 'center' }}>
-          For our full data-handling practices, see our <Link to="/privacy" style={{ fontWeight: 700 }}>Privacy page</Link>.
+          For our full data-handling practices, see our <Link to="/privacy" style={{ fontWeight: 700 }}>Privacy page</Link> and{' '}
+          <Link to="/security" style={{ fontWeight: 700 }}>Security & Safety</Link>.
         </p>
       </div>
 

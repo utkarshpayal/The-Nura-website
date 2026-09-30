@@ -46,7 +46,7 @@ const groups = [
     items: [
       {
         q: 'Is my health data private?',
-        a: 'Yes. Health logs and documents are encrypted at rest and in transit, and we never sell your data or use your cycle and symptom logs to target ads. You choose exactly what to share, and with whom.',
+        a: 'Yes. Everything is encrypted in transit, your notes, chats and messages are encrypted in our database, and medical documents sit in private, encrypted storage. We never sell your data or use your cycle and symptom logs to target ads, and you choose exactly what to share, and with whom. See Security & Safety for the details.',
       },
       {
         q: 'Can I export or delete my data?',
