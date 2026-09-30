@@ -26,6 +26,7 @@ export default function Footer() {
               <Link to="/diagnostics" style={linkStyle}>Diagnostics</Link>
               <Link to="/pricing" style={linkStyle}>Pricing</Link>
               <Link to="/privacy" style={linkStyle}>Privacy</Link>
+              <Link to="/security" style={linkStyle}>Security</Link>
               <Link to="/download" style={linkStyle}>Download</Link>
             </div>
           </div>
@@ -44,6 +45,7 @@ export default function Footer() {
               <Link to="/privacy" style={linkStyle}>Privacy Policy</Link>
               <Link to="/terms" style={linkStyle}>Terms of Service</Link>
               <Link to="/data-protection" style={linkStyle}>Data Protection</Link>
+              <Link to="/security" style={linkStyle}>Security & Safety</Link>
             </div>
           </div>
         </div>

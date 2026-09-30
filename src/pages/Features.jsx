@@ -188,7 +188,7 @@ const moreFeatures = [
   },
   {
     title: 'Privacy & app lock',
-    body: 'Biometric app lock, on-device encryption, and granular controls over exactly what you share, with whom.',
+    body: 'Biometric app lock, encrypted notes and chats, and granular controls over exactly what you share, with whom.',
     bg: 'var(--brand-tint)',
     icon: <path d="M6 11V8a6 6 0 0 1 12 0v3M5 11h14v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9Z" stroke="var(--brand-dark)" strokeWidth="1.7" strokeLinejoin="round" />,
   },
