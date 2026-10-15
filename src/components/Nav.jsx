@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 
+// A section stays highlighted on its sub-pages too (e.g. /blog/some-post).
+const isActive = (pathname, to) => (to === '/' ? pathname === '/' : pathname === to || pathname.startsWith(`${to}/`));
+
 const LINKS = [
   { to: '/', label: 'Home' },
   { to: '/features', label: 'Features' },
   { to: '/diagnostics', label: 'Diagnostics' },
   { to: '/pricing', label: 'Pricing' },
+  { to: '/blog', label: 'Blog' },
   { to: '/privacy', label: 'Privacy' },
   { to: '/download', label: 'Download' },
 ];
@@ -64,7 +68,7 @@ export default function Nav() {
 
         <div className="nav-desktop-links" style={{ alignItems: 'center', gap: 30 }}>
           {LINKS.map((l) => {
-            const active = pathname === l.to;
+            const active = isActive(pathname, l.to);
             return (
               <Link key={l.to} to={l.to} className={`nav-link ${active ? 'active' : ''}`}>
                 {l.label}
@@ -109,7 +113,7 @@ export default function Nav() {
         style={{ flexDirection: 'column', padding: '4px 32px 20px', gap: 14, borderTop: '1px solid var(--line)' }}
       >
         {LINKS.map((l) => {
-          const active = pathname === l.to;
+          const active = isActive(pathname, l.to);
           return (
             <Link
               key={l.to}

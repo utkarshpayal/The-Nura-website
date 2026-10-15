@@ -53,3 +53,42 @@ export const confirmAccountDeletion = (email, code) =>
     method: 'POST',
     body: JSON.stringify({ email, code }),
   });
+
+// Public, read-only blog API (published posts only, no auth). The admin CMS
+// writes these posts; the app reads the same ones behind login.
+//
+// Responses are kept in memory for a few minutes, so going back from an
+// article to the list (or hovering a card, see prefetchBlog) doesn't refetch.
+// A failed request is never cached.
+const BLOG_CACHE_TTL = 5 * 60 * 1000;
+const blogCache = new Map();
+
+function cachedGet(path) {
+  const hit = blogCache.get(path);
+  if (hit && Date.now() - hit.at < BLOG_CACHE_TTL) return hit.promise;
+  const promise = request(path).then((res) => res.data);
+  blogCache.set(path, { at: Date.now(), promise });
+  promise.catch(() => blogCache.delete(path));
+  return promise;
+}
+
+const toQuery = (params) => {
+  const qs = new URLSearchParams();
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined && value !== null && value !== '') qs.set(key, value);
+  });
+  const s = qs.toString();
+  return s ? `?${s}` : '';
+};
+
+export const getBlogs = ({ topic, tag, search, sort, page, limit } = {}) =>
+  cachedGet(`/blogs/public${toQuery({ topic, tag, search, sort, page, limit })}`);
+
+export const getBlogTopics = () => cachedGet('/blogs/public/topics');
+
+export const getBlog = (slug) => cachedGet(`/blogs/public/${encodeURIComponent(slug)}`);
+
+/** Warm the cache for an article the reader is about to open. */
+export const prefetchBlog = (slug) => {
+  getBlog(slug).catch(() => {});
+};
