@@ -46,6 +46,7 @@ Only the contact form, newsletter and account deletion call the API. Every other
 | `/` | Home |
 | `/features`, `/pricing`, `/download`, `/diagnostics` | Product |
 | `/about`, `/careers`, `/contact`, `/faq` | Company |
+| `/blog`, `/blog/topic/:topic`, `/blog/:slug` | Nura Journal (blog). Posts are written in the Admin Workspace/CMS and read live from the API's public blog endpoints (`/api/blogs/public*`), so a published post appears here with no site deploy. `?q=` searches, `?tag=` filters by subject. Topic labels/colors live in `src/lib/blog.js`. Saved articles (`/blog/saved`), reading progress ("Continue reading") and text size are kept in the reader's browser only (`src/lib/readerStore.js`); "Listen" uses the browser's built-in speech. |
 | `/privacy`, `/terms`, `/data-protection` (`/hipaa`) | Legal |
 | `/security` | Security & Safety: how data is protected, in plain words. Must match the API's `docs/SECURITY.md` (see [docs/README.md](docs/README.md)) |
 | `/account/delete` | Delete an account (email code → confirm). Required by Google Play / App Store. |
@@ -65,10 +66,12 @@ src/
 ├── main.jsx, App.jsx    Entry + routes
 ├── pages/               One file per page
 ├── components/          Nav, Footer, Newsletter, PhoneFrame, …
-├── hooks/               useDocumentMeta (per-page title/meta), useReveal (scroll animations)
-├── lib/api.js           Backend calls (contact, newsletter, account deletion)
+│   └── blog/            BlogCard, BlogCover, TopicTag, AppCta
+├── hooks/               useDocumentMeta (per-page title/meta), useSeo (OG/canonical/JSON-LD), useReveal (scroll animations)
+├── lib/api.js           Backend calls (contact, newsletter, account deletion, blog with a 5-min in-memory cache)
+├── lib/blog.js          Blog topic labels, dates, reading time, headings/TOC, image sizing
 └── assets/images/       logo.png (in-page logo), screens/ (app screenshots)
-vercel.json              SPA rewrites
+vercel.json              SPA rewrites; /sitemap-blog.xml proxies the API's live blog sitemap
 ```
 
 > **Don't change `.well-known/` casually.** `assetlinks.json` holds the app's

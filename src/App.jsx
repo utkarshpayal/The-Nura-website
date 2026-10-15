@@ -21,6 +21,8 @@ const Terms = lazy(() => import('./pages/Terms'));
 const Hipaa = lazy(() => import('./pages/Hipaa'));
 const Security = lazy(() => import('./pages/Security'));
 const Faq = lazy(() => import('./pages/Faq'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
 const DeleteAccount = lazy(() => import('./pages/DeleteAccount'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -43,6 +45,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/faq" element={<Faq />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/saved" element={<Blog view="saved" />} />
+          <Route path="/blog/topic/:topic" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/security" element={<Security />} />
           {/* Renamed from HIPAA to a jurisdiction-neutral notice; /hipaa kept as an alias so old links don't break. */}
           <Route path="/data-protection" element={<Hipaa />} />

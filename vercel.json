@@ -10,6 +10,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/((?!\\.well-known/).*)", "destination": "/index.html" }
+    { "source": "/sitemap-blog.xml", "destination": "https://www.backend.thenura.care/api/blogs/public/sitemap.xml" },
+    { "source": "/((?!\\.well-known/|sitemap-blog\\.xml).*)", "destination": "/index.html" }
   ]
 }

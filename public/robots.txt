@@ -3,3 +3,4 @@ Disallow: /account/delete
 Disallow: /app
 
 Sitemap: https://thenura.care/sitemap.xml
+Sitemap: https://thenura.care/sitemap-blog.xml
