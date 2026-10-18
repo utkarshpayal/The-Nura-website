@@ -2,12 +2,19 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 const SPEAKING_CLASS = 'is-speaking';
 
+// Female voices only, Indian English first. Browsers don't expose a voice's
+// gender, so match on known female voice names.
+const FEMALE_VOICE =
+  /female|woman|samantha|victoria|karen|moira|tessa|fiona|veena|lekha|isha|heera|neerja|kalpana|zira|aria|jenny|libby|sonia|natasha|serena|susan|hazel|google uk english female|google us english/i;
+const MALE_VOICE = /\bmale\b|daniel|alex|fred|rishi|ravi|hemant|prabhat|david|mark|george|guy|ryan/i;
+
 function pickVoice() {
   const voices = window.speechSynthesis.getVoices();
+  const female = (v) => FEMALE_VOICE.test(v.name) && !MALE_VOICE.test(v.name);
   return (
-    voices.find((v) => v.lang === 'en-IN') ||
-    voices.find((v) => v.lang?.startsWith('en-') && /female|samantha|google/i.test(v.name)) ||
-    voices.find((v) => v.lang?.startsWith('en')) ||
+    voices.find((v) => v.lang === 'en-IN' && female(v)) ||
+    voices.find((v) => v.lang?.startsWith('en') && female(v)) ||
+    voices.find((v) => v.lang?.startsWith('en') && !MALE_VOICE.test(v.name)) ||
     null
   );
 }

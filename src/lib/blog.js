@@ -56,7 +56,9 @@ export function formatDate(value) {
   return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-export const readTime = (minutes) => `${Math.max(1, minutes || 1)} min read`;
+// The API computes this from the article's word count; guard against a
+// missing or fractional value from an older backend anyway.
+export const readTime = (minutes) => `${Math.max(1, Math.round(Number(minutes) || 0))} min read`;
 
 // Same rules for the heading ids and the table of contents, so the
 // "On this page" links always land on the right heading.
