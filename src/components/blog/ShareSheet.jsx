@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import BlogCover from './BlogCover';
-import { CHANNEL_STYLE, ChannelIcon } from './ShareIcons';
+import { ChannelIcon } from './ShareIcons';
+import { CHANNEL_STYLE } from './shareChannels';
 import { canNativeShare, copyText, shareChannels, trimQuote, withUtm } from '../../lib/share';
 
 /**
