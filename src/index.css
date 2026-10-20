@@ -259,6 +259,50 @@ textarea:focus {
   flex-shrink: 0;
 }
 
+/* Hero depth — a soft brand glow behind the phone. Subtle, decorative only
+   (Soft UI Evolution: depth without heavy shadows); collapses under
+   reduced-motion-agnostic paint and never intercepts clicks. */
+.hero-phone { position: relative; }
+.hero-phone::before {
+  content: '';
+  position: absolute;
+  inset: -10% -8% -4%;
+  background: radial-gradient(58% 54% at 50% 40%, var(--brand-tint-2), transparent 72%);
+  filter: blur(4px);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-phone > * { position: relative; z-index: 1; }
+
+/* Hero proof strip — trust points as quiet check chips instead of a plain
+   dot-separated line, so the credibility signals read as distinct claims. */
+.trust-row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.trust-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px 7px 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  font: var(--t-label-sm);
+  color: var(--ink-2);
+}
+.trust-chip svg { color: var(--teal); flex-shrink: 0; }
+
+/* The feature icon chip lifts a touch with its row on hover. */
+.feature-item .icon-tile {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.feature-item:hover .icon-tile { transform: translateY(-2px); }
+
 /* Nav */
 .nav-link {
   color: var(--ink-3);
