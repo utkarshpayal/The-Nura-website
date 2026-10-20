@@ -84,7 +84,7 @@ export default function Pricing() {
       </div>
 
       {/* PLANS */}
-      <div ref={refPlans} className={`reveal ${inPlans ? 'in' : ''} container`} style={{ padding: '48px 32px 0', display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch' }}>
+      <div ref={refPlans} className={`reveal ${inPlans ? 'in' : ''} container stagger`} style={{ padding: '48px 32px 0', display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch' }}>
         {/* FREE */}
         <div className="card pricing-card" style={{ flex: '1 1 320px', maxWidth: 380, padding: 32 }}>
           <h2 style={{ font: 'var(--t-h4)', color: 'var(--ink)', margin: '0 0 8px' }}>Free</h2>

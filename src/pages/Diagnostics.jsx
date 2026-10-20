@@ -500,7 +500,7 @@ export default function Diagnostics() {
           title="Diagnostics, designed around women's health"
           body="Instead of a generic panel, Nura starts from what's actually going on and points toward a pathway built for it."
         />
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 18 }}>
+        <div className="stagger" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 18 }}>
           {concernPathways.map((p) => (
             <div key={p.title} className="card card-hover" style={{ padding: 26, flex: '0 1 260px', maxWidth: 320 }}>
               <div className="icon-tile" style={{ background: 'var(--brand-tint)', marginBottom: 16 }}>

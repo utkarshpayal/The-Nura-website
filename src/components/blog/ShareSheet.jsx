@@ -26,7 +26,14 @@ export default function ShareSheet({ open, onClose, post, url, quote }) {
       // Stop the page behind from scrolling while the sheet is up.
       document.documentElement.style.overflow = 'hidden';
     } else if (!open && dialog.open) {
-      dialog.close();
+      // Let the slide-out play, then close for real (instant under reduced motion).
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      dialog.classList.add('is-closing');
+      const timer = setTimeout(() => {
+        dialog.classList.remove('is-closing');
+        if (dialog.open) dialog.close();
+      }, reduce ? 0 : 220);
+      return () => clearTimeout(timer);
     }
     return undefined;
   }, [open]);

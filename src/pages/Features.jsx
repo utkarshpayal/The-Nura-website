@@ -330,7 +330,7 @@ export default function Features() {
             Nura is a full platform, not a single feature. Features marked Premium are paid, individually or all together.
           </p>
         </div>
-        <div className="more-features-grid">
+        <div className="more-features-grid stagger">
           {moreFeatures.map((f) => (
             <div key={f.title} style={{ display: 'flex', gap: 14, padding: '22px 0', borderTop: '1px solid var(--line)' }}>
               <div style={{ width: 30, height: 30, borderRadius: 9, background: f.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>

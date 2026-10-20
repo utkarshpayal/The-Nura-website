@@ -232,7 +232,7 @@ export default function Home() {
           </p>
           <Link to="/features" style={{ font: 'var(--t-label)' }}>See all features →</Link>
         </div>
-        <div className="home-features-grid">
+        <div className="home-features-grid stagger">
           {featureCards.map((f) => (
             <div key={f.title} style={{ padding: '26px 0', borderTop: '1px solid var(--line)' }}>
               <div>
@@ -307,7 +307,7 @@ export default function Home() {
         <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', textAlign: 'center', margin: '0 0 48px', letterSpacing: '-0.01em' }}>
           What members say about Nura
         </h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
+        <div className="stagger" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
           {testimonials.map((t) => (
             <div key={t.name} className="card" style={{ padding: 26, flex: '0 1 320px', maxWidth: 380 }}>
               <p style={{ font: 'var(--t-body)', color: 'var(--ink)', margin: '0 0 20px' }}>"{t.quote}"</p>

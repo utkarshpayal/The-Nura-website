@@ -14,7 +14,7 @@
   --accent-tint: #EFECFB;
   --teal: #0F7A64;
   --teal-tint: #E4F3EE;
-  --amber: #9A6710;
+  --amber: #956410;
   --amber-tint: #FBF1DE;
   --gold: #EFC97A;
   --danger: #B42318;
@@ -62,6 +62,15 @@
   --shadow-lg: 0 2px 6px rgba(30, 24, 35, 0.05), 0 28px 56px rgba(30, 24, 35, 0.11);
 
   --container: 1180px;
+
+  /* Motion — pick by how much moves: fast for hover/press, base for fades
+     and small moves, slow for panels and sheets. The reduced-motion rule
+     below collapses all of them. */
+  --dur-fast: .15s;
+  --dur-base: .22s;
+  --dur-slow: .32s;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-in: cubic-bezier(.4, 0, 1, 1);
 }
 
 * {
@@ -100,7 +109,7 @@ p {
 a {
   color: var(--brand);
   text-decoration: none;
-  transition: color .15s ease;
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
 a:hover {
@@ -189,9 +198,10 @@ textarea:focus {
   cursor: pointer;
   font-family: var(--font-display);
   font-weight: 700;
-  transition: background .15s ease, border-color .15s ease, color .15s ease;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
   white-space: nowrap;
 }
+.btn:active:not(:disabled) { transform: scale(.97); }
 
 .btn-primary {
   background: var(--brand);
@@ -230,8 +240,11 @@ textarea:focus {
 }
 
 .card-hover {
-  transition: border-color .15s ease;
+  transition: border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
 }
+.card-hover:active,
+.topic-tile:active,
+.blog-card:active { transform: scale(.985); }
 .card-hover:hover {
   border-color: var(--ink-4);
 }
@@ -251,7 +264,7 @@ textarea:focus {
   color: var(--ink-3);
   position: relative;
   font: 500 14.5px/1 var(--font-sans);
-  transition: color .15s ease;
+  transition: color var(--dur-fast) var(--ease-out);
 }
 .nav-link:hover { color: var(--ink) !important; }
 .nav-link.active {
@@ -273,7 +286,7 @@ textarea:focus {
 /* FAQ */
 .faq-row {
   border-bottom: 1px solid var(--line);
-  transition: background .15s ease;
+  transition: background var(--dur-fast) var(--ease-out);
 }
 .faq-row:hover { background: var(--brand-tint); }
 
@@ -384,7 +397,7 @@ textarea:focus {
 /* The primary CTA's arrow nudges forward on hover — reuses .btn's own
    hover trigger rather than adding a second listener. */
 .notfound-cta-arrow {
-  transition: transform 0.2s ease;
+  transition: transform var(--dur-base) var(--ease-out);
 }
 .notfound-cta:hover .notfound-cta-arrow {
   transform: translateX(3px);
@@ -400,6 +413,42 @@ textarea:focus {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
+/* Put .stagger on a grid inside a .reveal (or on the .reveal itself): its items
+  follow the section in, 60ms apart, capped at the 8th so long grids never
+  wait on their tail. */
+.reveal .stagger > *,
+.reveal.stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
+}
+.reveal.in .stagger > *,
+.reveal.in.stagger > * { opacity: 1; transform: none; }
+.reveal.in .stagger > :nth-child(2),
+.reveal.in.stagger > :nth-child(2) { transition-delay: 60ms; }
+.reveal.in .stagger > :nth-child(3),
+.reveal.in.stagger > :nth-child(3) { transition-delay: 120ms; }
+.reveal.in .stagger > :nth-child(4),
+.reveal.in.stagger > :nth-child(4) { transition-delay: 180ms; }
+.reveal.in .stagger > :nth-child(5),
+.reveal.in.stagger > :nth-child(5) { transition-delay: 240ms; }
+.reveal.in .stagger > :nth-child(6),
+.reveal.in.stagger > :nth-child(6) { transition-delay: 300ms; }
+.reveal.in .stagger > :nth-child(7),
+.reveal.in.stagger > :nth-child(7) { transition-delay: 360ms; }
+.reveal.in .stagger > :nth-child(n+8),
+.reveal.in.stagger > :nth-child(n+8) { transition-delay: 420ms; }
+
+/* A success check that draws itself: ring first, then the tick. */
+.newsletter-done { animation: fadeInUp var(--dur-slow) var(--ease-out); }
+.draw-check circle,
+.draw-check path {
+  stroke-dasharray: 64;
+  stroke-dashoffset: 64;
+  animation: draw-stroke .5s var(--ease-out) forwards;
+}
+.draw-check path { stroke-dasharray: 16; stroke-dashoffset: 16; animation-delay: .3s; animation-duration: .3s; }
+@keyframes draw-stroke { to { stroke-dashoffset: 0; } }
 
 /* Responsive nav */
 .nav-desktop-links {
@@ -424,8 +473,31 @@ textarea:focus {
   .nav-toggle {
     display: flex !important;
   }
-  .nav-mobile-panel.open {
+  .nav-mobile-panel {
     display: flex !important;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    transition: max-height var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out),
+      transform var(--dur-slow) var(--ease-out), padding var(--dur-slow) var(--ease-out), visibility 0s linear var(--dur-slow);
+  }
+  .nav-mobile-panel.open {
+    max-height: 640px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding-top: 4px !important;
+    padding-bottom: 20px !important;
+    transition-delay: 0s;
+  }
+  .nav-mobile-panel a:not(.btn) {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
 
@@ -464,7 +536,7 @@ textarea:focus {
 /* Store download badges (react-mobile-app-button overrides) */
 .store-badge {
   border-radius: 12px !important;
-  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
 }
 .store-badge:hover {
   transform: translateY(-2px);
@@ -561,7 +633,7 @@ textarea:focus {
   align-items: center;
 }
 .mini-flow-chevron {
-  transition: transform 0.15s ease;
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 @media (max-width: 640px) {
   .mini-flow {
@@ -645,7 +717,7 @@ textarea:focus {
   font: var(--t-label);
   white-space: nowrap;
 }
-.see-all span { display: inline-block; transition: transform .15s ease; }
+.see-all span { display: inline-block; transition: transform var(--dur-fast) var(--ease-out); }
 .see-all:hover span { transform: translateX(3px); }
 
 .results-count {
@@ -763,7 +835,7 @@ textarea:focus {
   background: var(--surface);
   color: var(--ink-2);
   font: var(--t-label-sm);
-  transition: border-color .15s ease, background .15s ease, color .15s ease;
+  transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
 }
 .topic-pill:hover { border-color: var(--ink-4); color: var(--ink); }
 .topic-pill.active,
@@ -873,7 +945,7 @@ textarea:focus {
   color: var(--ink-2);
   box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: transform .15s ease, color .15s ease, background .15s ease;
+  transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
 }
 .save-icon-btn:hover { color: var(--brand); transform: scale(1.06); }
 .save-icon-btn.is-active { color: var(--brand); }
@@ -902,7 +974,7 @@ textarea:focus {
 .blog-card:hover .blog-cover img { transform: scale(1.03); }
 .blog-card__title {
   color: var(--ink);
-  transition: color .15s ease;
+  transition: color var(--dur-fast) var(--ease-out);
 }
 .blog-card:hover .blog-card__title { color: var(--brand-dark); }
 
@@ -1046,7 +1118,7 @@ textarea:focus {
   display: block;
   padding: 10px 10px 12px;
   border-radius: var(--radius-md);
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 .topic-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .topic-tile:hover .blog-cover img { transform: scale(1.04); }
@@ -1355,7 +1427,7 @@ mark {
   color: var(--ink-2);
   font: var(--t-label-sm);
   cursor: pointer;
-  transition: border-color .15s ease, color .15s ease, background .15s ease;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
 }
 .tool-btn:hover { border-color: var(--ink-4); color: var(--ink); }
 .tool-btn.is-active {
@@ -1435,7 +1507,7 @@ mark {
   background: var(--brand-tint);
   box-shadow: 0 0 0 8px var(--brand-tint);
   border-radius: 4px;
-  transition: background .2s ease;
+  transition: background var(--dur-base) var(--ease-out);
 }
 
 .anchor-heading { position: relative; }
@@ -1444,7 +1516,7 @@ mark {
   color: var(--ink-4);
   text-decoration: none !important;
   opacity: 0;
-  transition: opacity .15s ease;
+  transition: opacity var(--dur-fast) var(--ease-out);
 }
 .heading-anchor::before { content: '#'; }
 .anchor-heading:hover .heading-anchor,
@@ -1486,7 +1558,7 @@ mark {
   box-shadow: var(--shadow-lg);
   overflow: auto;
 }
-.share-sheet[open] { animation: share-pop .2s ease; }
+.share-sheet[open] { animation: share-pop var(--dur-base) var(--ease-out); }
 .share-sheet::backdrop {
   background: rgba(30, 24, 35, 0.45);
   backdrop-filter: blur(2px);
@@ -1494,6 +1566,16 @@ mark {
 @keyframes share-pop {
   from { opacity: 0; transform: translateY(10px) scale(0.98); }
   to { opacity: 1; transform: none; }
+}
+/* Closing: ShareSheet adds .is-closing, waits for this, then closes the dialog. */
+.share-sheet[open]::backdrop { animation: fadeIn var(--dur-base) var(--ease-out); }
+.share-sheet.is-closing { animation: share-pop-out var(--dur-fast) var(--ease-in) forwards; }
+.share-sheet.is-closing::backdrop { animation: fadeOut var(--dur-fast) var(--ease-in) forwards; }
+@keyframes share-pop-out {
+  to { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+@keyframes fadeOut {
+  to { opacity: 0; }
 }
 /* Phones: a bottom sheet, reachable with a thumb. */
 @media (max-width: 640px) {
@@ -1503,7 +1585,11 @@ mark {
     border-radius: 24px 24px 0 0;
     padding-bottom: env(safe-area-inset-bottom);
   }
-  .share-sheet[open] { animation: share-up .26s cubic-bezier(.2, .8, .2, 1); }
+  .share-sheet[open] { animation: share-up var(--dur-slow) var(--ease-out); }
+  .share-sheet.is-closing { animation: share-down var(--dur-base) var(--ease-in) forwards; }
+}
+@keyframes share-down {
+  to { transform: translateY(100%); }
 }
 @keyframes share-up {
   from { transform: translateY(100%); }
@@ -1609,7 +1695,7 @@ mark {
   width: 54px;
   height: 54px;
   border-radius: 999px;
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
 .share-target:hover .share-target__icon { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 button.share-target .share-target__icon { box-shadow: inset 0 0 0 1px var(--line); }
@@ -1646,7 +1732,7 @@ button.share-target .share-target__icon { box-shadow: inset 0 0 0 1px var(--line
   color: #fff;
   font: var(--t-label-sm);
   cursor: pointer;
-  transition: background .15s ease;
+  transition: background var(--dur-fast) var(--ease-out);
 }
 .share-link__btn:hover { background: var(--ink-2); }
 .share-link__btn.is-done { background: var(--teal); }
@@ -1680,7 +1766,7 @@ button.share-target .share-target__icon { box-shadow: inset 0 0 0 1px var(--line
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
 .share-round:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .share-round:active { transform: scale(0.94); }
@@ -1744,6 +1830,6 @@ button.share-round { box-shadow: inset 0 0 0 1px var(--line); }
   font: var(--t-label-sm);
   white-space: nowrap;
   box-shadow: var(--shadow-lg);
-  animation: fadeInUp .2s ease;
+  animation: fadeInUp var(--dur-base) var(--ease-out);
 }
 .toast__msg svg { color: #7DD3B8; }
