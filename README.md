@@ -86,4 +86,4 @@ forms to work.
 
 ## Contributing
 
-Branch from `main`, open a PR. CI runs `npm ci`, `npm run lint` and `npm run build`.
+Branch from `staging`, open a PR to `staging`; releases are `staging` → `main` PRs ([WORKFLOW.md](https://github.com/utkarshpayal/period-buddy/blob/main/docs/WORKFLOW.md)). CI runs `npm ci`, `npm run lint` and `npm run build`.
