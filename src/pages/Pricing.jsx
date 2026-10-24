@@ -142,7 +142,7 @@ export default function Pricing() {
         <div className="billing-toggle" role="group" aria-label="Billing period">
           {[
             { key: 'monthly', label: 'Monthly' },
-            { key: 'yearly', label: 'Yearly', note: comparison?.savingPercent ? `save ${Math.round(comparison.savingPercent)}%` : null },
+            { key: 'yearly', label: 'Yearly', note: comparison?.saving ? `save ${formatRupees(comparison.saving)}` : null },
           ].map((opt) => (
             <button
               key={opt.key}
