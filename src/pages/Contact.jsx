@@ -22,8 +22,8 @@ const topics = [
   'Partnership / press',
   'Billing (Premium)',
 ];
-// /contact?topic=professional opens the form with that topic already chosen.
-const TOPIC_PARAMS = { professional: PROFESSIONAL_TOPIC };
+// /contact?topic=professional (or =partnership) opens the form with that topic already chosen.
+const TOPIC_PARAMS = { professional: PROFESSIONAL_TOPIC, partnership: 'Partnership / press' };
 
 const channels = [
   {
