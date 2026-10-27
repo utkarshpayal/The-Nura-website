@@ -176,10 +176,20 @@ export default function Home() {
               Explore features
             </Link>
           </div>
-          <p style={{ font: 'var(--t-caption)', color: 'var(--ink-4)', margin: 0 }}>{trustPoints.join(' · ')}</p>
+          <ul className="trust-row">
+            {trustPoints.map((t) => (
+              <li key={t} className="trust-chip">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M8.5 12.2l2.3 2.3 4.7-4.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {t}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div style={{ flex: '1 1 280px', minWidth: 240, display: 'flex', justifyContent: 'center' }}>
+        <div className="hero-phone" style={{ flex: '1 1 280px', minWidth: 240, display: 'flex', justifyContent: 'center' }}>
           <div className="phone-shell" style={{ width: 290, maxWidth: '100%' }}>
             <PhoneFrame src={screenHome} alt="Nura cycle dashboard" width={290} loading="eager" />
           </div>
@@ -232,18 +242,17 @@ export default function Home() {
           </p>
           <Link to="/features" style={{ font: 'var(--t-label)' }}>See all features →</Link>
         </div>
-        <div className="home-features-grid">
+        <div className="home-features-grid stagger">
           {featureCards.map((f) => (
-            <div key={f.title} style={{ padding: '26px 0', borderTop: '1px solid var(--line)' }}>
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 6 }}>
-                  <h3 style={{ font: 'var(--t-title)', color: 'var(--ink)', margin: 0 }}>{f.title}</h3>
-                  {f.badge && (
-                    <span className="premium-tag">{f.badge}</span>
-                  )}
-                </div>
-                <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0, maxWidth: 320 }}>{f.body}</p>
+            <div key={f.title} className="feature-item" style={{ padding: '26px 0', borderTop: '1px solid var(--line)' }}>
+              <div className="icon-tile" style={{ background: f.bg, marginBottom: 14 }}>{f.icon}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 6 }}>
+                <h3 style={{ font: 'var(--t-title)', color: 'var(--ink)', margin: 0 }}>{f.title}</h3>
+                {f.badge && (
+                  <span className="premium-tag">{f.badge}</span>
+                )}
               </div>
+              <p style={{ font: 'var(--t-body-sm)', color: 'var(--ink-3)', margin: 0, maxWidth: 320 }}>{f.body}</p>
             </div>
           ))}
         </div>
@@ -307,7 +316,7 @@ export default function Home() {
         <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', textAlign: 'center', margin: '0 0 48px', letterSpacing: '-0.01em' }}>
           What members say about Nura
         </h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
+        <div className="stagger" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
           {testimonials.map((t) => (
             <div key={t.name} className="card" style={{ padding: 26, flex: '0 1 320px', maxWidth: 380 }}>
               <p style={{ font: 'var(--t-body)', color: 'var(--ink)', margin: '0 0 20px' }}>"{t.quote}"</p>

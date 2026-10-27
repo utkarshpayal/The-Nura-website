@@ -84,7 +84,7 @@ export default function About() {
         <h2 style={{ font: 'var(--t-h2)', color: 'var(--ink)', textAlign: 'center', margin: '0 0 40px', letterSpacing: '-0.01em' }}>
           What we build around
         </h2>
-        <div className="grid-clean-2">
+        <div className="grid-clean-2 stagger">
           {values.map((v) => (
             <div key={v.title} className="card card-hover" style={{ padding: 26 }}>
               <div className="icon-tile" style={{ background: v.bg, marginBottom: 16 }}>

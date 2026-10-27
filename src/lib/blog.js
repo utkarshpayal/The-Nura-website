@@ -89,7 +89,7 @@ export function extractHeadings(markdown = '') {
     if (inFence) return;
     const match = /^(#{1,3})\s+(.+?)\s*#*\s*$/.exec(line);
     if (match) {
-      const text = match[2].replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`]/g, '');
+      const text = match[2].replace(/<[^>]*>/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`]/g, '');
       headings.push({ level: Math.max(2, match[1].length), text, id: headingId(text) });
     }
   });

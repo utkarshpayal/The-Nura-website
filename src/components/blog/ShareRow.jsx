@@ -1,4 +1,5 @@
-import { CHANNEL_STYLE, ChannelIcon } from './ShareIcons';
+import { ChannelIcon } from './ShareIcons';
+import { CHANNEL_STYLE } from './shareChannels';
 import { copyText, shareChannels } from '../../lib/share';
 
 const ROW_CHANNELS = ['whatsapp', 'telegram', 'facebook', 'x', 'linkedin', 'email'];

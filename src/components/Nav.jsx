@@ -110,7 +110,7 @@ export default function Nav() {
 
       <div
         className={`nav-mobile-panel ${open ? 'open' : ''}`}
-        style={{ flexDirection: 'column', padding: '4px 32px 20px', gap: 14, borderTop: '1px solid var(--line)' }}
+        style={{ flexDirection: 'column', padding: '4px 32px 20px', gap: 0, borderTop: '1px solid var(--line)' }}
       >
         {LINKS.map((l) => {
           const active = isActive(pathname, l.to);
@@ -125,7 +125,7 @@ export default function Nav() {
             </Link>
           );
         })}
-        <Link to="/download" onClick={() => setOpen(false)} className="btn btn-primary" style={{ marginTop: 4 }}>
+        <Link to="/download" onClick={() => setOpen(false)} className="btn btn-primary" style={{ marginTop: 12 }}>
           Get the app
         </Link>
       </div>
