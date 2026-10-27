@@ -1420,6 +1420,41 @@ textarea:focus {
   .prose { font-size: 17px; line-height: 1.7; }
 }
 
+/* Rich content from the admin editor (allowlist in src/lib/richText.js). */
+.prose [data-color='rose']:not(mark) { color: #C2416F; }
+.prose [data-color='violet']:not(mark) { color: #6A5BC9; }
+.prose [data-color='blue']:not(mark) { color: #2F5FB3; }
+.prose [data-color='teal']:not(mark) { color: #0F7A64; }
+.prose [data-color='green']:not(mark) { color: #3B7A1E; }
+.prose [data-color='amber']:not(mark) { color: #956410; }
+.prose [data-color='red']:not(mark) { color: #B42318; }
+.prose [data-color='gray']:not(mark) { color: #5E5566; }
+.prose mark { background: #FFF1B8; color: inherit; border-radius: 3px; padding: 0 3px; }
+.prose mark[data-color='pink'] { background: #FCE1EC; }
+.prose mark[data-color='green'] { background: #DDF3E4; }
+.prose mark[data-color='blue'] { background: #DDE9FB; }
+.prose mark[data-color='violet'] { background: #ECE8FB; }
+.prose u { text-underline-offset: 3px; }
+.prose-figure { margin: 1.6em 0; }
+.prose-figure img { display: block; margin: 0; }
+.prose-figure figcaption,
+.rich-chart__caption { display: block; margin-top: 8px; font: var(--t-body-sm); color: var(--ink-3); }
+.rich-chart {
+  margin: 1.8em 0;
+  padding: 18px 20px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+.rich-chart svg { display: block; width: 100%; height: auto; }
+.rich-chart__title { margin-bottom: 8px; font: var(--t-h4); color: var(--ink); }
+.rich-chart__grid { stroke: var(--line); stroke-width: 1; }
+.rich-chart__axis { fill: var(--ink-3); font: 600 12px var(--font-sans); }
+.rich-chart__legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 10px 0 0; padding: 0; list-style: none; font: var(--t-body-sm); color: var(--ink-2); }
+.rich-chart__legend li { display: inline-flex; align-items: center; gap: 7px; margin: 0; }
+.rich-chart__legend span { width: 10px; height: 10px; border-radius: 3px; }
+
+
 /* ── Blog UX: search suggestions, saved, continue reading, reading tools ── */
 .search-wrap {
   position: relative;
