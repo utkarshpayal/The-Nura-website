@@ -29,6 +29,7 @@ npm run build     # CI check
 
 - **Backend:** `src/lib/api.js`. `VITE_API_URL` (includes `/api`); unset it's `http://localhost:5000/api` in dev and `https://www.backend.thenura.care/api` in builds. Vercel Preview for `staging` should set `https://stage.backend.thenura.care/api`, or previews post forms to production.
 - **Layout:** `src/pages/` (one per page), `src/components/` (`blog/` for the journal), `src/hooks/` (`useDocumentMeta`, `useSeo`, `useReveal`), `src/lib/blog.js`.
+- **Blog bodies** are rich text from the admin editor: Markdown plus the allowlist in `src/lib/richText.js` (palette-named `<span data-color>`, `<mark data-color>`, `<u>`), rendered by `react-markdown` with `rehype-raw` then `rehype-sanitize` (that schema is the allowlist; anything else is stripped). ` ```chart ` blocks draw with `components/blog/RichChart.jsx`; an image with a Markdown title becomes a figure with a caption.
 - **A new page** goes in `src/App.jsx` **and** `public/sitemap.xml`.
 - **Don't edit `public/.well-known/`** without a reason: `assetlinks.json` holds the Play signing-key fingerprints, and a wrong one stops thenura.care links from opening the app.
 - **`/security` must match** the backend's `docs/SECURITY.md`. Legal pages change only on request.

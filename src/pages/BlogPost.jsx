@@ -2,10 +2,13 @@ import { Children, isValidElement, useCallback, useEffect, useMemo, useRef, useS
 import { Link, useParams } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import BlogCard, { BlogCardSkeleton } from '../components/blog/BlogCard';
 import BlogCover from '../components/blog/BlogCover';
+import RichChart from '../components/blog/RichChart';
 import TopicTag from '../components/blog/TopicTag';
 import AppCta from '../components/blog/AppCta';
 import ArticleToolbar from '../components/blog/ArticleToolbar';
@@ -18,6 +21,7 @@ import { recordProgress, useReader } from '../lib/readerStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import useSeo from '../hooks/useSeo';
 import { getBlog } from '../lib/api';
+import { parseChartSpec, richTextSchema } from '../lib/richText';
 import { SITE_URL, extractHeadings, formatDate, headingId, readTime, sizedImage, stripLeadingTitle, tagLabel, topicMeta } from '../lib/blog';
 import NotFound from './NotFound';
 
@@ -48,8 +52,14 @@ function readableBlocks(root) {
   return all.filter((el) => !all.some((other) => other !== el && other.contains(el)));
 }
 
-// Markdown comes from the CMS. react-markdown never renders raw HTML, so a
-// post can't inject scripts; links leaving the site open in a new tab.
+const isImageOnly = (node) => node?.children?.length === 1 && node.children[0].tagName === 'img';
+
+// Markdown comes from the CMS, with the small raw-HTML allowlist in
+// lib/richText.js (colored text, highlight, underline). rehype-sanitize drops
+// everything else, so a post can't inject scripts; links leaving the site open
+// in a new tab.
+const rehypePlugins = [rehypeRaw, [rehypeSanitize, richTextSchema]];
+
 const markdownComponents = {
   // The page title is the only h1; a `#` inside the body is a section.
   h1: heading('h2'),
@@ -63,8 +73,29 @@ const markdownComponents = {
       </a>
     );
   },
-  img({ src, alt }) {
-    return <img src={src} alt={alt || ''} loading="lazy" decoding="async" />;
+  // An image on its own line is a figure; its Markdown title is the caption.
+  p({ node, children }) {
+    return isImageOnly(node) ? children : <p>{children}</p>;
+  },
+  img({ src, alt, title }) {
+    const img = <img src={src} alt={alt || ''} loading="lazy" decoding="async" />;
+    if (!title) return img;
+    return (
+      <figure className="prose-figure">
+        {img}
+        <figcaption>{title}</figcaption>
+      </figure>
+    );
+  },
+  // ```chart blocks draw as charts; one that can't be read is left out.
+  pre({ node, children }) {
+    const code = node?.children?.[0];
+    const classes = code?.properties?.className ?? [];
+    if (code?.tagName === 'code' && classes.includes('language-chart')) {
+      const spec = parseChartSpec(code.children?.map((c) => c.value ?? '').join('') ?? '');
+      return spec ? <RichChart spec={spec} /> : null;
+    }
+    return <pre>{children}</pre>;
   },
 };
 
@@ -339,7 +370,7 @@ export default function BlogPost() {
             <div style={{ minWidth: 0 }}>
               {headings.length >= 2 && <MobileToc headings={headings} />}
               <div ref={proseRef} className={`prose prose--${textSize}`}>
-                <Markdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={rehypePlugins} components={markdownComponents}>
                   {body}
                 </Markdown>
               </div>
