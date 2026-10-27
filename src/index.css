@@ -659,6 +659,104 @@ textarea:focus {
   background: rgba(255,255,255,0.16);
 }
 
+/* Pricing: monthly / yearly switch */
+.billing-toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--line-2);
+  border: 1px solid var(--line);
+}
+.billing-toggle button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  font: var(--t-label);
+  color: var(--ink-3);
+  cursor: pointer;
+}
+.billing-toggle button.is-active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(42, 24, 48, 0.14);
+}
+.billing-toggle button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+.billing-toggle__note {
+  font: var(--t-caption);
+  color: var(--teal);
+}
+
+/* Pricing: single-feature price table */
+.addon-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+}
+.addon-table th,
+.addon-table td {
+  padding: 14px 22px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+  font: var(--t-body-sm);
+  color: var(--ink-2);
+}
+.addon-table thead th {
+  border-top: none;
+  font: var(--t-label-sm);
+  color: var(--ink-4);
+}
+.addon-table tbody th {
+  font: var(--t-title-sm);
+  color: var(--ink);
+}
+.addon-table td {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.addon-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--brand-tint);
+  color: var(--brand);
+  font: var(--t-caption);
+  vertical-align: middle;
+}
+.addon-sub {
+  display: block;
+  margin-top: 4px;
+  font: var(--t-caption);
+  color: var(--ink-3);
+  white-space: normal;
+}
+@media (max-width: 560px) {
+  .addon-table th,
+  .addon-table td { padding: 12px 16px; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Privacy pillars grid: forced even rows (2 cols desktop, 1 col mobile) instead of auto-fit wrapping oddly */
 .pillars-grid {
   grid-template-columns: 1fr;

@@ -12,7 +12,7 @@ const groups = [
     items: [
       {
         q: 'Is Nura free?',
-        a: 'Yes. Cycle tracking, predictions, daily insights, the AI health assistant, and the community are free forever. A handful of deeper features, like saved AI chat history and document chat, unlock individually if you want them. Nura Professional is a separate, verified add-on for licensed clinicians and wellness creators.',
+        a: 'Yes. Cycle tracking, predictions, daily insights, the AI health assistant (within daily limits), the community and all safety guidance are free forever. Nura Premium adds saved AI chats, document chat, doctor-ready reports and more, from ₹99 for 30 days or ₹799 for a year, paid ahead with no auto-renewal. Each of those features can also be bought on its own. See the pricing page for details.',
       },
       {
         q: 'Which devices are supported?',

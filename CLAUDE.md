@@ -29,6 +29,7 @@ npm run build     # CI check
 
 - **Backend:** `src/lib/api.js`. `VITE_API_URL` (includes `/api`); unset it's `http://localhost:5000/api` in dev and `https://www.backend.thenura.care/api` in builds. Vercel Preview for `staging` should set `https://stage.backend.thenura.care/api`, or previews post forms to production.
 - **Layout:** `src/pages/` (one per page), `src/components/` (`blog/` for the journal), `src/hooks/` (`useDocumentMeta`, `useSeo`, `useReveal`), `src/lib/blog.js`.
+- **Pricing** (`src/pages/Pricing.jsx`) reads the backend's public `GET /api/subscriptions/pricing` (same summary as the app) and draws `src/lib/pricing.js#FALLBACK_PRICING` first and on any error. Keep that fallback in step with the backend's `utils/pricing.js#PRICING_2026`. Premium is prepaid: never write "renews", "unlimited" or a price the backend doesn't sell. The founding offer shows only when the API returns it. Rollout notes: the app repo's `docs/pricing-2026.md`.
 - **A new page** goes in `src/App.jsx` **and** `public/sitemap.xml`.
 - **Don't edit `public/.well-known/`** without a reason: `assetlinks.json` holds the Play signing-key fingerprints, and a wrong one stops thenura.care links from opening the app.
 - **`/security` must match** the backend's `docs/SECURITY.md`. Legal pages change only on request.

@@ -92,3 +92,8 @@ export const getBlog = (slug) => cachedGet(`/blogs/public/${encodeURIComponent(s
 export const prefetchBlog = (slug) => {
   getBlog(slug).catch(() => {});
 };
+
+// Live pricing (public): Premium monthly/yearly with the yearly saving, the
+// founding offer only while an admin has it switched on, add-ons, GST and
+// fair-use limits. The same summary the app's My Subscription screen draws.
+export const getPricing = () => request('/subscriptions/pricing').then((res) => res.data);
