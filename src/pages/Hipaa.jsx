@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const sections = [
   {
@@ -36,7 +36,7 @@ const sections = [
 ];
 
 export default function Hipaa() {
-  useDocumentMeta('Data Protection | Nura', 'How Nura stores, protects, and handles your health data.');
+  usePageSeo('/data-protection');
 
   return (
     <div className="page">

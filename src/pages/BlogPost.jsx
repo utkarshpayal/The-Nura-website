@@ -20,9 +20,10 @@ import useSpeech from '../hooks/useSpeech';
 import { recordProgress, useReader } from '../lib/readerStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import useSeo from '../hooks/useSeo';
-import { getBlog } from '../lib/api';
+import { getBlog, peekBlog } from '../lib/api';
+import { blogPostSeo } from '../seo/site';
 import { parseChartSpec, richTextSchema } from '../lib/richText';
-import { SITE_URL, extractHeadings, formatDate, headingId, readTime, sizedImage, stripLeadingTitle, tagLabel, topicMeta } from '../lib/blog';
+import { SITE_URL, extractHeadings, formatDate, headingId, readTime, stripLeadingTitle, tagLabel, topicMeta } from '../lib/blog';
 import NotFound from './NotFound';
 
 const textOf = (children) =>
@@ -186,15 +187,25 @@ function ArticleSkeleton() {
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const [state, setState] = useState({ loading: true, error: null, blog: null, related: [] });
+  // A prerendered page (or a visit earlier in this session) already has the
+  // article: draw it straight away and refresh it quietly.
+  const fromPeek = (data) => ({ loading: false, error: null, blog: data.blog, related: data.related || [] });
+  const [state, setState] = useState(() => {
+    const seeded = peekBlog(slug);
+    return seeded ? fromPeek(seeded) : { loading: true, error: null, blog: null, related: [] };
+  });
   const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
-    setState({ loading: true, error: null, blog: null, related: [] });
+    const seeded = peekBlog(slug);
+    setState(seeded ? fromPeek(seeded) : { loading: true, error: null, blog: null, related: [] });
     getBlog(slug)
       .then((data) => !cancelled && setState({ loading: false, error: null, blog: data.blog, related: data.related || [] }))
-      .catch((err) => !cancelled && setState({ loading: false, error: err, blog: null, related: [] }));
+      .catch((err) => {
+        // Keep showing the copy we have; only an article we never had fails.
+        if (!cancelled && !seeded) setState({ loading: false, error: err, blog: null, related: [] });
+      });
     return () => {
       cancelled = true;
     };
@@ -204,46 +215,20 @@ export default function BlogPost() {
   const body = useMemo(() => (blog ? stripLeadingTitle(blog.content, blog.title) : ''), [blog]);
   const headings = useMemo(() => extractHeadings(body), [body]);
 
-  const canonical = blog?.canonicalUrl || `${SITE_URL}/blog/${encodeURIComponent(slug)}`;
-  const pageTitle = blog ? `${blog.seoTitle || blog.title} | Nura Journal` : 'Nura Journal';
-  const pageDescription = blog ? blog.seoDescription || blog.excerpt : undefined;
-  const shareImage = blog?.coverImageUrl ? sizedImage(blog.coverImageUrl, 1200) : undefined;
+  const seo = blogPostSeo(blog, slug);
+  const canonical = seo.url || `${SITE_URL}/blog/${encodeURIComponent(slug)}`;
+  const pageTitle = seo.title;
+  const pageDescription = seo.description;
+  const shareImage = seo.image;
 
   useDocumentMeta(pageTitle, pageDescription);
   useSeo({
-    title: blog ? blog.seoTitle || blog.title : undefined,
+    title: blog ? seo.ogTitle : undefined,
     description: pageDescription,
     url: blog ? canonical : undefined,
     image: shareImage,
     type: 'article',
-    jsonLd: blog
-      ? {
-          '@context': 'https://schema.org',
-          '@graph': [
-            {
-              '@type': 'Article',
-              headline: blog.title,
-              description: pageDescription,
-              image: shareImage ? [shareImage] : undefined,
-              datePublished: blog.publishedAt,
-              dateModified: blog.updatedAt || blog.publishedAt,
-              author: { '@type': 'Person', name: blog.author },
-              publisher: { '@type': 'Organization', name: 'The Nura Care', logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` } },
-              mainEntityOfPage: canonical,
-              articleSection: topicMeta(blog.category).label,
-              keywords: blog.tags?.join(', '),
-            },
-            {
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Nura Journal', item: `${SITE_URL}/blog` },
-                { '@type': 'ListItem', position: 2, name: topicMeta(blog.category).label, item: `${SITE_URL}/blog/topic/${encodeURIComponent(blog.category)}` },
-                { '@type': 'ListItem', position: 3, name: blog.title, item: canonical },
-              ],
-            },
-          ],
-        }
-      : undefined,
+    jsonLd: blog ? seo.jsonLd : undefined,
   });
 
   const textSize = useReader((s) => s.textSize);

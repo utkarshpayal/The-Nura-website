@@ -2,7 +2,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import useReveal from '../hooks/useReveal';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const roles = [
   { title: 'AI Engineer', team: 'AI / Data', location: 'Remote', type: 'Full-time' },
@@ -20,7 +20,7 @@ const perks = [
 ];
 
 export default function Careers() {
-  useDocumentMeta('Careers | Nura', "Help build Nura, the women's health platform. Get in touch about open roles.");
+  usePageSeo('/careers');
 
   const [refRoles, inRoles] = useReveal();
   const [refPerks, inPerks] = useReveal();

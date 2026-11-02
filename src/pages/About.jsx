@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import useReveal from '../hooks/useReveal';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const values = [
   {
@@ -33,7 +33,7 @@ const values = [
 ];
 
 export default function About() {
-  useDocumentMeta('About | Nura', "The team and mission behind Nura, a women's health platform built on privacy and real clinical care.");
+  usePageSeo('/about');
 
   const [refStory, inStory] = useReveal();
   const [refValues, inValues] = useReveal();
@@ -59,6 +59,9 @@ export default function About() {
           <p style={{ font: 'var(--t-body)', color: 'var(--ink-2)', margin: 0 }}>
             Nura combines cycle tracking with an AI health assistant, real gynaecologist consultations, and a private
             community, so tracking a symptom is the start of getting an answer, not the end of the conversation.
+          </p>
+          <p style={{ font: 'var(--t-body)', color: 'var(--ink-2)', margin: '16px 0 0' }}>
+            <Link to="/team" style={{ color: 'var(--brand)', fontWeight: 600 }}>Meet the team behind Nura →</Link>
           </p>
         </div>
       </div>

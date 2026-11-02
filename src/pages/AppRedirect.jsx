@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 import { ANDROID_PLAY_STORE_URL } from '../constants';
 
 /*
@@ -44,7 +44,7 @@ function detectPlatform() {
 }
 
 export default function AppRedirect() {
-  useDocumentMeta('Open in Nura', 'Opening this in the Nura app.');
+  usePageSeo('/app');
 
   const deeplink = useMemo(() => readDeeplink(window.location.search), []);
   const platform = useMemo(detectPlatform, []);

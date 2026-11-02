@@ -15,6 +15,7 @@ const Pricing = lazy(() => import('./pages/Pricing'));
 const Download = lazy(() => import('./pages/Download'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const About = lazy(() => import('./pages/About'));
+const Team = lazy(() => import('./pages/Team'));
 const Careers = lazy(() => import('./pages/Careers'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Terms = lazy(() => import('./pages/Terms'));
@@ -26,9 +27,13 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const DeleteAccount = lazy(() => import('./pages/DeleteAccount'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-function App() {
+/**
+ * Every route, without a router: the browser wraps it in BrowserRouter
+ * (App below) and the build's prerender in StaticRouter (entry-server.jsx).
+ */
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes>
@@ -41,6 +46,7 @@ function App() {
           <Route path="/download" element={<Download />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/about" element={<About />} />
+          <Route path="/team" element={<Team />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
@@ -59,6 +65,14 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 }

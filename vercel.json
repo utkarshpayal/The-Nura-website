@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/.well-known/assetlinks.json",
@@ -7,10 +9,15 @@
     {
       "source": "/.well-known/apple-app-site-association",
       "headers": [{ "key": "Content-Type", "value": "application/json" }]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
   ],
+  "redirects": [{ "source": "/hipaa", "destination": "/data-protection", "permanent": true }],
   "rewrites": [
     { "source": "/sitemap-blog.xml", "destination": "https://www.backend.thenura.care/api/blogs/public/sitemap.xml" },
-    { "source": "/((?!\\.well-known/|sitemap-blog\\.xml).*)", "destination": "/index.html" }
+    { "source": "/blog/:path*", "destination": "/_shell.html" }
   ]
 }
