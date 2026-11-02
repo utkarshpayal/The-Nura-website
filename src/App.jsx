@@ -15,6 +15,7 @@ const Pricing = lazy(() => import('./pages/Pricing'));
 const Download = lazy(() => import('./pages/Download'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const About = lazy(() => import('./pages/About'));
+const Team = lazy(() => import('./pages/Team'));
 const Careers = lazy(() => import('./pages/Careers'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Terms = lazy(() => import('./pages/Terms'));
@@ -41,6 +42,7 @@ function App() {
           <Route path="/download" element={<Download />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/about" element={<About />} />
+          <Route path="/team" element={<Team />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
