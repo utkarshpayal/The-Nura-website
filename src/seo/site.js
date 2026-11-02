@@ -14,6 +14,9 @@ export { SITE_URL };
 
 const LOGO = `${SITE_URL}/logo.png`;
 
+/** Link-preview image for every page without its own (public/og-image.jpg, 1200×630). */
+export const OG_IMAGE = { url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Nura: understand your body, get answers you can trust' };
+
 /** Title + description per page. Titles lead with what people search for. */
 export const PAGES = {
   '/': {
@@ -261,20 +264,28 @@ export function headTags({ title, ogTitle, description, url, image, type = 'webs
   if (description) tags.push(`<meta name="description" content="${escapeHtml(description)}" />`);
   if (noindex) tags.push('<meta name="robots" content="noindex" />');
   if (url) tags.push(`<link rel="canonical" href="${escapeHtml(url)}" />`);
+  // An article's own cover, else the site's preview card (with its size, so
+  // WhatsApp and LinkedIn draw it large on the first share).
+  const preview = image ? { url: image, alt: ogTitle || title } : OG_IMAGE;
   const og = {
     'og:type': type,
     'og:site_name': 'Nura',
     'og:title': ogTitle || title,
     'og:description': description,
     'og:url': url,
-    'og:image': image || LOGO,
+    'og:image': preview.url,
+    'og:image:secure_url': preview.url,
+    'og:image:width': preview.width,
+    'og:image:height': preview.height,
+    'og:image:alt': preview.alt,
     'og:locale': 'en_IN',
   };
   for (const [k, v] of Object.entries(og)) if (v) tags.push(`<meta property="${k}" content="${escapeHtml(v)}" />`);
-  tags.push(`<meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}" />`);
+  tags.push('<meta name="twitter:card" content="summary_large_image" />');
   tags.push(`<meta name="twitter:title" content="${escapeHtml(ogTitle || title)}" />`);
   if (description) tags.push(`<meta name="twitter:description" content="${escapeHtml(description)}" />`);
-  tags.push(`<meta name="twitter:image" content="${escapeHtml(image || LOGO)}" />`);
+  tags.push(`<meta name="twitter:image" content="${escapeHtml(preview.url)}" />`);
+  tags.push(`<meta name="twitter:image:alt" content="${escapeHtml(preview.alt)}" />`);
   if (jsonLd) tags.push(`<script type="application/ld+json" data-prerender>${scriptJson(jsonLd)}</script>`);
   return tags.join('\n    ');
 }

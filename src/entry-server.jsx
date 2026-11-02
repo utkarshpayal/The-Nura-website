@@ -67,6 +67,24 @@ function seoFor(url, extra) {
   return { ...NOT_FOUND };
 }
 
+// Covers that don't load (a dead image host, a deleted file) would give the
+// article a blank share preview, so check each once and fall back to the
+// site's preview card.
+const imageOk = new Map();
+async function reachable(url) {
+  if (!imageOk.has(url)) {
+    imageOk.set(
+      url,
+      fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(8000) })
+        // Some image hosts refuse HEAD; ask for the image itself then.
+        .then((res) => (res.status === 405 || res.status === 403 ? fetch(url, { signal: AbortSignal.timeout(8000) }) : res))
+        .then((res) => res.ok && (res.headers.get('content-type') || 'image/').startsWith('image/'))
+        .catch(() => false)
+    );
+  }
+  return imageOk.get(url);
+}
+
 async function toHtml(element) {
   const { prelude } = await prerenderToNodeStream(element);
   const chunks = [];
@@ -83,5 +101,7 @@ export async function render(url) {
     </StaticRouter>
   );
   const data = takeBlogData();
-  return { html, head: headTags(seoFor(url, extra)), data };
+  const seo = seoFor(url, extra);
+  if (seo.image && !(await reachable(seo.image))) seo.image = undefined;
+  return { html, head: headTags(seo), data };
 }
