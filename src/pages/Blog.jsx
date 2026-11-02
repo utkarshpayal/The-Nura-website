@@ -11,8 +11,9 @@ import SearchBox, { Highlight } from '../components/blog/SearchBox';
 import { BookmarkIcon } from '../components/blog/SaveButton';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import useSeo from '../hooks/useSeo';
-import { getBlogs, getBlogTopics } from '../lib/api';
-import { SITE_URL, tagLabel, topicMeta } from '../lib/blog';
+import { getBlogs, getBlogTopics, peekBlogTopics, peekBlogs } from '../lib/api';
+import { blogListSeo } from '../seo/site';
+import { tagLabel, topicMeta } from '../lib/blog';
 import { READ_THRESHOLD, useReader } from '../lib/readerStore';
 
 const PAGE_SIZE = 12;
@@ -169,19 +170,30 @@ function SavedView() {
 
 /* ── Landing view: featured story, most read, latest, then every topic ── */
 function BlogHome({ topics, tags }) {
-  const [state, setState] = useState({ loading: true, error: false, latest: [], popular: [] });
-  const [byTopic, setByTopic] = useState({});
+  // Prerendered pages (and earlier visits) already hold these lists: draw
+  // them at once and refresh quietly.
+  const [state, setState] = useState(() => {
+    const latest = peekBlogs({ limit: 7 });
+    const popular = peekBlogs({ sort: 'popular', limit: 4 });
+    return latest && popular
+      ? { loading: false, error: false, latest: latest.blogs, popular: popular.blogs }
+      : { loading: true, error: false, latest: [], popular: [] };
+  });
+  const [byTopic, setByTopic] = useState(() =>
+    Object.fromEntries(topics.map((t) => [t.id, peekBlogs({ topic: t.id, limit: 3 })?.blogs]).filter(([, b]) => b))
+  );
   const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
-    setState((s) => ({ ...s, loading: true, error: false }));
+    setState((s) => ({ ...s, loading: s.latest.length === 0, error: false }));
     Promise.all([getBlogs({ limit: 7 }), getBlogs({ sort: 'popular', limit: 4 })])
       .then(([latest, popular]) => {
         if (!cancelled) setState({ loading: false, error: false, latest: latest.blogs, popular: popular.blogs });
       })
       .catch(() => {
-        if (!cancelled) setState((s) => ({ ...s, loading: false, error: true }));
+        // Keep a list we already show; only an empty page shows the error.
+        if (!cancelled) setState((s) => ({ ...s, loading: false, error: s.latest.length === 0 }));
       });
     return () => {
       cancelled = true;
@@ -309,16 +321,22 @@ function BlogHome({ topics, tags }) {
 /* ── Filtered view: a topic page, a tag, or search results ── */
 function BlogResults({ topic, tag, search, popularTags }) {
   const [sort, setSort] = useState('latest');
-  const [posts, setPosts] = useState([]);
-  const [pagination, setPagination] = useState(null);
+  const firstPage = peekBlogs({ topic, tag, search, sort: 'latest', page: 1, limit: PAGE_SIZE });
+  const [posts, setPosts] = useState(() => firstPage?.blogs || []);
+  const [pagination, setPagination] = useState(() => firstPage?.pagination || null);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!firstPage);
   const [error, setError] = useState(false);
   const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
+    const seeded = page === 1 ? peekBlogs({ topic, tag, search, sort, page: 1, limit: PAGE_SIZE }) : undefined;
+    if (seeded) {
+      setPosts(seeded.blogs);
+      setPagination(seeded.pagination);
+    }
+    setLoading(!seeded);
     setError(false);
     getBlogs({ topic, tag, search, sort, page, limit: PAGE_SIZE })
       .then((data) => {
@@ -327,7 +345,7 @@ function BlogResults({ topic, tag, search, popularTags }) {
         setPagination(data.pagination);
       })
       .catch(() => {
-        if (!cancelled) setError(true);
+        if (!cancelled && !seeded) setError(true);
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -462,7 +480,7 @@ export default function Blog({ view }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('q') || '';
   const tag = searchParams.get('tag') || '';
-  const [taxonomy, setTaxonomy] = useState({ topics: [], tags: [] });
+  const [taxonomy, setTaxonomy] = useState(() => peekBlogTopics() || { topics: [], tags: [] });
 
   useEffect(() => {
     let cancelled = false;
@@ -495,25 +513,12 @@ export default function Blog({ view }) {
     subheading = '';
   }
 
-  const pageTitle = filtered ? `${heading} | Nura Journal` : 'Nura Journal: periods, hormones & women’s health';
-  const pageDescription =
-    meta?.description ||
-    'Practical articles on periods, cycle health, PCOS, fertility, nutrition and wellbeing from the team at Nura.';
-  const canonical = topic ? `${SITE_URL}/blog/topic/${encodeURIComponent(topic)}` : `${SITE_URL}/blog`;
+  const seo = blogListSeo({ topic, heading, filtered });
+  const pageTitle = seo.title;
+  const pageDescription = seo.description;
 
   useDocumentMeta(pageTitle, pageDescription);
-  useSeo({
-    title: pageTitle,
-    description: pageDescription,
-    url: canonical,
-    jsonLd: {
-      '@context': 'https://schema.org',
-      '@type': 'Blog',
-      name: 'Nura Journal',
-      url: `${SITE_URL}/blog`,
-      publisher: { '@type': 'Organization', name: 'The Nura Care', logo: `${SITE_URL}/logo.png` },
-    },
-  });
+  useSeo({ title: pageTitle, description: pageDescription, url: seo.url, jsonLd: seo.jsonLd });
 
   const updateParams = (changes) => {
     const next = new URLSearchParams(searchParams);

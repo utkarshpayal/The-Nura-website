@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import useReveal from '../hooks/useReveal';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 // The people on /team. Edit names and lines here; cards show initials, so no
 // photos are needed. `note` is one short line under the role; `kind` picks
@@ -76,7 +76,7 @@ function SectionHeading({ title, intro }) {
 }
 
 export default function Team() {
-  useDocumentMeta('Our team | Nura', "Meet the team behind Nura, the women's health app.");
+  usePageSeo('/team');
   const [refFounders, inFounders] = useReveal();
   const [refTeam, inTeam] = useReveal();
   const [refCta, inCta] = useReveal();

@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import useReveal from '../hooks/useReveal';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 // Every claim here matches what the product actually does. The source of truth
 // is period-buddy-be's docs/SECURITY.md; update both together, and never add a
@@ -237,10 +237,7 @@ function Section({ section }) {
 }
 
 export default function Security() {
-  useDocumentMeta(
-    'Security & Safety | Nura',
-    'How Nura protects your health data: encryption, App Lock, private documents, sign-in protection, AI controls and what our own team can and cannot see.',
-  );
+  usePageSeo('/security');
   const [refStats, inStats] = useReveal();
 
   return (

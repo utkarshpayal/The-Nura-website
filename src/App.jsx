@@ -27,9 +27,13 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const DeleteAccount = lazy(() => import('./pages/DeleteAccount'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-function App() {
+/**
+ * Every route, without a router: the browser wraps it in BrowserRouter
+ * (App below) and the build's prerender in StaticRouter (entry-server.jsx).
+ */
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes>
@@ -61,6 +65,14 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 }

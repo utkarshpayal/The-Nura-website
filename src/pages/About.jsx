@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import useReveal from '../hooks/useReveal';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const values = [
   {
@@ -33,7 +33,7 @@ const values = [
 ];
 
 export default function About() {
-  useDocumentMeta('About | Nura', "The team and mission behind Nura, a women's health platform built on privacy and real clinical care.");
+  usePageSeo('/about');
 
   const [refStory, inStory] = useReveal();
   const [refValues, inValues] = useReveal();

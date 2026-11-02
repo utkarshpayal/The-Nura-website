@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
 import { GooglePlayButton, AppStoreButton } from 'react-mobile-app-button';
 import { ANDROID_PLAY_STORE_URL } from '../constants';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const faqData = [
   { question: 'Do you ever sell my health data?', answer: 'Never. Your cycle and symptom data is never sold or shared with advertisers, data brokers, or third parties, under any circumstance.' },
@@ -41,7 +41,7 @@ const pillars = [
 ];
 
 export default function Privacy() {
-  useDocumentMeta('Privacy | Nura', 'How Nura protects your health data: App Lock, encryption, consent controls, and a promise never to sell your data.');
+  usePageSeo('/privacy');
 
   const [open, setOpen] = useState({});
   const [refStats, inStats] = useReveal();
