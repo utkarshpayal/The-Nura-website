@@ -2010,3 +2010,39 @@ button.share-round { box-shadow: inset 0 0 0 1px var(--line); }
   animation: fadeInUp var(--dur-base) var(--ease-out);
 }
 .toast__msg svg { color: #7DD3B8; }
+
+/* ---------- Team page (src/pages/Team.jsx) ---------- */
+.team-section { max-width: 1120px; padding: 56px 32px; }
+.team-band { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.team-avatar {
+  flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; letter-spacing: 0.02em; margin: 0 auto 16px;
+}
+.team-pill {
+  display: inline-block; max-width: 100%; padding: 4px 12px; border-radius: 999px;
+  font: var(--t-label-sm); font-weight: 600; overflow-wrap: anywhere;
+}
+
+/* Founders: stacked on phones, two wide side-by-side cards from tablet up. */
+.team-founders { display: grid; gap: 20px; grid-template-columns: 1fr; max-width: 980px; margin: 0 auto; }
+.team-founder { padding: 28px; text-align: center; }
+@media (min-width: 760px) {
+  .team-founders { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .team-founder { display: flex; align-items: center; gap: 24px; padding: 32px; text-align: left; }
+  .team-founder .team-avatar { margin: 0; }
+}
+
+/* Team: centred rows, so a short last row sits in the middle.
+   Two across on phones, three on tablets, four on desktop (8 = two rows). */
+.team-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.team-member { flex: 0 1 calc((100% - 16px) / 2); min-width: 0; padding: 24px 14px; text-align: center; }
+@media (min-width: 700px) {
+  .team-grid { gap: 20px; }
+  .team-member { flex-basis: calc((100% - 40px) / 3); padding: 28px 20px; }
+}
+@media (min-width: 1040px) {
+  .team-member { flex-basis: calc((100% - 60px) / 4); }
+}
+@media (max-width: 640px) {
+  .team-section { padding: 40px 16px; }
+}
