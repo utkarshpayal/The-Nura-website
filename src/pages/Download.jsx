@@ -10,7 +10,7 @@ import screenHome from '../assets/images/screens/screen-home.webp';
 import screenInsights from '../assets/images/screens/screen-insights.webp';
 import screenWellbeing from '../assets/images/screens/screen-wellbeing.webp';
 import screenApplock from '../assets/images/screens/screen-applock.webp';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const screenshots = [
   { id: 'dl-home', src: screenHome, alt: 'Cycle dashboard' },
@@ -20,7 +20,7 @@ const screenshots = [
 ];
 
 export default function Download() {
-  useDocumentMeta('Download Nura for Android | Nura', 'Get Nura free on Google Play for Android 10 and above. iOS is coming soon.');
+  usePageSeo('/download');
 
   const [refScreens, inScreens] = useReveal();
   const [refReqs, inReqs] = useReveal();

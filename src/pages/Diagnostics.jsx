@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import Newsletter from '../components/Newsletter';
 import useReveal from '../hooks/useReveal';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 /* ---------------------------------------------------------------------- */
 /* Data                                                                    */
@@ -402,10 +402,7 @@ function MiniFlow({ items }) {
 /* ---------------------------------------------------------------------- */
 
 export default function Diagnostics() {
-  useDocumentMeta(
-    "Nura Diagnostics: Women's Health Diagnostics & Home Sample Collection | Nura",
-    'Nura Diagnostics connects women’s health concerns to clinically designed diagnostic pathways, home sample collection, easy-to-understand lab reports, and gynaecologist consultations, all inside one connected health record.'
-  );
+  usePageSeo('/diagnostics');
 
   const [refFrag, inFrag] = useReveal();
   const [refPathways, inPathways] = useReveal();

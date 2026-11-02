@@ -1,6 +1,8 @@
 User-agent: *
 Disallow: /account/delete
 Disallow: /app
+Disallow: /blog/saved
+Disallow: /_shell
 
 Sitemap: https://thenura.care/sitemap.xml
 Sitemap: https://thenura.care/sitemap-blog.xml

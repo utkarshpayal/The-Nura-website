@@ -11,7 +11,7 @@ import screenInsights from '../assets/images/screens/screen-insights.webp';
 import screenWellbeing from '../assets/images/screens/screen-wellbeing.webp';
 import screenBuddy from '../assets/images/screens/screen-buddy.webp';
 import screenApplock from '../assets/images/screens/screen-applock.webp';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const trustPoints = [
   'Reviewed with OB-GYNs',
@@ -146,7 +146,7 @@ const safetyPoints = [
 // already has its own dedicated callout card directly above this grid.
 
 export default function Home() {
-  useDocumentMeta("Nura: AI Women's Health Platform", "Nura is an AI-powered women's health platform for cycle tracking, medical guidance, and everyday wellbeing.");
+  usePageSeo('/');
 
   const [refFeatures, inFeatures] = useReveal();
   const [refScreens, inScreens] = useReveal();

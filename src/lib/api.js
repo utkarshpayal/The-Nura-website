@@ -63,13 +63,38 @@ export const confirmAccountDeletion = (email, code) =>
 const BLOG_CACHE_TTL = 5 * 60 * 1000;
 const blogCache = new Map();
 
+// The last answer for each blog request, readable synchronously so a page can
+// draw it on its first render (peekBlogs / peekBlog / peekBlogTopics). The
+// build fills it while prerendering a page and embeds it in that page
+// (window.__NURA_BLOG_DATA__, read by seedBlogData in main.jsx), so the
+// article is in the HTML search engines download and shows instantly; the
+// page still refetches in the background.
+const resolved = new Map();
+
 function cachedGet(path) {
   const hit = blogCache.get(path);
   if (hit && Date.now() - hit.at < BLOG_CACHE_TTL) return hit.promise;
-  const promise = request(path).then((res) => res.data);
+  const promise = request(path).then((res) => {
+    resolved.set(path, res.data);
+    return res.data;
+  });
   blogCache.set(path, { at: Date.now(), promise });
   promise.catch(() => blogCache.delete(path));
   return promise;
+}
+
+/** Fills the synchronous copy from a prerendered page's embedded data. */
+export function seedBlogData(data) {
+  if (!data || typeof data !== 'object') return;
+  for (const [path, value] of Object.entries(data)) resolved.set(path, value);
+}
+
+/** Build time: everything fetched for the page being rendered, then cleared. */
+export function takeBlogData() {
+  const data = Object.fromEntries(resolved);
+  resolved.clear();
+  blogCache.clear();
+  return data;
 }
 
 const toQuery = (params) => {
@@ -81,12 +106,21 @@ const toQuery = (params) => {
   return s ? `?${s}` : '';
 };
 
-export const getBlogs = ({ topic, tag, search, sort, page, limit } = {}) =>
-  cachedGet(`/blogs/public${toQuery({ topic, tag, search, sort, page, limit })}`);
+const blogsPath = ({ topic, tag, search, sort, page, limit } = {}) =>
+  `/blogs/public${toQuery({ topic, tag, search, sort, page, limit })}`;
+const blogPath = (slug) => `/blogs/public/${encodeURIComponent(slug)}`;
+const TOPICS_PATH = '/blogs/public/topics';
 
-export const getBlogTopics = () => cachedGet('/blogs/public/topics');
+export const getBlogs = (params) => cachedGet(blogsPath(params));
 
-export const getBlog = (slug) => cachedGet(`/blogs/public/${encodeURIComponent(slug)}`);
+export const getBlogTopics = () => cachedGet(TOPICS_PATH);
+
+export const getBlog = (slug) => cachedGet(blogPath(slug));
+
+// Synchronous reads of the last answer (see `resolved` above); undefined if none.
+export const peekBlogs = (params) => resolved.get(blogsPath(params));
+export const peekBlogTopics = () => resolved.get(TOPICS_PATH);
+export const peekBlog = (slug) => resolved.get(blogPath(slug));
 
 /** Warm the cache for an article the reader is about to open. */
 export const prefetchBlog = (slug) => {

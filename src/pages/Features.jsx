@@ -9,7 +9,7 @@ import screenHome from '../assets/images/screens/screen-home.webp';
 import screenInsights from '../assets/images/screens/screen-insights.webp';
 import screenWellbeing from '../assets/images/screens/screen-wellbeing.webp';
 import screenBuddy from '../assets/images/screens/screen-buddy.webp';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const tagStyle = { background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 999, padding: '7px 14px', font: 'var(--t-label-sm)', color: 'var(--ink-2)' };
 
@@ -195,7 +195,7 @@ const moreFeatures = [
 ];
 
 export default function Features() {
-  useDocumentMeta('Features | Nura', 'Cycle tracking and AI predictions, an AI health assistant, gynaecologist consultations, report chat, Partner Sync, and more, all in one private app.');
+  usePageSeo('/features');
 
   const [refGrid, inGrid] = useReveal();
   const [refCta, inCta] = useReveal();

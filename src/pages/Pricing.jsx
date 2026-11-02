@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import useReveal from '../hooks/useReveal';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 import { getPricing } from '../lib/api';
 import { FALLBACK_PRICING, formatRupees, mergePricing } from '../lib/pricing';
 
@@ -116,10 +116,9 @@ export default function Pricing() {
   const founding = premium.founding;
   const faqs = faqDefs(pricing);
 
-  useDocumentMeta(
-    'Pricing | Nura',
-    `Tracking, predictions and safety guidance are free. Nura Premium is ${formatRupees(premium.monthly.price)} for 30 days or ${formatRupees(premium.yearly.price)} for a year, paid ahead with no auto-renewal.`,
-  );
+  usePageSeo('/pricing', {
+    description: `Tracking, predictions and safety guidance are free. Nura Premium is ${formatRupees(premium.monthly.price)} for 30 days or ${formatRupees(premium.yearly.price)} for a year, paid ahead with no auto-renewal.`,
+  });
 
   const toggleFaq = (id) => setFaqOpen((s) => ({ ...s, [id]: !s[id] }));
 

@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import Loader from '../components/Loader';
 import { requestAccountDeletion, confirmAccountDeletion } from '../lib/api';
-import useDocumentMeta from '../hooks/useDocumentMeta';
+import usePageSeo from '../hooks/usePageSeo';
 
 const inputStyle = {
   width: '100%',
@@ -22,7 +22,7 @@ const inputStyle = {
 // deletion only happens after the account owner confirms a one-time code
 // sent to their own inbox. `noindex` keeps it out of search results.
 export default function DeleteAccount() {
-  useDocumentMeta('Delete your account | Nura', 'Permanently delete your Nura account and all associated data.');
+  usePageSeo('/account/delete');
 
   useEffect(() => {
     const meta = document.createElement('meta');
