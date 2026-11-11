@@ -4,7 +4,8 @@ The public site at **[thenura.care](https://thenura.care)**. It covers the produ
 pages, app download, legal pages, the contact form, the newsletter signup and the
 account-deletion page that the app stores require.
 
-React 19 · Vite · React Router 7 · Oxlint. Hosted on Vercel.
+React 19 · Vite 8 · React Router 7 · react-markdown (blog) · Oxlint. Pages are prerendered to
+static HTML at build time (SSR build + `scripts/prerender.mjs`). Hosted on Vercel.
 Backend: [period-buddy-be](https://github.com/utkarshpayal/period-buddy-be).
 All docs: [docs/README.md](docs/README.md) for this repo, and the system
 [ARCHITECTURE.md](https://github.com/utkarshpayal/period-buddy/blob/main/docs/ARCHITECTURE.md) for how it fits with the app and API.
@@ -24,16 +25,18 @@ Optional `.env` (copy `.env.example`):
 
 | Key | Purpose |
 |---|---|
-| `VITE_API_URL` | Backend base **including `/api`**. Defaults: `http://localhost:5000/api` in `npm run dev`, `https://www.backend.thenura.care/api` in production builds. |
+| `VITE_API_URL` | Backend base **including `/api`**. Defaults: `http://localhost:5000/api` in `npm run dev`, `https://www.backend.thenura.care/api` in production builds. Also used by the build's prerender step to fetch blog posts. |
 
-Only the contact form, newsletter and account deletion call the API. Every other page is static.
+The API is called by the contact form, newsletter, account deletion, the blog
+(`/api/blogs/public*`) and `/pricing` (`GET /api/subscriptions/pricing`, falling back to
+the built-in prices in `src/lib/pricing.js`). Every other page is static.
 
 ## Scripts
 
 | Command | What it does |
 |---|---|
 | `npm run dev` | Vite dev server |
-| `npm run build` | Production build into `dist/` (CI) |
+| `npm run build` | Client build into `dist/`, SSR build into `dist-ssr/`, then `scripts/prerender.mjs` writes a static HTML file per page and per published article (plus `_shell.html` and `404.html`). If the blog API is unreachable the static pages are still written. Run in CI |
 | `npm run preview` | Serve `dist/` locally |
 | `npm run lint` | Oxlint (CI) |
 
@@ -45,7 +48,7 @@ Only the contact form, newsletter and account deletion call the API. Every other
 |---|---|
 | `/` | Home |
 | `/features`, `/pricing`, `/download`, `/diagnostics` | Product |
-| `/about`, `/careers`, `/contact`, `/faq` | Company |
+| `/about`, `/team`, `/careers`, `/contact`, `/faq` | Company |
 | `/blog`, `/blog/topic/:topic`, `/blog/:slug` | Nura Journal (blog). Posts are written in the Admin Workspace/CMS and read live from the API's public blog endpoints (`/api/blogs/public*`), so a published post appears here with no site deploy. `?q=` searches, `?tag=` filters by subject. Topic labels/colors live in `src/lib/blog.js`. Saved articles (`/blog/saved`), reading progress ("Continue reading") and text size are kept in the reader's browser only (`src/lib/readerStore.js`); "Listen" uses the browser's built-in speech. |
 | `/privacy`, `/terms`, `/data-protection` (`/hipaa`) | Legal |
 | `/security` | Security & Safety: how data is protected, in plain words. Must match the API's `docs/SECURITY.md` (see [docs/README.md](docs/README.md)) |
@@ -66,12 +69,17 @@ src/
 ├── main.jsx, App.jsx    Entry + routes
 ├── pages/               One file per page
 ├── components/          Nav, Footer, Newsletter, PhoneFrame, …
-│   └── blog/            BlogCard, BlogCover, TopicTag, AppCta
-├── hooks/               useDocumentMeta (per-page title/meta), useSeo (OG/canonical/JSON-LD), useReveal (scroll animations)
+│   └── blog/            BlogCard, BlogCover, TopicTag, AppCta, search, save, share and chart components
+├── entry-server.jsx     SSR entry used by the prerender step
+├── seo/                 Per-page titles, descriptions, canonical URLs and JSON-LD (shared by browser and prerender)
+├── hooks/               useDocumentMeta (per-page title/meta), useSeo / usePageSeo (OG/canonical/JSON-LD), useReveal (scroll animations), useSpeech ("Listen")
 ├── lib/api.js           Backend calls (contact, newsletter, account deletion, blog with a 5-min in-memory cache)
 ├── lib/blog.js          Blog topic labels, dates, reading time, headings/TOC, image sizing
+├── lib/pricing.js       Fallback pricing for /pricing
 └── assets/images/       logo.png (in-page logo), screens/ (app screenshots)
-vercel.json              SPA rewrites; /sitemap-blog.xml proxies the API's live blog sitemap
+scripts/prerender.mjs    Writes prerendered HTML after the client + SSR builds
+vercel.json              Clean URLs, /hipaa → /data-protection redirect, unknown /blog/* → _shell.html;
+                         /sitemap-blog.xml proxies the API's live blog sitemap
 ```
 
 > **Don't change `.well-known/` casually.** `assetlinks.json` holds the app's
