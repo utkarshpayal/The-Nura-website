@@ -2046,3 +2046,15 @@ button.share-round { box-shadow: inset 0 0 0 1px var(--line); }
 @media (max-width: 640px) {
   .team-section { padding: 40px 16px; }
 }
+
+
+.hero-actions .btn{
+  flex: 1 1 100%;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .hero-actions .btn{
+    flex: 0 0 auto;
+  }
+}
