@@ -168,7 +168,7 @@ export default function Home() {
             Nura is built on an AI and ML engine that learns your cycle: tracking, predictions, and real gynaecologist
             consultations in one private, secure app so you always know what's going on and what to do about it.
           </p>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 28 }}>
+          <div className="hero-actions" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 28 }}>
             <Link to="/download" className="btn btn-brand" style={{ padding: '15px 26px' }}>
               Download the app
             </Link>
