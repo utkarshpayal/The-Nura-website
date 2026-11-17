@@ -24,7 +24,7 @@ const screenshots = [
   { id: 'shot-home', label: 'Cycle Dashboard', src: screenHome },
   { id: 'shot-insights', label: 'AI Health Insights', src: screenInsights },
   { id: 'shot-wellbeing', label: 'Wellbeing & Forest', src: screenWellbeing },
-  { id: 'shot-chat', label: 'AI Health Assistant', src: screenBuddy },
+  { id: 'shot-chat', label: 'Nominate a Buddy', src: screenBuddy },
 ];
 
 const testimonials = [
